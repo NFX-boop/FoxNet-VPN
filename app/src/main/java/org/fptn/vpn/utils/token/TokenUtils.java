@@ -18,18 +18,18 @@
  * Website: https://fptn.org
  */
 
-package org.fptn.vpn.utils.token;
+package com.foxnet.app.utils.token;
 
 import com.elvishew.xlog.XLog;
 
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import org.fptn.vpn.database.entity.ServerEntity;
-import org.fptn.vpn.utils.BrotliUtils;
-import org.fptn.vpn.utils.CountryFlags;
-import org.fptn.vpn.exception.ErrorCode;
-import org.fptn.vpn.exception.PVNClientException;
+import com.foxnet.app.database.entity.ServerEntity;
+import com.foxnet.app.utils.BrotliUtils;
+import com.foxnet.app.utils.CountryFlags;
+import com.foxnet.app.exception.ErrorCode;
+import com.foxnet.app.exception.PVNClientException;
 
 import java.io.IOException;
 import java.util.ArrayList;

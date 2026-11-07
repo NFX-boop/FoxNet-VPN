@@ -18,7 +18,7 @@
  * Website: https://fptn.org
  */
 
-package org.fptn.vpn.database.dao;
+package com.foxnet.app.database.dao;
 
 import androidx.room.Dao;
 import androidx.room.Insert;
@@ -27,7 +27,7 @@ import androidx.room.Transaction;
 
 import com.google.common.util.concurrent.ListenableFuture;
 
-import org.fptn.vpn.database.entity.ServerEntity;
+import com.foxnet.app.database.entity.ServerEntity;
 
 import java.util.List;
 

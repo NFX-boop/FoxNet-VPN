@@ -1,4 +1,4 @@
-package org.fptn.vpn.ui.perappvpn
+package com.foxnet.app.ui.perappvpn
 
 import android.graphics.Bitmap
 import android.graphics.Canvas
@@ -51,18 +51,18 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.elvishew.xlog.XLog
-import org.fptn.vpn.R
-import org.fptn.vpn.enums.PerAppVpnMode
-import org.fptn.vpn.ui.common.BottomNavBar
-import org.fptn.vpn.ui.common.HtmlLinkText
-import org.fptn.vpn.ui.common.LinkifiedText
-import org.fptn.vpn.ui.common.MultilineTextInputDialog
-import org.fptn.vpn.ui.common.ShareDialog
-import org.fptn.vpn.ui.common.legacyDrawableBackground
-import org.fptn.vpn.ui.theme.Gray
-import org.fptn.vpn.ui.theme.TealAccent
-import org.fptn.vpn.ui.theme.White
-import org.fptn.vpn.utils.SharedPrefUtils
+import com.foxnet.app.R
+import com.foxnet.app.enums.PerAppVpnMode
+import com.foxnet.app.ui.common.BottomNavBar
+import com.foxnet.app.ui.common.HtmlLinkText
+import com.foxnet.app.ui.common.LinkifiedText
+import com.foxnet.app.ui.common.MultilineTextInputDialog
+import com.foxnet.app.ui.common.ShareDialog
+import com.foxnet.app.ui.common.legacyDrawableBackground
+import com.foxnet.app.ui.theme.Gray
+import com.foxnet.app.ui.theme.TealAccent
+import com.foxnet.app.ui.theme.White
+import com.foxnet.app.utils.SharedPrefUtils
 
 private const val TAG = "PerAppVpnModeScreen"
 

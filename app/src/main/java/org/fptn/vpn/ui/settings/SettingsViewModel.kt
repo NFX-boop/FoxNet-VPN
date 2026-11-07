@@ -18,14 +18,14 @@
  * Website: https://fptn.org
  */
 
-package org.fptn.vpn.ui.settings
+package com.foxnet.app.ui.settings
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import org.fptn.vpn.database.AppDatabase
+import com.foxnet.app.database.AppDatabase
 
 class SettingsViewModel(application: Application) : AndroidViewModel(application) {
 

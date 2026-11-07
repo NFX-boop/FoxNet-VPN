@@ -1,4 +1,4 @@
-package org.fptn.vpn.ui.experimentalsettings
+package com.foxnet.app.ui.experimentalsettings
 
 import android.app.StatusBarManager
 import android.content.ComponentName
@@ -46,19 +46,19 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.elvishew.xlog.XLog
-import org.fptn.vpn.R
-import org.fptn.vpn.Constants
-import org.fptn.vpn.enums.ConnectionState
-import org.fptn.vpn.services.tile.FptnTileService
-import org.fptn.vpn.services.vpn.FptnService
-import org.fptn.vpn.ui.common.BottomNavBar
-import org.fptn.vpn.ui.common.LinkifiedText
-import org.fptn.vpn.ui.common.MultilineTextInputDialog
-import org.fptn.vpn.ui.common.ShareDialog
-import org.fptn.vpn.ui.common.findActivity
-import org.fptn.vpn.ui.common.legacyDrawableBackground
-import org.fptn.vpn.ui.theme.White
-import org.fptn.vpn.utils.SharedPrefUtils
+import com.foxnet.app.R
+import com.foxnet.app.Constants
+import com.foxnet.app.enums.ConnectionState
+import com.foxnet.app.services.tile.FptnTileService
+import com.foxnet.app.services.vpn.FptnService
+import com.foxnet.app.ui.common.BottomNavBar
+import com.foxnet.app.ui.common.LinkifiedText
+import com.foxnet.app.ui.common.MultilineTextInputDialog
+import com.foxnet.app.ui.common.ShareDialog
+import com.foxnet.app.ui.common.findActivity
+import com.foxnet.app.ui.common.legacyDrawableBackground
+import com.foxnet.app.ui.theme.White
+import com.foxnet.app.utils.SharedPrefUtils
 
 private const val TAG = "ExperimentalSettingsScreen"
 private val ATTEMPTS_COUNT_VALUES = intArrayOf(5, 15, 35, Int.MAX_VALUE)

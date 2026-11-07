@@ -5,15 +5,15 @@
             <!-- Background -->
             <item>
                 <shape>
-                    <gradient android:angle="90" android:endColor="#ffffff" android:startColor="#ffffff" android:type="linear" />
-                    <stroke android:width="0.33dp" android:color="@color/primary" />
+                    <gradient android:angle="90" android:endColor="#151B28" android:startColor="#151B28" android:type="linear" />
+                    <stroke android:width="0.33dp" android:color="#2A3140" />
                     <corners android:radius="20dp" />
                     <padding android:bottom="3dp" android:left="0dp" android:right="0dp" android:top="0dp" />
                 </shape>
             </item>
             <!-- Arrow -->
             <item android:right="16dp">
-                <bitmap android:gravity="center_vertical|right" android:src="@drawable/spinner_arrow_down" />
+                <bitmap android:gravity="center_vertical|right" android:src="@drawable/spinner_arrow_down" android:tint="#A9B2C0" />
             </item>
         </layer-list>
     </item>

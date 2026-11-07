@@ -18,7 +18,7 @@
  * Website: https://fptn.org
  */
 
-package org.fptn.vpn.utils;
+package com.foxnet.app.utils;
 
 import android.content.Context;
 
@@ -31,7 +31,7 @@ import com.elvishew.xlog.printer.file.backup.FileSizeBackupStrategy2;
 import com.elvishew.xlog.printer.file.clean.FileLastModifiedCleanStrategy;
 import com.elvishew.xlog.printer.file.naming.FileNameGenerator;
 
-import org.fptn.vpn.enums.AppLogLevel;
+import com.foxnet.app.enums.AppLogLevel;
 
 import java.io.File;
 import java.text.SimpleDateFormat;

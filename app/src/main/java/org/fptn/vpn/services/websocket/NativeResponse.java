@@ -18,7 +18,7 @@
  * Website: https://fptn.org
  */
 
-package org.fptn.vpn.services.websocket;
+package com.foxnet.app.services.websocket;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

@@ -18,9 +18,9 @@
  * Website: https://fptn.org
  */
 
-package org.fptn.vpn.services.speedtest;
+package com.foxnet.app.services.speedtest;
 
-import org.fptn.vpn.database.entity.ServerEntity;
+import com.foxnet.app.database.entity.ServerEntity;
 
 import lombok.AllArgsConstructor;
 import lombok.Value;

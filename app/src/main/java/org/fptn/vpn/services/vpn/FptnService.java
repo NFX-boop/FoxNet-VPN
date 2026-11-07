@@ -18,16 +18,16 @@
  * Website: https://fptn.org
  */
 
-package org.fptn.vpn.services.vpn;
+package com.foxnet.app.services.vpn;
 
-import static org.fptn.vpn.Constants.SELECTED_SERVER;
-import static org.fptn.vpn.Constants.SELECTED_SERVER_ID_AUTO;
-import static org.fptn.vpn.Constants.START_FROM_TILE_AUTO;
-import static org.fptn.vpn.enums.ConnectionSubnets.ALL_SUBNET;
-import static org.fptn.vpn.enums.ConnectionSubnets.IP_V4_PREFIX_LENGTH;
-import static org.fptn.vpn.enums.ConnectionSubnets.IP_V6_PREFIX_LENGTH;
-import static org.fptn.vpn.enums.ConnectionSubnets.TUN_ADDRESS;
-import static org.fptn.vpn.utils.ResourcesUtils.getStringResourceByName;
+import static com.foxnet.app.Constants.SELECTED_SERVER;
+import static com.foxnet.app.Constants.SELECTED_SERVER_ID_AUTO;
+import static com.foxnet.app.Constants.START_FROM_TILE_AUTO;
+import static com.foxnet.app.enums.ConnectionSubnets.ALL_SUBNET;
+import static com.foxnet.app.enums.ConnectionSubnets.IP_V4_PREFIX_LENGTH;
+import static com.foxnet.app.enums.ConnectionSubnets.IP_V6_PREFIX_LENGTH;
+import static com.foxnet.app.enums.ConnectionSubnets.TUN_ADDRESS;
+import static com.foxnet.app.utils.ResourcesUtils.getStringResourceByName;
 
 import android.annotation.SuppressLint;
 import android.app.Notification;
@@ -59,31 +59,31 @@ import androidx.lifecycle.Observer;
 
 import com.elvishew.xlog.XLog;
 
-import org.fptn.vpn.R;
-import org.fptn.vpn.network.DomainBlocker;
-import org.fptn.vpn.Constants;
-import org.fptn.vpn.database.AppDatabase;
-import org.fptn.vpn.database.entity.ServerEntity;
-import org.fptn.vpn.enums.BypassCensorshipMethod;
-import org.fptn.vpn.enums.ConnectionStrategy;
-import org.fptn.vpn.enums.ConnectionState;
-import org.fptn.vpn.enums.NetworkType;
-import org.fptn.vpn.enums.PerAppVpnMode;
-import org.fptn.vpn.enums.SniSpoofingMode;
-import org.fptn.vpn.services.snichecker.SniCheckerService;
-import org.fptn.vpn.services.snichecker.SniCheckerServiceState;
-import org.fptn.vpn.services.tile.FptnTileService;
-import org.fptn.vpn.services.websocket.DnsServers;
-import org.fptn.vpn.utils.NetworkUtils;
-import org.fptn.vpn.utils.NotificationUtils;
-import org.fptn.vpn.utils.RemoteExclusionListSync;
-import org.fptn.vpn.utils.SharedPrefUtils;
-import org.fptn.vpn.ui.perappvpn.AppInfo;
-import org.fptn.vpn.services.speedtest.SpeedTestResult;
-import org.fptn.vpn.services.speedtest.SpeedTestUtils;
-import org.fptn.vpn.ui.MainActivity;
-import org.fptn.vpn.exception.ErrorCode;
-import org.fptn.vpn.exception.PVNClientException;
+import com.foxnet.app.R;
+import com.foxnet.app.network.DomainBlocker;
+import com.foxnet.app.Constants;
+import com.foxnet.app.database.AppDatabase;
+import com.foxnet.app.database.entity.ServerEntity;
+import com.foxnet.app.enums.BypassCensorshipMethod;
+import com.foxnet.app.enums.ConnectionStrategy;
+import com.foxnet.app.enums.ConnectionState;
+import com.foxnet.app.enums.NetworkType;
+import com.foxnet.app.enums.PerAppVpnMode;
+import com.foxnet.app.enums.SniSpoofingMode;
+import com.foxnet.app.services.snichecker.SniCheckerService;
+import com.foxnet.app.services.snichecker.SniCheckerServiceState;
+import com.foxnet.app.services.tile.FptnTileService;
+import com.foxnet.app.services.websocket.DnsServers;
+import com.foxnet.app.utils.NetworkUtils;
+import com.foxnet.app.utils.NotificationUtils;
+import com.foxnet.app.utils.RemoteExclusionListSync;
+import com.foxnet.app.utils.SharedPrefUtils;
+import com.foxnet.app.ui.perappvpn.AppInfo;
+import com.foxnet.app.services.speedtest.SpeedTestResult;
+import com.foxnet.app.services.speedtest.SpeedTestUtils;
+import com.foxnet.app.ui.MainActivity;
+import com.foxnet.app.exception.ErrorCode;
+import com.foxnet.app.exception.PVNClientException;
 
 import java.io.IOException;
 import java.net.UnknownHostException;
@@ -1315,7 +1315,7 @@ public class FptnService extends VpnService {
         Notification.Action actionDisconnect = new Notification.Action.Builder(null, getString(R.string.disconnect_action), disconnectPendingIntent)
                 .build();
         Notification.Builder builder = new Notification.Builder(this, Constants.MAIN_NOTIFICATION_CHANNEL_ID)
-                .setSmallIcon(R.drawable.ic_logo)
+                .setSmallIcon(R.drawable.foxnet_icon_mono)
                 .setContentTitle(title)
                 .setContentText(message)
                 .setStyle(new Notification.BigTextStyle().bigText(message))
@@ -1333,7 +1333,7 @@ public class FptnService extends VpnService {
 
     private void showReconnectionFailedNotification() {
         Notification notification = new Notification.Builder(this, Constants.MAIN_NOTIFICATION_CHANNEL_ID)
-                .setSmallIcon(R.drawable.ic_logo)
+                .setSmallIcon(R.drawable.foxnet_icon_mono)
                 .setVisibility(Notification.VISIBILITY_PUBLIC)
                 .setContentTitle(getApplication().getString(R.string.reconnecting_failed))
                 .setContentIntent(launchMainActivityPendingIntent)
@@ -1349,7 +1349,7 @@ public class FptnService extends VpnService {
         Notification.Action actionDisconnect = new Notification.Action.Builder(null, getString(R.string.reconnect_action), reconnectPendingIntent)
                 .build();
         Notification notification = new Notification.Builder(this, Constants.ERROR_NOTIFICATION_CHANNEL_ID)
-                .setSmallIcon(R.drawable.ic_logo)
+                .setSmallIcon(R.drawable.foxnet_icon_mono)
                 .setVisibility(Notification.VISIBILITY_PUBLIC)
                 .setContentTitle(getApplication().getString(R.string.error))
                 .setContentText(message)

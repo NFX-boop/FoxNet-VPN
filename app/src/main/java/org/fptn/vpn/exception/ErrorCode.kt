@@ -18,7 +18,7 @@
  * Website: https://fptn.org
  */
 
-package org.fptn.vpn.exception
+package com.foxnet.app.exception
 
 enum class ErrorCode(
     val value: String,

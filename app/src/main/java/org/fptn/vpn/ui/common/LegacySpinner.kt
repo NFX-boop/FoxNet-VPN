@@ -1,4 +1,4 @@
-package org.fptn.vpn.ui.common
+package com.foxnet.app.ui.common
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
@@ -29,8 +29,8 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import org.fptn.vpn.R
-import org.fptn.vpn.ui.theme.Primary
+import com.foxnet.app.R
+import com.foxnet.app.ui.theme.White
 
 private val DROPDOWN_ITEM_HEIGHT = 48.dp
 private val DROPDOWN_VERTICAL_PADDING = 16.dp
@@ -42,8 +42,8 @@ private val DROPDOWN_VERTICAL_PADDING = 16.dp
  * enum-style pickers — connection strategy, SNI spoofing mode, and similar settings.
  *
  * Same fixes as [ServerDropdown]: the closed state swaps to the "up" background (arrow flips)
- * while open, the popup gets an explicit light [DropdownMenu.containerColor] since
- * [FptnTheme][org.fptn.vpn.ui.theme.FptnTheme] forces a dark Material3 scheme app-wide, the menu
+ * while open, the popup gets an explicit dark [DropdownMenu.containerColor] since
+ * [FptnTheme][com.foxnet.app.ui.theme.FptnTheme] forces a dark Material3 scheme app-wide, the menu
  * is widened to the anchor's own measured width instead of Material3's default
  * widest-row sizing, and its height is capped (to roughly [maxVisibleItems] rows) so it scrolls
  * instead of flipping above the anchor when there isn't room below.
@@ -83,7 +83,7 @@ fun <T> LegacySpinner(
         ) {
             Text(
                 text = label(selected),
-                color = Primary,
+                color = White,
                 fontSize = 14.sp,
                 fontWeight = FontWeight.Bold,
                 maxLines = 1,
@@ -98,11 +98,11 @@ fun <T> LegacySpinner(
                 .width(with(density) { anchorWidthPx.toDp() })
                 .heightIn(max = DROPDOWN_ITEM_HEIGHT * maxVisibleItems + DROPDOWN_VERTICAL_PADDING),
             shape = RoundedCornerShape(20.dp),
-            containerColor = Color.White,
+            containerColor = Color(0xFF151B28),
         ) {
             items.forEach { item ->
                 DropdownMenuItem(
-                    text = { Text(label(item), color = Color.Black) },
+                    text = { Text(label(item), color = Color.White) },
                     onClick = {
                         onSelect(item)
                         expanded = false

@@ -1,4 +1,4 @@
-package org.fptn.vpn.ui.home
+package com.foxnet.app.ui.home
 
 import android.Manifest
 import android.app.Activity
@@ -71,24 +71,23 @@ import androidx.compose.ui.unit.sp
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleEventObserver
 import androidx.lifecycle.viewmodel.compose.viewModel
-import org.fptn.vpn.R
-import org.fptn.vpn.database.entity.ServerEntity
-import org.fptn.vpn.enums.ConnectionState
-import org.fptn.vpn.services.snichecker.SniCheckerService
-import org.fptn.vpn.services.snichecker.SniCheckerServiceState
-import org.fptn.vpn.services.tile.FptnTileService
-import org.fptn.vpn.services.vpn.FptnService
-import org.fptn.vpn.services.vpn.FptnServiceState
-import org.fptn.vpn.ui.common.BottomNavBar
-import org.fptn.vpn.ui.common.ServerDropdown
-import org.fptn.vpn.ui.common.ShareDialog
-import org.fptn.vpn.ui.common.findActivity
-import org.fptn.vpn.ui.common.legacyDrawableBackground
-import org.fptn.vpn.ui.theme.White
-import org.fptn.vpn.ui.theme.Yellow
-import org.fptn.vpn.utils.PermissionsUtils
-import org.fptn.vpn.utils.SharedPrefUtils
-import org.fptn.vpn.exception.ErrorCode
+import com.foxnet.app.R
+import com.foxnet.app.database.entity.ServerEntity
+import com.foxnet.app.enums.ConnectionState
+import com.foxnet.app.services.snichecker.SniCheckerService
+import com.foxnet.app.services.snichecker.SniCheckerServiceState
+import com.foxnet.app.services.tile.FptnTileService
+import com.foxnet.app.services.vpn.FptnService
+import com.foxnet.app.services.vpn.FptnServiceState
+import com.foxnet.app.ui.common.BottomNavBar
+import com.foxnet.app.ui.common.ServerDropdown
+import com.foxnet.app.ui.common.ShareDialog
+import com.foxnet.app.ui.common.findActivity
+import com.foxnet.app.ui.common.legacyDrawableBackground
+import com.foxnet.app.ui.theme.White
+import com.foxnet.app.utils.PermissionsUtils
+import com.foxnet.app.utils.SharedPrefUtils
+import com.foxnet.app.exception.ErrorCode
 import androidx.core.net.toUri
 
 private const val TOKEN_MAX_AGE_MS = 14L * 24 * 60 * 60 * 1000
@@ -386,8 +385,8 @@ fun HomeScreen(
                 val statusBarManager = context.getSystemService(StatusBarManager::class.java)
                 statusBarManager?.requestAddTileService(
                     ComponentName(context, FptnTileService::class.java),
-                    "FPTN",
-                    Icon.createWithResource(context, R.drawable.ic_logo),
+                    "FoxNet",
+                    Icon.createWithResource(context, R.drawable.foxnet_icon_mono),
                     context.mainExecutor,
                 ) { resultCode ->
                     when (resultCode) {
@@ -501,7 +500,7 @@ fun HomeScreen(
 
                     Text(
                         text = statusText,
-                        color = Yellow,
+                        color = White,
                         modifier = Modifier.padding(top = 4.dp, bottom = 4.dp),
                     )
 

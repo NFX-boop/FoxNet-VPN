@@ -18,7 +18,7 @@
  * Website: https://fptn.org
  */
 
-package org.fptn.vpn.network;
+package com.foxnet.app.network;
 
 import java.net.InetAddress;
 import java.net.UnknownHostException;

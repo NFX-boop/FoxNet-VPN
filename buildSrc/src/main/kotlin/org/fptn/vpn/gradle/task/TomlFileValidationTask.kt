@@ -18,7 +18,7 @@
  * Website: https://fptn.org
  */
 
-package org.fptn.vpn.gradle.task
+package com.foxnet.app.gradle.task
 
 import org.gradle.api.DefaultTask
 import org.gradle.api.tasks.CacheableTask

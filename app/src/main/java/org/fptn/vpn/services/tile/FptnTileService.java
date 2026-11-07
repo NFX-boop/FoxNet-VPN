@@ -18,7 +18,7 @@
  * Website: https://fptn.org
  */
 
-package org.fptn.vpn.services.tile;
+package com.foxnet.app.services.tile;
 
 import android.app.PendingIntent;
 import android.content.Intent;
@@ -34,10 +34,10 @@ import androidx.lifecycle.Observer;
 
 import com.elvishew.xlog.XLog;
 
-import org.fptn.vpn.R;
-import org.fptn.vpn.enums.ConnectionState;
-import org.fptn.vpn.services.vpn.FptnService;
-import org.fptn.vpn.utils.PermissionsUtils;
+import com.foxnet.app.R;
+import com.foxnet.app.enums.ConnectionState;
+import com.foxnet.app.services.vpn.FptnService;
+import com.foxnet.app.utils.PermissionsUtils;
 
 import lombok.Getter;
 
@@ -149,21 +149,21 @@ public class FptnTileService extends TileService {
             ConnectionState connectionState = serviceStateMutableLiveData.getValue();
             if (connectionState != null && connectionState.isActiveState()) {
                 tile.setState(Tile.STATE_ACTIVE);
-                tile.setLabel("FPTN");
+                tile.setLabel("FoxNet");
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
                     tile.setSubtitle("ON");
                 }
                 tile.setContentDescription("Connected to ESTONIA");
-                tile.setIcon(Icon.createWithResource(this, R.drawable.ic_logo));
+                tile.setIcon(Icon.createWithResource(this, R.drawable.foxnet_icon_mono));
                 tile.updateTile();
             } else {
                 tile.setState(Tile.STATE_INACTIVE);
-                tile.setLabel("FPTN");
+                tile.setLabel("FoxNet");
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
                     tile.setSubtitle("OFF");
                 }
                 tile.setContentDescription("Disconnected");
-                tile.setIcon(Icon.createWithResource(this, R.drawable.ic_logo));
+                tile.setIcon(Icon.createWithResource(this, R.drawable.foxnet_icon_mono));
                 tile.updateTile();
             }
         }

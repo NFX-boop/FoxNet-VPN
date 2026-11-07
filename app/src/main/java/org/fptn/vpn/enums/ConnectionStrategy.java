@@ -18,7 +18,7 @@
  * Website: https://fptn.org
  */
 
-package org.fptn.vpn.enums;
+package com.foxnet.app.enums;
 
 public enum ConnectionStrategy {
     ROLLING_TUNNEL("rolling-tunnel"),

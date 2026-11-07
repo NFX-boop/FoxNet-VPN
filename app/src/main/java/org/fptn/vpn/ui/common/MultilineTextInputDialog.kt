@@ -1,4 +1,4 @@
-package org.fptn.vpn.ui.common
+package com.foxnet.app.ui.common
 
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.material3.AlertDialog
@@ -12,7 +12,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
-import org.fptn.vpn.R
+import com.foxnet.app.R
 
 /**
  * The multi-line "edit a domain list" dialog shape shared by the split-tunnel and domain

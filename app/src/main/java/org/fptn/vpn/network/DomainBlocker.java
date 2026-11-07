@@ -18,14 +18,14 @@
  * Website: https://fptn.org
  */
 
-package org.fptn.vpn.network;
+package com.foxnet.app.network;
 
 import android.content.Context;
 import android.content.res.Resources;
 
 import com.elvishew.xlog.XLog;
-import org.fptn.vpn.R;
-import org.fptn.vpn.utils.SharedPrefUtils;
+import com.foxnet.app.R;
+import com.foxnet.app.utils.SharedPrefUtils;
 
 import java.io.BufferedReader;
 import java.io.IOException;

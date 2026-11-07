@@ -18,14 +18,14 @@
  * Website: https://fptn.org
  */
 
-package org.fptn.vpn.services.speedtest;
+package com.foxnet.app.services.speedtest;
 
-import org.fptn.vpn.database.entity.ServerEntity;
-import org.fptn.vpn.enums.BypassCensorshipMethod;
-import org.fptn.vpn.enums.SniSpoofingMode;
-import org.fptn.vpn.services.websocket.NativeHttpsClientImpl;
-import org.fptn.vpn.services.websocket.NativeResponse;
-import org.fptn.vpn.exception.PVNClientException;
+import com.foxnet.app.database.entity.ServerEntity;
+import com.foxnet.app.enums.BypassCensorshipMethod;
+import com.foxnet.app.enums.SniSpoofingMode;
+import com.foxnet.app.services.websocket.NativeHttpsClientImpl;
+import com.foxnet.app.services.websocket.NativeResponse;
+import com.foxnet.app.exception.PVNClientException;
 
 import java.time.Duration;
 import java.time.Instant;

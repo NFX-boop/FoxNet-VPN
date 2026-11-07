@@ -18,7 +18,7 @@
  * Website: https://fptn.org
  */
 
-package org.fptn.vpn.enums;
+package com.foxnet.app.enums;
 
 public enum BypassCensorshipMethod {
     TLS_OBFUSCATION,

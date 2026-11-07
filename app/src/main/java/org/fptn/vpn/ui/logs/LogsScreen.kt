@@ -1,4 +1,4 @@
-package org.fptn.vpn.ui.logs
+package com.foxnet.app.ui.logs
 
 import android.content.Context
 import android.content.Intent
@@ -47,13 +47,13 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.core.content.FileProvider
 import androidx.lifecycle.viewmodel.compose.viewModel
-import org.fptn.vpn.R
-import org.fptn.vpn.ui.common.BottomNavBar
-import org.fptn.vpn.ui.common.LegacyPillButton
-import org.fptn.vpn.ui.common.ShareDialog
-import org.fptn.vpn.ui.common.legacyDrawableBackground
-import org.fptn.vpn.ui.theme.Primary
-import org.fptn.vpn.ui.theme.White
+import com.foxnet.app.R
+import com.foxnet.app.ui.common.BottomNavBar
+import com.foxnet.app.ui.common.LegacyPillButton
+import com.foxnet.app.ui.common.ShareDialog
+import com.foxnet.app.ui.common.legacyDrawableBackground
+import com.foxnet.app.ui.theme.Primary
+import com.foxnet.app.ui.theme.White
 import java.io.File
 
 private const val LOAD_MORE_INDEX_THRESHOLD = 2

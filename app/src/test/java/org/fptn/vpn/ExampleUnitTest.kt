@@ -18,7 +18,7 @@
  * Website: https://fptn.org
  */
 
-package org.fptn.vpn
+package com.foxnet.app
 
 import junit.framework.TestCase.assertEquals
 import org.junit.Test

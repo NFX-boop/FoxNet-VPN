@@ -1,4 +1,4 @@
-package org.fptn.vpn.ui
+package com.foxnet.app.ui
 
 import android.content.Context
 import android.content.Intent
@@ -7,9 +7,9 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
-import org.fptn.vpn.ui.navigation.AppNavHost
-import org.fptn.vpn.ui.navigation.AppRoute
-import org.fptn.vpn.ui.theme.FptnTheme
+import com.foxnet.app.ui.navigation.AppNavHost
+import com.foxnet.app.ui.navigation.AppRoute
+import com.foxnet.app.ui.theme.FptnTheme
 
 /**
  * The single entry-point activity hosting the whole Compose UI. Every screen is a Compose

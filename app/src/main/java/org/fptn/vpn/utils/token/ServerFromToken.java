@@ -18,7 +18,7 @@
  * Website: https://fptn.org
  */
 
-package org.fptn.vpn.utils.token;
+package com.foxnet.app.utils.token;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 

@@ -18,7 +18,7 @@
  * Website: https://fptn.org
  */
 
-package org.fptn.vpn.database.entity;
+package com.foxnet.app.database.entity;
 
 import androidx.annotation.NonNull;
 import androidx.room.Entity;

@@ -18,7 +18,7 @@
  * Website: https://fptn.org
  */
 
-package org.fptn.vpn.database.dao;
+package com.foxnet.app.database.dao;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -29,8 +29,8 @@ import androidx.room.Room;
 import androidx.test.core.app.ApplicationProvider;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 
-import org.fptn.vpn.database.AppDatabase;
-import org.fptn.vpn.database.entity.SniEntity;
+import com.foxnet.app.database.AppDatabase;
+import com.foxnet.app.database.entity.SniEntity;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Rule;

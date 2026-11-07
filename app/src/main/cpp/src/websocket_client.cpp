@@ -75,7 +75,7 @@ std::unordered_map<jlong, bool> SafeProxy::status_clients_;
 
 // create an object
 extern "C" JNIEXPORT jlong JNICALL
-Java_org_fptn_vpn_services_websocket_NativeWebSocketClientImpl_nativeCreate(
+Java_com_foxnet_app_services_websocket_NativeWebSocketClientImpl_nativeCreate(
     JNIEnv* env,
     jobject thiz,
     jstring server_ip_param,
@@ -190,7 +190,7 @@ Java_org_fptn_vpn_services_websocket_NativeWebSocketClientImpl_nativeCreate(
 
 // Destroy
 extern "C" JNIEXPORT void JNICALL
-Java_org_fptn_vpn_services_websocket_NativeWebSocketClientImpl_nativeDestroy(
+Java_com_foxnet_app_services_websocket_NativeWebSocketClientImpl_nativeDestroy(
     JNIEnv* env, jobject thiz, jlong native_handle) {
   (void)env;
   (void)thiz;
@@ -207,7 +207,7 @@ Java_org_fptn_vpn_services_websocket_NativeWebSocketClientImpl_nativeDestroy(
 
 // Run
 extern "C" JNIEXPORT jboolean JNICALL
-Java_org_fptn_vpn_services_websocket_NativeWebSocketClientImpl_nativeRun(
+Java_com_foxnet_app_services_websocket_NativeWebSocketClientImpl_nativeRun(
     JNIEnv* env, jobject thiz, jlong native_handle) {
   (void)env;
   (void)thiz;
@@ -224,7 +224,7 @@ Java_org_fptn_vpn_services_websocket_NativeWebSocketClientImpl_nativeRun(
 
 // Stop
 extern "C" JNIEXPORT jboolean JNICALL
-Java_org_fptn_vpn_services_websocket_NativeWebSocketClientImpl_nativeStop(
+Java_com_foxnet_app_services_websocket_NativeWebSocketClientImpl_nativeStop(
     JNIEnv* env, jobject thiz, jlong native_handle) {
   (void)env;
   (void)thiz;
@@ -243,7 +243,7 @@ Java_org_fptn_vpn_services_websocket_NativeWebSocketClientImpl_nativeStop(
 
 // Send
 extern "C" JNIEXPORT jboolean JNICALL
-Java_org_fptn_vpn_services_websocket_NativeWebSocketClientImpl_nativeSend(
+Java_com_foxnet_app_services_websocket_NativeWebSocketClientImpl_nativeSend(
     JNIEnv* env, jobject thiz, jlong native_handle, jbyteArray data, jlong length) {
   (void)thiz;
 
@@ -268,7 +268,7 @@ Java_org_fptn_vpn_services_websocket_NativeWebSocketClientImpl_nativeSend(
 
 // IsStarted
 extern "C" JNIEXPORT jboolean JNICALL
-Java_org_fptn_vpn_services_websocket_NativeWebSocketClientImpl_nativeIsStarted(
+Java_com_foxnet_app_services_websocket_NativeWebSocketClientImpl_nativeIsStarted(
     JNIEnv* env, jobject thiz, jlong native_handle) {
   (void)env;
   (void)thiz;
@@ -286,7 +286,7 @@ Java_org_fptn_vpn_services_websocket_NativeWebSocketClientImpl_nativeIsStarted(
 
 // Get IPv4 address
 extern "C" JNIEXPORT jstring JNICALL
-Java_org_fptn_vpn_services_websocket_NativeWebSocketClientImpl_nativeGetIPv4Address(
+Java_com_foxnet_app_services_websocket_NativeWebSocketClientImpl_nativeGetIPv4Address(
         JNIEnv* env, jobject thiz, jlong native_handle) {
   (void)thiz;
 
@@ -301,7 +301,7 @@ Java_org_fptn_vpn_services_websocket_NativeWebSocketClientImpl_nativeGetIPv4Addr
 
 // Get IPv6 address
 extern "C" JNIEXPORT jstring JNICALL
-Java_org_fptn_vpn_services_websocket_NativeWebSocketClientImpl_nativeGetIPv6Address(
+Java_com_foxnet_app_services_websocket_NativeWebSocketClientImpl_nativeGetIPv6Address(
         JNIEnv* env, jobject thiz, jlong native_handle) {
   (void)thiz;
 

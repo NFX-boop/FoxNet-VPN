@@ -18,7 +18,7 @@
  * Website: https://fptn.org
  */
 
-package org.fptn.vpn.ui.logs
+package com.foxnet.app.ui.logs
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel

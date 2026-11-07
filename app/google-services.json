@@ -9,7 +9,7 @@
       "client_info": {
         "mobilesdk_app_id": "1:298983592317:android:85edafa8705ebf55dc3c14",
         "android_client_info": {
-          "package_name": "org.fptn.vpn"
+          "package_name": "com.foxnet.app"
         }
       },
       "oauth_client": [],
@@ -28,7 +28,7 @@
       "client_info": {
         "mobilesdk_app_id": "1:298983592317:android:dd5f66b17bb52a3adc3c14",
         "android_client_info": {
-          "package_name": "org.fptn.vpn.debug"
+          "package_name": "com.foxnet.app.debug"
         }
       },
       "oauth_client": [],

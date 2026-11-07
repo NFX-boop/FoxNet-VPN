@@ -18,7 +18,7 @@
  * Website: https://fptn.org
  */
 
-import org.fptn.vpn.gradle.extensions.configureKotlin
+import com.foxnet.app.gradle.extensions.configureKotlin
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.api.plugins.JavaPluginExtension

@@ -39,7 +39,7 @@
           behaving the same as before.
         -->
         <activity
-            android:name="org.fptn.vpn.ui.MainActivity"
+            android:name="com.foxnet.app.ui.MainActivity"
             android:exported="true"
             android:label="@string/app_name"
             android:launchMode="singleTop"
@@ -63,7 +63,7 @@
         </provider>
 
         <service
-            android:name="org.fptn.vpn.services.vpn.FptnService"
+            android:name="com.foxnet.app.services.vpn.FptnService"
             android:exported="false"
             android:foregroundServiceType="systemExempted"
             android:permission="android.permission.BIND_VPN_SERVICE"
@@ -77,8 +77,8 @@
         <service
             android:name=".services.tile.FptnTileService"
             android:exported="true"
-            android:icon="@drawable/ic_logo"
-            android:label="FPTN"
+            android:icon="@drawable/foxnet_icon_mono"
+            android:label="FoxNet"
             android:permission="android.permission.BIND_QUICK_SETTINGS_TILE">
             <intent-filter>
                 <action android:name="android.service.quicksettings.action.QS_TILE" />
@@ -96,7 +96,7 @@
         </service>
 
         <service
-            android:name="org.fptn.vpn.services.snichecker.SniCheckerService"
+            android:name="com.foxnet.app.services.snichecker.SniCheckerService"
             android:exported="false"
             android:foregroundServiceType="systemExempted"
             android:stopWithTask="false"

@@ -1,4 +1,4 @@
-package org.fptn.vpn.ui.splash
+package com.foxnet.app.ui.splash
 
 /**
  * Destination the app lands on once the splash has determined the user's state

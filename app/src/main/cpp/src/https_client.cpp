@@ -37,7 +37,7 @@ jobject create_response(JNIEnv* env,
   jstring error_str = nullptr;
 
   try {
-    clazz = env->FindClass("org/fptn/vpn/services/websocket/NativeResponse");
+    clazz = env->FindClass("com/foxnet/app/services/websocket/NativeResponse");
     if (!clazz) {
       throw std::runtime_error("Failed to find NativeResponse class");
     }
@@ -101,7 +101,7 @@ using fptn::wrapper::WrapperHttpsClient;
  *          to avoid memory leaks
  */
 extern "C" JNIEXPORT jlong JNICALL
-Java_org_fptn_vpn_services_websocket_NativeHttpsClientImpl_nativeCreate(
+Java_com_foxnet_app_services_websocket_NativeHttpsClientImpl_nativeCreate(
     JNIEnv* env,
     jobject thiz,
     jstring host_param,
@@ -176,7 +176,7 @@ Java_org_fptn_vpn_services_websocket_NativeHttpsClientImpl_nativeCreate(
 
 // Destroy
 extern "C" JNIEXPORT void JNICALL
-Java_org_fptn_vpn_services_websocket_NativeHttpsClientImpl_nativeDestroy(
+Java_com_foxnet_app_services_websocket_NativeHttpsClientImpl_nativeDestroy(
     JNIEnv* env, jobject thiz, jlong native_handle) {
   (void)env;
   (void)thiz;
@@ -208,7 +208,7 @@ Java_org_fptn_vpn_services_websocket_NativeHttpsClientImpl_nativeDestroy(
  *       - Error: "Object is empty"
  */
 extern "C" JNIEXPORT jobject JNICALL
-Java_org_fptn_vpn_services_websocket_NativeHttpsClientImpl_nativeGet(
+Java_com_foxnet_app_services_websocket_NativeHttpsClientImpl_nativeGet(
     JNIEnv* env,
     jobject thiz,
     jlong native_handle,
@@ -252,7 +252,7 @@ Java_org_fptn_vpn_services_websocket_NativeHttpsClientImpl_nativeGet(
  *       - Error: "Object is empty"
  */
 extern "C" JNIEXPORT jobject JNICALL
-Java_org_fptn_vpn_services_websocket_NativeHttpsClientImpl_nativePost(
+Java_com_foxnet_app_services_websocket_NativeHttpsClientImpl_nativePost(
     JNIEnv* env,
     jobject thiz,
     jlong native_handle,

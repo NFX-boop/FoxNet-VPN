@@ -18,7 +18,7 @@
  * Website: https://fptn.org
  */
 
-package org.fptn.vpn.gradle.extensions
+package com.foxnet.app.gradle.extensions
 
 /*
  * Copyright 2022 The Android Open Source Project

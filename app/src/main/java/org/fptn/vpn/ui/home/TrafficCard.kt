@@ -1,4 +1,4 @@
-package org.fptn.vpn.ui.home
+package com.foxnet.app.ui.home
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -19,6 +19,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
@@ -26,9 +27,10 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.viewinterop.AndroidView
-import org.fptn.vpn.R
-import org.fptn.vpn.ui.common.legacyDrawableBackground
-import org.fptn.vpn.ui.theme.White
+import com.foxnet.app.R
+import com.foxnet.app.ui.common.legacyDrawableBackground
+import com.foxnet.app.ui.theme.Secondary
+import com.foxnet.app.ui.theme.White
 
 /**
  * The connected-state traffic card: current speed row, an optional live speed chart, and a
@@ -58,6 +60,7 @@ fun TrafficCard(
                 Image(
                     painter = painterResource(R.drawable.download),
                     contentDescription = null,
+                    colorFilter = ColorFilter.tint(Secondary),
                     modifier = Modifier
                         .size(dimensionResource(R.dimen.traffic_icon_size))
                         .padding(end = 8.dp),
@@ -79,6 +82,7 @@ fun TrafficCard(
                 Image(
                     painter = painterResource(R.drawable.upload),
                     contentDescription = null,
+                    colorFilter = ColorFilter.tint(Color(0xFF7E97B8)),
                     modifier = Modifier
                         .size(dimensionResource(R.dimen.traffic_icon_size))
                         .padding(start = 8.dp),

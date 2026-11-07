@@ -18,12 +18,12 @@
  * Website: https://fptn.org
  */
 
-package org.fptn.vpn.services.websocket;
+package com.foxnet.app.services.websocket;
 
 import com.elvishew.xlog.XLog;
 
-import org.fptn.vpn.enums.BypassCensorshipMethod;
-import org.fptn.vpn.enums.SniSpoofingMode;
+import com.foxnet.app.enums.BypassCensorshipMethod;
+import com.foxnet.app.enums.SniSpoofingMode;
 
 public class NativeHttpsClientImpl {
     private static final String TAG = NativeHttpsClientImpl.class.getName();

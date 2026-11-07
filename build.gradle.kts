@@ -1,6 +1,6 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
-import org.fptn.vpn.gradle.DetektOptions.applyDetektOptions
-import org.fptn.vpn.gradle.FormattingOptions.applyPrecheckOptions
+import com.foxnet.app.gradle.DetektOptions.applyDetektOptions
+import com.foxnet.app.gradle.FormattingOptions.applyPrecheckOptions
 
 data class VersionInfo(
     val major: Int,

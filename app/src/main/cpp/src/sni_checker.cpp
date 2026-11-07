@@ -146,7 +146,7 @@ class NativeSniChecker {
 extern "C" {
 
 JNIEXPORT jlong JNICALL
-Java_org_fptn_vpn_services_snichecker_SniChecker_nativeCreate(JNIEnv* env,
+Java_com_foxnet_app_services_snichecker_SniChecker_nativeCreate(JNIEnv* env,
     jobject thiz,
     jstring host_param,
     jint port_param,
@@ -170,7 +170,7 @@ Java_org_fptn_vpn_services_snichecker_SniChecker_nativeCreate(JNIEnv* env,
 }
 
 JNIEXPORT jboolean JNICALL
-Java_org_fptn_vpn_services_snichecker_SniChecker_nativeCheckSni(
+Java_com_foxnet_app_services_snichecker_SniChecker_nativeCheckSni(
     JNIEnv* env, jobject thiz, jlong native_handle, jstring sni_param) {
   auto* checker = reinterpret_cast<NativeSniChecker*>(native_handle);
   if (!checker) {
@@ -186,7 +186,7 @@ Java_org_fptn_vpn_services_snichecker_SniChecker_nativeCheckSni(
 }
 
 JNIEXPORT void JNICALL
-Java_org_fptn_vpn_services_snichecker_SniChecker_nativeDestroy(
+Java_com_foxnet_app_services_snichecker_SniChecker_nativeDestroy(
     JNIEnv* env, jobject thiz, jlong native_handle) {
   auto* checker = reinterpret_cast<NativeSniChecker*>(native_handle);
   delete checker;

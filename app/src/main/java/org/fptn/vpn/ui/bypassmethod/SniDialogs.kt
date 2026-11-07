@@ -1,4 +1,4 @@
-package org.fptn.vpn.ui.bypassmethod
+package com.foxnet.app.ui.bypassmethod
 
 import android.content.Context
 import androidx.compose.foundation.clickable
@@ -26,9 +26,9 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.PopupProperties
 import com.elvishew.xlog.XLog
-import org.fptn.vpn.R
-import org.fptn.vpn.database.entity.ServerEntity
-import org.fptn.vpn.ui.common.ServerDropdown
+import com.foxnet.app.R
+import com.foxnet.app.database.entity.ServerEntity
+import com.foxnet.app.ui.common.ServerDropdown
 import java.io.BufferedReader
 import java.io.InputStreamReader
 import java.util.Locale

@@ -18,11 +18,11 @@
  * Website: https://fptn.org
  */
 
-package org.fptn.vpn.utils;
+package com.foxnet.app.utils;
 
 import android.content.Context;
 
-import org.fptn.vpn.R;
+import com.foxnet.app.R;
 
 import java.util.HashSet;
 import java.util.Locale;

@@ -18,15 +18,15 @@
  * Website: https://fptn.org
  */
 
-package org.fptn.vpn.services.vpn;
+package com.foxnet.app.services.vpn;
 
-import static org.fptn.vpn.enums.ConnectionSubnets.ALL_SUBNET;
-import static org.fptn.vpn.enums.ConnectionSubnets.FPTN_SERVER_SUBNET;
-import static org.fptn.vpn.enums.ConnectionSubnets.IP_V4_PREFIX_LENGTH;
-import static org.fptn.vpn.enums.ConnectionSubnets.IP_V6_PREFIX_LENGTH;
-import static org.fptn.vpn.enums.ConnectionSubnets.LOCAL_SUBNET;
-import static org.fptn.vpn.enums.ConnectionSubnets.LOCAL_TUN_INTERFACE_SUBNET;
-import static org.fptn.vpn.enums.ConnectionSubnets.TUN_ADDRESS;
+import static com.foxnet.app.enums.ConnectionSubnets.ALL_SUBNET;
+import static com.foxnet.app.enums.ConnectionSubnets.FPTN_SERVER_SUBNET;
+import static com.foxnet.app.enums.ConnectionSubnets.IP_V4_PREFIX_LENGTH;
+import static com.foxnet.app.enums.ConnectionSubnets.IP_V6_PREFIX_LENGTH;
+import static com.foxnet.app.enums.ConnectionSubnets.LOCAL_SUBNET;
+import static com.foxnet.app.enums.ConnectionSubnets.LOCAL_TUN_INTERFACE_SUBNET;
+import static com.foxnet.app.enums.ConnectionSubnets.TUN_ADDRESS;
 
 import android.app.PendingIntent;
 import android.content.pm.ApplicationInfo;
@@ -38,27 +38,27 @@ import android.os.ParcelFileDescriptor;
 
 import com.elvishew.xlog.XLog;
 
-import org.fptn.vpn.utils.AppExclusion;
-import org.fptn.vpn.network.DomainBlocker;
-import org.fptn.vpn.database.entity.ServerEntity;
-import org.fptn.vpn.enums.BypassCensorshipMethod;
-import org.fptn.vpn.enums.ConnectionSubnets;
-import org.fptn.vpn.enums.ConnectionStrategy;
-import org.fptn.vpn.enums.ConnectionState;
-import org.fptn.vpn.enums.NetworkType;
-import org.fptn.vpn.enums.PerAppVpnMode;
-import org.fptn.vpn.enums.SniSpoofingMode;
-import org.fptn.vpn.network.IPPacket;
-import org.fptn.vpn.network.Splitter;
-import org.fptn.vpn.services.websocket.DnsServers;
-import org.fptn.vpn.services.websocket.WebSocketAlreadyShutdownException;
-import org.fptn.vpn.services.websocket.WebSocketClientWrapper;
-import org.fptn.vpn.utils.DataRateCalculator;
-import org.fptn.vpn.utils.NetworkUtils;
-import org.fptn.vpn.utils.IPUtils;
-import org.fptn.vpn.ui.perappvpn.AppInfo;
-import org.fptn.vpn.exception.ErrorCode;
-import org.fptn.vpn.exception.PVNClientException;
+import com.foxnet.app.utils.AppExclusion;
+import com.foxnet.app.network.DomainBlocker;
+import com.foxnet.app.database.entity.ServerEntity;
+import com.foxnet.app.enums.BypassCensorshipMethod;
+import com.foxnet.app.enums.ConnectionSubnets;
+import com.foxnet.app.enums.ConnectionStrategy;
+import com.foxnet.app.enums.ConnectionState;
+import com.foxnet.app.enums.NetworkType;
+import com.foxnet.app.enums.PerAppVpnMode;
+import com.foxnet.app.enums.SniSpoofingMode;
+import com.foxnet.app.network.IPPacket;
+import com.foxnet.app.network.Splitter;
+import com.foxnet.app.services.websocket.DnsServers;
+import com.foxnet.app.services.websocket.WebSocketAlreadyShutdownException;
+import com.foxnet.app.services.websocket.WebSocketClientWrapper;
+import com.foxnet.app.utils.DataRateCalculator;
+import com.foxnet.app.utils.NetworkUtils;
+import com.foxnet.app.utils.IPUtils;
+import com.foxnet.app.ui.perappvpn.AppInfo;
+import com.foxnet.app.exception.ErrorCode;
+import com.foxnet.app.exception.PVNClientException;
 
 import java.io.FileInputStream;
 import java.io.FileOutputStream;

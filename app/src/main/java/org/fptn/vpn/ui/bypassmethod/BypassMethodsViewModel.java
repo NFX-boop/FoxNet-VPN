@@ -18,7 +18,7 @@
  * Website: https://fptn.org
  */
 
-package org.fptn.vpn.ui.bypassmethod;
+package com.foxnet.app.ui.bypassmethod;
 
 import android.app.Application;
 import android.net.Uri;
@@ -34,18 +34,18 @@ import com.google.common.util.concurrent.FutureCallback;
 import com.google.common.util.concurrent.Futures;
 import com.google.common.util.concurrent.ListenableFuture;
 
-import org.fptn.vpn.R;
-import org.fptn.vpn.database.AppDatabase;
-import org.fptn.vpn.database.entity.ServerEntity;
-import org.fptn.vpn.database.entity.SniEntity;
-import org.fptn.vpn.enums.BypassCensorshipMethod;
-import org.fptn.vpn.enums.ConnectionStrategy;
-import org.fptn.vpn.enums.SniSpoofingMode;
-import org.fptn.vpn.services.snichecker.SniCheckerService;
-import org.fptn.vpn.ui.home.HomeActivityViewModel;
-import org.fptn.vpn.services.snichecker.SniCheckerServiceState;
-import org.fptn.vpn.utils.SharedPrefUtils;
-import org.fptn.vpn.exception.PVNClientException;
+import com.foxnet.app.R;
+import com.foxnet.app.database.AppDatabase;
+import com.foxnet.app.database.entity.ServerEntity;
+import com.foxnet.app.database.entity.SniEntity;
+import com.foxnet.app.enums.BypassCensorshipMethod;
+import com.foxnet.app.enums.ConnectionStrategy;
+import com.foxnet.app.enums.SniSpoofingMode;
+import com.foxnet.app.services.snichecker.SniCheckerService;
+import com.foxnet.app.ui.home.HomeActivityViewModel;
+import com.foxnet.app.services.snichecker.SniCheckerServiceState;
+import com.foxnet.app.utils.SharedPrefUtils;
+import com.foxnet.app.exception.PVNClientException;
 
 import java.io.BufferedReader;
 import java.io.InputStream;

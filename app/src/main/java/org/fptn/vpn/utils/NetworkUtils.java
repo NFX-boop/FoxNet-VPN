@@ -18,7 +18,7 @@
  * Website: https://fptn.org
  */
 
-package org.fptn.vpn.utils;
+package com.foxnet.app.utils;
 
 import android.net.ConnectivityManager;
 import android.net.NetworkCapabilities;
@@ -26,7 +26,7 @@ import android.net.NetworkRequest;
 
 import com.elvishew.xlog.XLog;
 
-import org.fptn.vpn.enums.NetworkType;
+import com.foxnet.app.enums.NetworkType;
 
 import java.net.Inet4Address;
 import java.net.Inet6Address;

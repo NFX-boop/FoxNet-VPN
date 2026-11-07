@@ -18,7 +18,7 @@
  * Website: https://fptn.org
  */
 
-package org.fptn.vpn.gradle.extensions
+package com.foxnet.app.gradle.extensions
 
 import org.gradle.accessors.dm.LibrariesForLibs
 import org.gradle.api.Project

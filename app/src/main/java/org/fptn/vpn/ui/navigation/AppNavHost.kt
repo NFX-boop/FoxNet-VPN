@@ -1,4 +1,4 @@
-package org.fptn.vpn.ui.navigation
+package com.foxnet.app.ui.navigation
 
 import androidx.compose.animation.EnterTransition
 import androidx.compose.animation.ExitTransition
@@ -10,21 +10,21 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import org.fptn.vpn.enums.ConnectionState
-import org.fptn.vpn.services.snichecker.SniCheckerService
-import org.fptn.vpn.services.snichecker.SniCheckerServiceState
-import org.fptn.vpn.services.tile.FptnTileService
-import org.fptn.vpn.ui.backup.BackupSettingsScreen
-import org.fptn.vpn.ui.bypassmethod.BypassMethodsScreen
-import org.fptn.vpn.ui.experimentalsettings.ExperimentalSettingsScreen
-import org.fptn.vpn.ui.home.HomeScreen
-import org.fptn.vpn.ui.login.LoginScreen
-import org.fptn.vpn.ui.logs.LogsScreen
-import org.fptn.vpn.ui.perappvpn.PerAppVpnModeScreen
-import org.fptn.vpn.ui.settings.SettingsScreen
-import org.fptn.vpn.ui.splash.SplashRoute
-import org.fptn.vpn.ui.splash.SplashScreen
-import org.fptn.vpn.ui.updatetoken.UpdateTokenScreen
+import com.foxnet.app.enums.ConnectionState
+import com.foxnet.app.services.snichecker.SniCheckerService
+import com.foxnet.app.services.snichecker.SniCheckerServiceState
+import com.foxnet.app.services.tile.FptnTileService
+import com.foxnet.app.ui.backup.BackupSettingsScreen
+import com.foxnet.app.ui.bypassmethod.BypassMethodsScreen
+import com.foxnet.app.ui.experimentalsettings.ExperimentalSettingsScreen
+import com.foxnet.app.ui.home.HomeScreen
+import com.foxnet.app.ui.login.LoginScreen
+import com.foxnet.app.ui.logs.LogsScreen
+import com.foxnet.app.ui.perappvpn.PerAppVpnModeScreen
+import com.foxnet.app.ui.settings.SettingsScreen
+import com.foxnet.app.ui.splash.SplashRoute
+import com.foxnet.app.ui.splash.SplashScreen
+import com.foxnet.app.ui.updatetoken.UpdateTokenScreen
 
 /**
  * Route constants for the single-activity Compose navigation graph.

@@ -18,16 +18,16 @@
  * Website: https://fptn.org
  */
 
-package org.fptn.vpn.utils;
+package com.foxnet.app.utils;
 
 import static org.junit.Assert.assertEquals;
 
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import org.fptn.vpn.utils.token.TokenValidationUtils;
-import org.fptn.vpn.utils.token.Token;
-import org.fptn.vpn.exception.PVNClientException;
+import com.foxnet.app.utils.token.TokenValidationUtils;
+import com.foxnet.app.utils.token.Token;
+import com.foxnet.app.exception.PVNClientException;
 import org.junit.Test;
 
 import java.io.IOException;

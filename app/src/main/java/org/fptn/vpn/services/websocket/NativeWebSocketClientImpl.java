@@ -18,21 +18,21 @@
  * Website: https://fptn.org
  */
 
-package org.fptn.vpn.services.websocket;
+package com.foxnet.app.services.websocket;
 
 
 import com.elvishew.xlog.XLog;
 
-import org.fptn.vpn.BuildConfig;
-import org.fptn.vpn.enums.BypassCensorshipMethod;
-import org.fptn.vpn.enums.ConnectionStrategy;
-import org.fptn.vpn.enums.SniSpoofingMode;
-import org.fptn.vpn.services.websocket.callback.OnFailureCallback;
-import org.fptn.vpn.services.websocket.callback.OnMessageReceivedCallback;
-import org.fptn.vpn.services.websocket.callback.OnOpenCallback;
-import org.fptn.vpn.services.websocket.callback.OnSocketOpenedCallback;
-import org.fptn.vpn.exception.ErrorCode;
-import org.fptn.vpn.exception.PVNClientException;
+import com.foxnet.app.BuildConfig;
+import com.foxnet.app.enums.BypassCensorshipMethod;
+import com.foxnet.app.enums.ConnectionStrategy;
+import com.foxnet.app.enums.SniSpoofingMode;
+import com.foxnet.app.services.websocket.callback.OnFailureCallback;
+import com.foxnet.app.services.websocket.callback.OnMessageReceivedCallback;
+import com.foxnet.app.services.websocket.callback.OnOpenCallback;
+import com.foxnet.app.services.websocket.callback.OnSocketOpenedCallback;
+import com.foxnet.app.exception.ErrorCode;
+import com.foxnet.app.exception.PVNClientException;
 
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;

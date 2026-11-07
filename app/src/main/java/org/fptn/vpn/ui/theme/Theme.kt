@@ -1,4 +1,4 @@
-package org.fptn.vpn.ui.theme
+package com.foxnet.app.ui.theme
 
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.darkColorScheme
@@ -23,7 +23,8 @@ private val LightColorScheme = lightColorScheme(
 /**
  * App-wide Material 3 theme for the Compose UI.
  *
- * The app design is the deep purple brand, so the dark scheme is the default.
+ * The FoxNet design is a deep charcoal background with a muted soft-green accent,
+ * so the dark scheme is the default.
  */
 @Composable
 fun FptnTheme(

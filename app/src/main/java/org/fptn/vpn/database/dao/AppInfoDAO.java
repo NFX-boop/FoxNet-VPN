@@ -18,14 +18,14 @@
  * Website: https://fptn.org
  */
 
-package org.fptn.vpn.database.dao;
+package com.foxnet.app.database.dao;
 
 import androidx.room.Dao;
 import androidx.room.Insert;
 import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
 
-import org.fptn.vpn.database.entity.AppInfoEntity;
+import com.foxnet.app.database.entity.AppInfoEntity;
 
 import java.util.List;
 

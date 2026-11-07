@@ -18,9 +18,9 @@
  * Website: https://fptn.org
  */
 
-package org.fptn.vpn.ui.home;
+package com.foxnet.app.ui.home;
 
-import static org.fptn.vpn.utils.ResourcesUtils.getStringResourceByName;
+import static com.foxnet.app.utils.ResourcesUtils.getStringResourceByName;
 
 import android.app.Application;
 import android.content.Context;
@@ -33,17 +33,17 @@ import androidx.lifecycle.Observer;
 
 import com.elvishew.xlog.XLog;
 
-import org.fptn.vpn.R;
-import org.fptn.vpn.database.AppDatabase;
-import org.fptn.vpn.database.entity.ServerEntity;
-import org.fptn.vpn.enums.ConnectionState;
-import org.fptn.vpn.services.vpn.FptnService;
-import org.fptn.vpn.services.vpn.FptnServiceState;
+import com.foxnet.app.R;
+import com.foxnet.app.database.AppDatabase;
+import com.foxnet.app.database.entity.ServerEntity;
+import com.foxnet.app.enums.ConnectionState;
+import com.foxnet.app.services.vpn.FptnService;
+import com.foxnet.app.services.vpn.FptnServiceState;
 
-import org.fptn.vpn.utils.NetworkUtils;
-import org.fptn.vpn.utils.TimeUtils;
-import org.fptn.vpn.exception.ErrorCode;
-import org.fptn.vpn.exception.PVNClientException;
+import com.foxnet.app.utils.NetworkUtils;
+import com.foxnet.app.utils.TimeUtils;
+import com.foxnet.app.exception.ErrorCode;
+import com.foxnet.app.exception.PVNClientException;
 
 import java.io.IOException;
 import java.net.InetSocketAddress;

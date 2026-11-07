@@ -1,4 +1,4 @@
-package org.fptn.vpn.ui.common
+package com.foxnet.app.ui.common
 
 import android.graphics.Typeface
 import android.text.Html

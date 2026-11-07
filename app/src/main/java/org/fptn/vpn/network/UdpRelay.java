@@ -18,7 +18,7 @@
  * Website: https://fptn.org
  */
 
-package org.fptn.vpn.network;
+package com.foxnet.app.network;
 
 import com.elvishew.xlog.XLog;
 

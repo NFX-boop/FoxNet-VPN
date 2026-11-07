@@ -18,7 +18,7 @@
  * Website: https://fptn.org
  */
 
-package org.fptn.vpn.ui.perappvpn
+package com.foxnet.app.ui.perappvpn
 
 import android.app.Application
 import android.content.pm.PackageManager
@@ -27,11 +27,11 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import org.fptn.vpn.database.AppDatabase
-import org.fptn.vpn.database.entity.AppInfoEntity
-import org.fptn.vpn.enums.PerAppVpnMode
-import org.fptn.vpn.utils.AppExclusion
-import org.fptn.vpn.utils.SharedPrefUtils
+import com.foxnet.app.database.AppDatabase
+import com.foxnet.app.database.entity.AppInfoEntity
+import com.foxnet.app.enums.PerAppVpnMode
+import com.foxnet.app.utils.AppExclusion
+import com.foxnet.app.utils.SharedPrefUtils
 
 class PerAppVpnModeViewModel(application: Application) : AndroidViewModel(application) {
 

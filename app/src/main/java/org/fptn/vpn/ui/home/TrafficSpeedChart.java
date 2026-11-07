@@ -18,7 +18,7 @@
  * Website: https://fptn.org
  */
 
-package org.fptn.vpn.ui.home;
+package com.foxnet.app.ui.home;
 
 import android.content.Context;
 import android.graphics.Canvas;
@@ -53,21 +53,27 @@ public class TrafficSpeedChart extends View {
         paddingPx = TypedValue.applyDimension(
                 TypedValue.COMPLEX_UNIT_DIP, 6, context.getResources().getDisplayMetrics());
 
+        // FoxNet palette: download = muted soft green, upload = muted slate blue.
+        // Only paint colors were changed here; sampling and drawing logic is untouched.
         downloadLinePaint.setColor(0xFF4FC87A);
         downloadLinePaint.setStyle(Paint.Style.STROKE);
         downloadLinePaint.setStrokeWidth(2f);
+        downloadLinePaint.setStrokeCap(Paint.Cap.ROUND);
+        downloadLinePaint.setStrokeJoin(Paint.Join.ROUND);
 
         downloadFillPaint.setColor(0x334FC87A);
         downloadFillPaint.setStyle(Paint.Style.FILL);
 
-        uploadLinePaint.setColor(0xFF7AADFF);
+        uploadLinePaint.setColor(0xFF7E97B8);
         uploadLinePaint.setStyle(Paint.Style.STROKE);
         uploadLinePaint.setStrokeWidth(2f);
+        uploadLinePaint.setStrokeCap(Paint.Cap.ROUND);
+        uploadLinePaint.setStrokeJoin(Paint.Join.ROUND);
 
-        uploadFillPaint.setColor(0x337AADFF);
+        uploadFillPaint.setColor(0x337E97B8);
         uploadFillPaint.setStyle(Paint.Style.FILL);
 
-        gridPaint.setColor(0x14FFFFFF);
+        gridPaint.setColor(0x1AFFFFFF);
         gridPaint.setStyle(Paint.Style.STROKE);
         gridPaint.setStrokeWidth(1f);
     }

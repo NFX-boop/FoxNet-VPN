@@ -1,19 +1,28 @@
-package org.fptn.vpn.ui.common
+package com.foxnet.app.ui.common
 
+import android.content.res.ColorStateList
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.unit.dp
 import androidx.compose.ui.viewinterop.AndroidView
+import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import org.fptn.vpn.R
+import com.foxnet.app.R
 
 /**
- * Compose wrapper around the app's real `BottomNavigationView` (Home / Settings / Share),
+ * Compose wrapper around the app's real `BottomNavigationView` (Home / Settings / Info),
  * reproducing `CustomBottomNavigationListener`'s navigation behavior. Kept as an `AndroidView`
- * rather than a Compose `NavigationBar`, so the selected/unselected item styling that comes
- * from the app's Material theme stays pixel-identical instead of being re-derived.
+ * rather than a Compose `NavigationBar`, so the selected/unselected item styling stays
+ * pixel-identical instead of being re-derived. The former "Share" tab is now the "Info" tab
+ * (same menu item ID and callback, different title/icon) that opens the about dialog.
+ *
+ * The bar is styled as a compact dark rounded panel: the view background is a rounded shape
+ * drawable, icons/labels are tinted soft green when selected and light gray otherwise, and
+ * the outer padding floats the panel above the screen edges.
  *
  * [isHomeScreen]/[isSettingsScreen] mirror the legacy `context instanceof HomeActivity` /
  * `context instanceof SettingsActivity` checks that predate the Compose port: every screen
@@ -44,10 +53,24 @@ fun BottomNavBar(
     val selectedItemId = if (isHomeScreen) R.id.menuHome else R.id.menuSettings
 
     AndroidView(
-        modifier = modifier.fillMaxWidth(),
+        modifier = modifier
+            .fillMaxWidth()
+            .padding(horizontal = 14.dp, vertical = 8.dp),
         factory = { context ->
             BottomNavigationView(context).apply {
                 inflateMenu(R.menu.bottom_nav_bar_menu)
+                // Dark rounded panel look instead of the theme's flat bar.
+                background = ContextCompat.getDrawable(context, R.drawable.bottom_nav_bar_background)
+                elevation = 0f
+                val itemTint = ColorStateList(
+                    arrayOf(intArrayOf(android.R.attr.state_checked), intArrayOf()),
+                    intArrayOf(
+                        context.getColor(R.color.bottom_nav_item_selected),
+                        context.getColor(R.color.bottom_nav_item_unselected),
+                    ),
+                )
+                itemIconTintList = itemTint
+                itemTextColor = itemTint
                 // The bar's own background must reach the real bottom edge of the screen
                 // (behind the gesture nav bar) rather than floating above it, so consume the
                 // navigation-bar inset here as bottom padding instead of letting an ancestor

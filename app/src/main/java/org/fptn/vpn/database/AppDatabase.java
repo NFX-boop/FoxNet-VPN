@@ -18,7 +18,7 @@
  * Website: https://fptn.org
  */
 
-package org.fptn.vpn.database;
+package com.foxnet.app.database;
 
 import android.content.Context;
 
@@ -26,12 +26,12 @@ import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
 
-import org.fptn.vpn.database.dao.AppInfoDAO;
-import org.fptn.vpn.database.dao.ServerDAO;
-import org.fptn.vpn.database.dao.SniDao;
-import org.fptn.vpn.database.entity.AppInfoEntity;
-import org.fptn.vpn.database.entity.ServerEntity;
-import org.fptn.vpn.database.entity.SniEntity;
+import com.foxnet.app.database.dao.AppInfoDAO;
+import com.foxnet.app.database.dao.ServerDAO;
+import com.foxnet.app.database.dao.SniDao;
+import com.foxnet.app.database.entity.AppInfoEntity;
+import com.foxnet.app.database.entity.ServerEntity;
+import com.foxnet.app.database.entity.SniEntity;
 
 @Database(entities = {ServerEntity.class, AppInfoEntity.class, SniEntity.class}, version = 2, exportSchema = false)
 public abstract class AppDatabase extends RoomDatabase {

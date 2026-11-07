@@ -1,4 +1,4 @@
-package org.fptn.vpn.ui.common
+package com.foxnet.app.ui.common
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
@@ -19,8 +19,8 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.onGloballyPositioned
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.unit.dp
-import org.fptn.vpn.R
-import org.fptn.vpn.database.entity.ServerEntity
+import com.foxnet.app.R
+import com.foxnet.app.database.entity.ServerEntity
 
 /**
  * A dropdown of servers rendered with [ServerRow], styled like the legacy `CustomSpinner`.
@@ -28,9 +28,10 @@ import org.fptn.vpn.database.entity.ServerEntity
  * `CustomSpinner.performClick()`/`performClosedEvent()` did — arrow down at rest, arrow up while
  * the list is showing.
  *
- * The app's [FptnTheme][org.fptn.vpn.ui.theme.FptnTheme] forces a dark Material3 color scheme
- * everywhere, so the popup needs an explicit light [containerColor] — the legacy Spinner's
- * native popup window used the OS's default (light) popup background, never this app's theme.
+ * The app's [FptnTheme][com.foxnet.app.ui.theme.FptnTheme] forces a dark Material3 color scheme
+ * everywhere, so the popup gets an explicit dark [containerColor] matching the FoxNet dark
+ * panels — the legacy Spinner's native popup window used the OS's default (light) popup
+ * background, never this app's theme.
  * The menu is also explicitly widened to the anchor's own measured width (Material3's default is
  * only as wide as its widest row) and height-capped so a long server list scrolls within the menu
  * — both because a native `Spinner`'s popup always matched the spinner's width, and because an
@@ -67,7 +68,7 @@ fun ServerDropdown(
                 .width(with(density) { anchorWidthPx.toDp() })
                 .heightIn(max = 220.dp),
             shape = RoundedCornerShape(20.dp),
-            containerColor = Color.White,
+            containerColor = Color(0xFF151B28),
         ) {
             servers.forEach { server ->
                 DropdownMenuItem(

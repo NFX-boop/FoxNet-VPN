@@ -18,7 +18,7 @@
  * Website: https://fptn.org
  */
 
-package org.fptn.vpn.ui.perappvpn
+package com.foxnet.app.ui.perappvpn
 
 import android.graphics.drawable.Drawable
 import androidx.compose.runtime.getValue

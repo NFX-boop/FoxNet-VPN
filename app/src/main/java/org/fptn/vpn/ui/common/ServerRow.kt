@@ -1,4 +1,4 @@
-package org.fptn.vpn.ui.common
+package com.foxnet.app.ui.common
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Box
@@ -17,10 +17,10 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import org.fptn.vpn.R
-import org.fptn.vpn.database.entity.ServerEntity
-import org.fptn.vpn.ui.theme.Primary
-import org.fptn.vpn.utils.CountryFlags
+import com.foxnet.app.R
+import com.foxnet.app.database.entity.ServerEntity
+import com.foxnet.app.ui.theme.White
+import com.foxnet.app.utils.CountryFlags
 
 /**
  * Compose port of `ServerEntityAdapter`'s row (`home_list_recycler_server_item.xml`): a real
@@ -42,13 +42,13 @@ fun ServerRow(server: ServerEntity, modifier: Modifier = Modifier) {
                     Image(
                         painter = painterResource(R.drawable.ic_logo),
                         contentDescription = null,
-                        colorFilter = ColorFilter.tint(Primary),
+                        colorFilter = ColorFilter.tint(White),
                         modifier = Modifier.size(40.dp),
                     )
                 }
                 Text(
                     text = server.name,
-                    color = Primary,
+                    color = White,
                     fontSize = 22.sp,
                     maxLines = 1,
                     overflow = TextOverflow.Ellipsis,
@@ -66,7 +66,7 @@ fun ServerRow(server: ServerEntity, modifier: Modifier = Modifier) {
             }
             Text(
                 text = server.name,
-                color = Primary,
+                color = White,
                 fontSize = 16.sp,
                 maxLines = 1,
                 overflow = TextOverflow.Ellipsis,
@@ -78,7 +78,7 @@ fun ServerRow(server: ServerEntity, modifier: Modifier = Modifier) {
                 Image(
                     painter = painterResource(R.drawable.ic_logo),
                     contentDescription = null,
-                    colorFilter = ColorFilter.tint(Primary),
+                    colorFilter = ColorFilter.tint(White),
                     modifier = Modifier
                         .padding(start = 4.dp, end = 20.dp)
                         .size(40.dp),
@@ -90,9 +90,9 @@ fun ServerRow(server: ServerEntity, modifier: Modifier = Modifier) {
             Row(modifier = Modifier.padding(start = 38.dp)) {
                 if (ping > 0) {
                     Text(text = pingEmoji(ping), fontSize = 11.sp, modifier = Modifier.padding(end = 8.dp))
-                    Text(text = "${ping}ms", color = Primary, fontSize = 12.sp)
+                    Text(text = "${ping}ms", color = White, fontSize = 12.sp)
                 } else {
-                    Text(text = "---  ---  ---", color = Primary, fontSize = 12.sp)
+                    Text(text = "---  ---  ---", color = White, fontSize = 12.sp)
                 }
             }
         }

@@ -18,7 +18,7 @@
  * Website: https://fptn.org
  */
 
-package org.fptn.vpn;
+package com.foxnet.app;
 
 import android.app.Activity;
 import android.app.Application;
@@ -28,8 +28,8 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import org.fptn.vpn.utils.SharedPrefUtils;
-import org.fptn.vpn.utils.XLogInitializer;
+import com.foxnet.app.utils.SharedPrefUtils;
+import com.foxnet.app.utils.XLogInitializer;
 
 import com.elvishew.xlog.XLog;
 

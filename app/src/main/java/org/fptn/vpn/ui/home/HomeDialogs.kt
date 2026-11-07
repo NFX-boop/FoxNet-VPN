@@ -1,4 +1,4 @@
-package org.fptn.vpn.ui.home
+package com.foxnet.app.ui.home
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
@@ -24,9 +24,9 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import org.fptn.vpn.R
-import org.fptn.vpn.ui.common.HtmlLinkText
-import org.fptn.vpn.ui.common.legacyDrawableBackground
+import com.foxnet.app.R
+import com.foxnet.app.ui.common.HtmlLinkText
+import com.foxnet.app.ui.common.legacyDrawableBackground
 
 /**
  * All the dialogs `HomeScreen` can show, extracted out of it so its own composable body stays

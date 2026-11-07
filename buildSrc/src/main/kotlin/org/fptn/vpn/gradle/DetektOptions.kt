@@ -18,11 +18,11 @@
  * Website: https://fptn.org
  */
 
-package org.fptn.vpn.gradle
+package com.foxnet.app.gradle
 
 import io.gitlab.arturbosch.detekt.Detekt
 import io.gitlab.arturbosch.detekt.DetektCreateBaselineTask
-import org.fptn.vpn.gradle.task.TomlFileValidationTask
+import com.foxnet.app.gradle.task.TomlFileValidationTask
 import org.gradle.api.Project
 import org.gradle.api.file.ProjectLayout
 import org.gradle.api.tasks.SourceTask

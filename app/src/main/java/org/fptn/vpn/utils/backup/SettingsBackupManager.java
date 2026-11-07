@@ -18,20 +18,20 @@
  * Website: https://fptn.org
  */
 
-package org.fptn.vpn.utils.backup;
+package com.foxnet.app.utils.backup;
 
 import android.content.Context;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
-import org.fptn.vpn.database.AppDatabase;
-import org.fptn.vpn.database.dao.AppInfoDAO;
-import org.fptn.vpn.database.entity.AppInfoEntity;
-import org.fptn.vpn.enums.BypassCensorshipMethod;
-import org.fptn.vpn.enums.PerAppVpnMode;
-import org.fptn.vpn.enums.SniSpoofingMode;
-import org.fptn.vpn.utils.SharedPrefUtils;
+import com.foxnet.app.database.AppDatabase;
+import com.foxnet.app.database.dao.AppInfoDAO;
+import com.foxnet.app.database.entity.AppInfoEntity;
+import com.foxnet.app.enums.BypassCensorshipMethod;
+import com.foxnet.app.enums.PerAppVpnMode;
+import com.foxnet.app.enums.SniSpoofingMode;
+import com.foxnet.app.utils.SharedPrefUtils;
 
 import java.util.List;
 import java.util.stream.Collectors;

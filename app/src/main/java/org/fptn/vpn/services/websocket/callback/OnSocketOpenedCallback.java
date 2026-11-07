@@ -18,7 +18,7 @@
  * Website: https://fptn.org
  */
 
-package org.fptn.vpn.services.websocket.callback;
+package com.foxnet.app.services.websocket.callback;
 
 public interface OnSocketOpenedCallback {
     void onSocketOpened(int fd);

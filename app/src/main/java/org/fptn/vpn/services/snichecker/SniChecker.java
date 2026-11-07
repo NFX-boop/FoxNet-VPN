@@ -18,13 +18,13 @@
  * Website: https://fptn.org
  */
 
-package org.fptn.vpn.services.snichecker;
+package com.foxnet.app.services.snichecker;
 
 import com.elvishew.xlog.XLog;
 
-import org.fptn.vpn.database.entity.ServerEntity;
-import org.fptn.vpn.enums.BypassCensorshipMethod;
-import org.fptn.vpn.enums.SniSpoofingMode;
+import com.foxnet.app.database.entity.ServerEntity;
+import com.foxnet.app.enums.BypassCensorshipMethod;
+import com.foxnet.app.enums.SniSpoofingMode;
 
 
 public class SniChecker {

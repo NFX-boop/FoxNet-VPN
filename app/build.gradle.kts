@@ -31,7 +31,7 @@ if (isGmsBuild) {
 val keystorePropertiesFile: File = rootProject.file("keystore.properties")
 
 android {
-    namespace = "org.fptn.vpn"
+    namespace = "com.foxnet.app"
     compileSdk = rootProject.extra.get("compileSdkVersion") as Int
     ndkVersion = "28.1.13356709"
     var isCI = System.getenv("KEY_ALIAS") != null
@@ -61,7 +61,7 @@ android {
     }
 
     defaultConfig {
-        applicationId = "org.fptn.vpn"
+        applicationId = "com.foxnet.app"
         val versionMajor: Int by rootProject.extra
         val versionMinor: Int by rootProject.extra
         val versionPatch: Int by rootProject.extra
@@ -107,7 +107,7 @@ android {
             versionNameSuffix = "-debug"
             isMinifyEnabled = false
             isDebuggable = true
-            manifestPlaceholders["appName"] = "FPTN VPN debug"
+            manifestPlaceholders["appName"] = "FoxNet VPN debug"
             signingConfig = signingConfigs.getByName("debug")
         }
     }

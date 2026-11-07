@@ -18,12 +18,12 @@
  * Website: https://fptn.org
  */
 
-package org.fptn.vpn.utils.token;
+package com.foxnet.app.utils.token;
 
 import com.elvishew.xlog.XLog;
 
-import org.fptn.vpn.exception.ErrorCode;
-import org.fptn.vpn.exception.PVNClientException;
+import com.foxnet.app.exception.ErrorCode;
+import com.foxnet.app.exception.PVNClientException;
 
 import lombok.experimental.UtilityClass;
 

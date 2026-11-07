@@ -18,7 +18,7 @@
  * Website: https://fptn.org
  */
 
-package org.fptn.vpn.utils;
+package com.foxnet.app.utils;
 
 import static android.content.Context.CONNECTIVITY_SERVICE;
 import static android.content.Context.POWER_SERVICE;
@@ -45,7 +45,7 @@ import com.elvishew.xlog.XLog;
 
 import androidx.core.content.ContextCompat;
 
-import org.fptn.vpn.Constants;
+import com.foxnet.app.Constants;
 
 
 public class PermissionsUtils {

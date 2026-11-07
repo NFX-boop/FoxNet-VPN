@@ -18,7 +18,7 @@
  * Website: https://fptn.org
  */
 
-package org.fptn.vpn.utils;
+package com.foxnet.app.utils;
 
 import org.brotli.dec.BrotliInputStream;
 import java.io.ByteArrayInputStream;

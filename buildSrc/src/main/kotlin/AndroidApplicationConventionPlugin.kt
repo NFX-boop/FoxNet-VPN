@@ -19,7 +19,7 @@
  */
 
 import com.android.build.api.dsl.ApplicationExtension
-import org.fptn.vpn.gradle.extensions.configureKotlinAndroid
+import com.foxnet.app.gradle.extensions.configureKotlinAndroid
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.kotlin.dsl.configure

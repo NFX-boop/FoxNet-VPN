@@ -1,4 +1,4 @@
-package org.fptn.vpn.ui.bypassmethod
+package com.foxnet.app.ui.bypassmethod
 
 import android.content.ComponentName
 import android.content.ServiceConnection
@@ -55,22 +55,22 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import com.elvishew.xlog.XLog
 import com.google.common.util.concurrent.FutureCallback
 import com.google.common.util.concurrent.Futures
-import org.fptn.vpn.R
-import org.fptn.vpn.database.entity.ServerEntity
-import org.fptn.vpn.enums.BypassCensorshipMethod
-import org.fptn.vpn.enums.ConnectionStrategy
-import org.fptn.vpn.enums.SniSpoofingMode
-import org.fptn.vpn.services.snichecker.SniCheckerService
-import org.fptn.vpn.services.snichecker.SniCheckerServiceState
-import org.fptn.vpn.services.tile.FptnTileService
-import org.fptn.vpn.ui.common.BottomNavBar
-import org.fptn.vpn.ui.common.LegacySpinner
-import org.fptn.vpn.ui.common.ShareDialog
-import org.fptn.vpn.ui.common.legacyDrawableBackground
-import org.fptn.vpn.ui.theme.Gray
-import org.fptn.vpn.ui.theme.Primary
-import org.fptn.vpn.ui.theme.White
-import org.fptn.vpn.exception.PVNClientException
+import com.foxnet.app.R
+import com.foxnet.app.database.entity.ServerEntity
+import com.foxnet.app.enums.BypassCensorshipMethod
+import com.foxnet.app.enums.ConnectionStrategy
+import com.foxnet.app.enums.SniSpoofingMode
+import com.foxnet.app.services.snichecker.SniCheckerService
+import com.foxnet.app.services.snichecker.SniCheckerServiceState
+import com.foxnet.app.services.tile.FptnTileService
+import com.foxnet.app.ui.common.BottomNavBar
+import com.foxnet.app.ui.common.LegacySpinner
+import com.foxnet.app.ui.common.ShareDialog
+import com.foxnet.app.ui.common.legacyDrawableBackground
+import com.foxnet.app.ui.theme.Gray
+import com.foxnet.app.ui.theme.Primary
+import com.foxnet.app.ui.theme.White
+import com.foxnet.app.exception.PVNClientException
 
 private const val TAG = "BypassMethodsScreen"
 

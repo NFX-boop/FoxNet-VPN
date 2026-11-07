@@ -18,10 +18,10 @@
  * Website: https://fptn.org
  */
 
-package org.fptn.vpn.services.vpn;
+package com.foxnet.app.services.vpn;
 
-import org.fptn.vpn.enums.ConnectionState;
-import org.fptn.vpn.exception.PVNClientException;
+import com.foxnet.app.enums.ConnectionState;
+import com.foxnet.app.exception.PVNClientException;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

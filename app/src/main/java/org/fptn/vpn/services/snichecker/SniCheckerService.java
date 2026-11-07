@@ -18,7 +18,7 @@
  * Website: https://fptn.org
  */
 
-package org.fptn.vpn.services.snichecker;
+package com.foxnet.app.services.snichecker;
 
 import android.app.Notification;
 import android.app.NotificationManager;
@@ -38,19 +38,19 @@ import androidx.lifecycle.MutableLiveData;
 
 import com.elvishew.xlog.XLog;
 
-import org.fptn.vpn.R;
-import org.fptn.vpn.Constants;
-import org.fptn.vpn.database.AppDatabase;
-import org.fptn.vpn.database.entity.ServerEntity;
-import org.fptn.vpn.database.entity.SniEntity;
-import org.fptn.vpn.enums.BypassCensorshipMethod;
-import org.fptn.vpn.enums.ConnectionState;
-import org.fptn.vpn.enums.SniSpoofingMode;
-import org.fptn.vpn.services.tile.FptnTileService;
-import org.fptn.vpn.ui.MainActivity;
-import org.fptn.vpn.ui.navigation.AppRoute;
-import org.fptn.vpn.utils.NotificationUtils;
-import org.fptn.vpn.utils.SharedPrefUtils;
+import com.foxnet.app.R;
+import com.foxnet.app.Constants;
+import com.foxnet.app.database.AppDatabase;
+import com.foxnet.app.database.entity.ServerEntity;
+import com.foxnet.app.database.entity.SniEntity;
+import com.foxnet.app.enums.BypassCensorshipMethod;
+import com.foxnet.app.enums.ConnectionState;
+import com.foxnet.app.enums.SniSpoofingMode;
+import com.foxnet.app.services.tile.FptnTileService;
+import com.foxnet.app.ui.MainActivity;
+import com.foxnet.app.ui.navigation.AppRoute;
+import com.foxnet.app.utils.NotificationUtils;
+import com.foxnet.app.utils.SharedPrefUtils;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -383,7 +383,7 @@ public class SniCheckerService extends Service {
         Notification.Action actionContinueChecking = new Notification.Action.Builder(null, getString(R.string.reconnect_action), reconnectPendingIntent)
                 .build();*/
         Notification notification = new Notification.Builder(this, Constants.SNI_CHECKER_NOTIFICATION_CHANNEL_ID)
-                .setSmallIcon(R.drawable.ic_logo)
+                .setSmallIcon(R.drawable.foxnet_icon_mono)
                 .setVisibility(Notification.VISIBILITY_PUBLIC)
                 .setContentTitle(title)
                 .setContentText(message)

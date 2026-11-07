@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_version">Version 1.0.0 </string>
-    <string name="app_name" translatable="false">FPTN VPN</string>
+    <string name="app_name" translatable="false">FoxNet VPN</string>
 
     <string name="select_server">Select server</string>
     <string name="connection_time">Connection Time</string>
@@ -15,7 +15,7 @@
 
     <string name="menu_home">Home</string>
     <string name="menu_settings">Settings</string>
-    <string name="menu_share">Share</string>
+    <string name="menu_info">Info</string>
 
     <string name="your_servers">Your VPN servers</string>
 
@@ -29,32 +29,43 @@
         <br/>
         The token works like a password: once updated, it will no longer be valid on any devices where it was previously used.
         <br/><br/>
-        Get a new token from <a href="https://t.me/fptn_bot">@fptn_bot</a> with the <b><font color="#03DAC5">/token</font></b> command.
+        Get a new token from <a href="https://t.me/fptn_bot">@fptn_bot</a> with the <b><font color="#4FC87A">/token</font></b> command.
         ]]>
     </string>
 
-    <string name="share_title">Share via</string>
-    <string name="share_message">FPTN is a non-commercial VPN, a volunteer project for bypassing censorship.
-https://play.google.com/store/apps/details?id=org.fptn.vpn
-    </string>
     <string name="info_message_html">
         <![CDATA[
-        FPTN is a fully custom-built VPN technology — developed from scratch, including the core protocol, server implementation, and cross-platform clients. It is a non-commercial, open-source project developed by volunteers and designed to bypass censorship.
+        FoxNet VPN is an unofficial modification of the FPTN client with a redesigned interface.
         <br/>
         <br/>
-        Our <a href="https://storage.googleapis.com/fptn.org/index.html">website</a>
+        Based on <a href="https://github.com/fptn-project/FptnClient-Android">FPTN</a> (GPL-3.0).
         <br/>
-        Our Telegram group: <a href="https://t.me/fptn_project">@fptn_project</a>
-        <br/>
-        App on <a href="https://play.google.com/store/apps/details?id=org.fptn.vpn">Google Play Market</a>
-        <br/>
-        You can support us on <a href="https://boosty.to/fptn/donate">Boosty</a>
+        Source code: <a href="https://github.com/NXF-boop/FoxNet-VPN">github.com/NXF-boop/FoxNet-VPN</a>
         ]]>
     </string>
 
-    <string name="connecting">FptnVPN is connecting...</string>
-    <string name="connected">FptnVPN is connected</string>
-    <string name="disconnected">FptnVPN is disconnected</string>
+    <string name="info_dialog_html">
+        <![CDATA[
+        <b>FoxNet VPN</b>
+        <br/>
+        <br/>
+        An unofficial modification of the FPTN client
+        with a redesigned interface.
+        <br/>
+        <br/>
+        Based on FPTN (GPL-3.0)
+        <a href="https://github.com/fptn-project/FptnClient-Android">https://github.com/fptn-project/FptnClient-Android</a>
+        <br/>
+        <br/>
+        GitHub: <a href="https://github.com/NXF-boop/FoxNet-VPN">github.com/NXF-boop/FoxNet-VPN</a>
+        <br/>
+        Telegram: <a href="https://t.me/FoxNetVPN">t.me/FoxNetVPN</a>
+        ]]>
+    </string>
+
+    <string name="connecting">FoxNet VPN is connecting...</string>
+    <string name="connected">FoxNet VPN is connected</string>
+    <string name="disconnected">FoxNet VPN is disconnected</string>
     <string name="disconnect_reason_vpn_revoked">Disconnected: another VPN app took over</string>
     <string name="disconnect_reason_vpn_conflict">Disconnected: VPN conflict detected</string>
     <string name="disconnect_reason_system_revoked">Disconnected: VPN revoked by system</string>
@@ -62,10 +73,10 @@ https://play.google.com/store/apps/details?id=org.fptn.vpn
     <string name="disconnect_reason_unexpected_error">Disconnected: unexpected error</string>
     <string name="error">Error on connecting occurs!</string>
     <string name="paste_your_token">Tap to paste token</string>
-    <string name="running">FptnVPN is running</string>
-    <string name="reconnection">FptnVPN is reconnecting...</string>
+    <string name="running">FoxNet VPN is running</string>
+    <string name="reconnection">FoxNet VPN is reconnecting...</string>
 
-    <string name="vpn_permission_warning">For running FptnVPN need permissions!</string>
+    <string name="vpn_permission_warning">For running FoxNet VPN you need permissions!</string>
 
     <string name="cannot_connect_sni_check_active">Cannot connect: SNI search is in progress</string>
     <string name="cannot_start_sni_check_vpn_active">Cannot start SNI search: VPN is connected</string>
@@ -97,7 +108,7 @@ https://play.google.com/store/apps/details?id=org.fptn.vpn
 
     <string name="token_was_updated">Token was updated!</string>
     <string name="token_reminder_title">Update your token</string>
-    <string name="token_reminder_message"><![CDATA[Your token has not been updated in a long time.<br/><br/>Get a fresh one from <a href="https://t.me/fptn_bot">@fptn_bot</a> with the <b><font color="#03DAC5">/token</font></b> command, then paste it here.]]></string>
+    <string name="token_reminder_message"><![CDATA[Your token has not been updated in a long time.<br/><br/>Get a fresh one from <a href="https://t.me/fptn_bot">@fptn_bot</a> with the <b><font color="#4FC87A">/token</font></b> command, then paste it here.]]></string>
     <string name="token_reminder_update">Update token</string>
     <string name="token_reminder_later">Later</string>
     <string name="token_saving_failed">Invalid link format!</string>
@@ -142,9 +153,8 @@ https://play.google.com/store/apps/details?id=org.fptn.vpn
     <string name="download_upload_speed_pattern">Download: %s Upload: %s</string>
     <string name="download_upload_traffic_pattern">Received: %s Sent: %s</string>
     <string name="refresh_token">Refresh token...</string>
-    <string name="play_market_link" translatable="false">https://play.google.com/store/apps/details?id=org.fptn.vpn</string>
     <string name="close_button_text">Close</string>
-    <string name="share_via_message">Share via message</string>
+
     <string name="sni_text_description">Server Name Indication (SNI) — the website address declared when connecting to a VPN server. Please specify some popular website accessible without a VPN from your country.</string>
     <string name="your_current_sni">Your current SNI:</string>
     <string name="default_sni">samsung.com</string>
@@ -411,15 +421,15 @@ https://play.google.com/store/apps/details?id=org.fptn.vpn
     <string name="traffic_upload">Upload</string>
 
     <string name="vpn_switch_title">Another VPN is active</string>
-    <string name="vpn_switch_message">Another VPN is currently running. Do you want to switch to FPTN VPN?</string>
+    <string name="vpn_switch_message">Another VPN is currently running. Do you want to switch to FoxNet VPN?</string>
     <string name="vpn_switch_button">Switch</string>
 
     <string name="vpn_setup_error_title">VPN Setup Error</string>
-    <string name="vpn_setup_error_message">To connect to FPTN VPN you need to:\n\n- Allow the app to connect to VPN network\n- Disable the \'Always-on VPN\' feature for all other VPN apps in system VPN settings</string>
+    <string name="vpn_setup_error_message">To connect to FoxNet VPN you need to:\n\n- Allow the app to connect to VPN network\n- Disable the \'Always-on VPN\' feature for all other VPN apps in system VPN settings</string>
     <string name="open_vpn_settings">Open VPN Settings</string>
 
     <string name="backups_title">Settings backups</string>
-    <string name="backups_info">Save all FPTN settings to a file or restore them from a backup</string>
+    <string name="backups_info">Save all FoxNet VPN settings to a file or restore them from a backup</string>
     <string name="backup_save_title">Save settings</string>
     <string name="backup_save_description">Export all settings (bypass methods, SNI, tunneling, per-app VPN, additional settings) to a JSON file. You can save it on this device or share it.</string>
     <string name="backup_save_button">Save</string>

@@ -1,4 +1,4 @@
-package org.fptn.vpn.ui.updatetoken
+package com.foxnet.app.ui.updatetoken
 
 import android.content.ClipboardManager
 import android.widget.Toast
@@ -50,20 +50,20 @@ import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.elvishew.xlog.XLog
 import kotlinx.coroutines.launch
-import org.fptn.vpn.R
-import org.fptn.vpn.ui.common.BottomNavBar
-import org.fptn.vpn.ui.common.HtmlLinkText
-import org.fptn.vpn.ui.common.LegacyPillButton
-import org.fptn.vpn.ui.common.ShareDialog
-import org.fptn.vpn.ui.common.legacyDrawableBackground
-import org.fptn.vpn.ui.theme.Black
-import org.fptn.vpn.ui.theme.Hint
-import org.fptn.vpn.ui.theme.Primary
-import org.fptn.vpn.ui.theme.White
-import org.fptn.vpn.ui.theme.Yellow
-import org.fptn.vpn.utils.ResourcesUtils.getStringResourceByName
-import org.fptn.vpn.exception.ErrorCode
-import org.fptn.vpn.exception.PVNClientException
+import com.foxnet.app.R
+import com.foxnet.app.ui.common.BottomNavBar
+import com.foxnet.app.ui.common.HtmlLinkText
+import com.foxnet.app.ui.common.LegacyPillButton
+import com.foxnet.app.ui.common.ShareDialog
+import com.foxnet.app.ui.common.legacyDrawableBackground
+import com.foxnet.app.ui.theme.Black
+import com.foxnet.app.ui.theme.Hint
+import com.foxnet.app.ui.theme.Primary
+import com.foxnet.app.ui.theme.White
+import com.foxnet.app.ui.theme.Yellow
+import com.foxnet.app.utils.ResourcesUtils.getStringResourceByName
+import com.foxnet.app.exception.ErrorCode
+import com.foxnet.app.exception.PVNClientException
 
 private const val TAG = "UpdateTokenScreen"
 private val TOKEN_CLIPBOARD_PREFIXES = listOf("fptn:", "fptnb:")

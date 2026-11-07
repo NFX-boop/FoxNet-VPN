@@ -18,15 +18,15 @@
  * Website: https://fptn.org
  */
 
-package org.fptn.vpn.utils;
+package com.foxnet.app.utils;
 
 import android.app.NotificationChannel;
 import android.app.NotificationChannelGroup;
 import android.app.NotificationManager;
 import android.content.Context;
 
-import org.fptn.vpn.R;
-import org.fptn.vpn.Constants;
+import com.foxnet.app.R;
+import com.foxnet.app.Constants;
 import org.jetbrains.annotations.NotNull;
 
 public class NotificationUtils {

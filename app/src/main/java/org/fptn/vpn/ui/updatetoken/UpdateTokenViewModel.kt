@@ -18,17 +18,17 @@
  * Website: https://fptn.org
  */
 
-package org.fptn.vpn.ui.updatetoken
+package com.foxnet.app.ui.updatetoken
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
-import org.fptn.vpn.database.AppDatabase
-import org.fptn.vpn.utils.SharedPrefUtils
-import org.fptn.vpn.utils.token.TokenUtils
-import org.fptn.vpn.exception.PVNClientException
+import com.foxnet.app.database.AppDatabase
+import com.foxnet.app.utils.SharedPrefUtils
+import com.foxnet.app.utils.token.TokenUtils
+import com.foxnet.app.exception.PVNClientException
 
 class UpdateTokenViewModel(application: Application) : AndroidViewModel(application) {
 

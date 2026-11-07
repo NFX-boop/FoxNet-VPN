@@ -18,7 +18,7 @@
  * Website: https://fptn.org
  */
 
-package org.fptn.vpn.services.snichecker;
+package com.foxnet.app.services.snichecker;
 
 public enum SniCheckerServiceState {
     ACTIVE,

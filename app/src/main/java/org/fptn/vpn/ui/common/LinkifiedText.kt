@@ -1,4 +1,4 @@
-package org.fptn.vpn.ui.common
+package com.foxnet.app.ui.common
 
 import androidx.compose.foundation.text.ClickableText
 import androidx.compose.runtime.Composable

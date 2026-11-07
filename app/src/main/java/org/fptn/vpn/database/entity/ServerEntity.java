@@ -18,14 +18,14 @@
  * Website: https://fptn.org
  */
 
-package org.fptn.vpn.database.entity;
+package com.foxnet.app.database.entity;
 
 import androidx.room.Entity;
 import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
-import org.fptn.vpn.Constants;
-import org.fptn.vpn.utils.CountryFlags;
+import com.foxnet.app.Constants;
+import com.foxnet.app.utils.CountryFlags;
 
 import java.util.Objects;
 

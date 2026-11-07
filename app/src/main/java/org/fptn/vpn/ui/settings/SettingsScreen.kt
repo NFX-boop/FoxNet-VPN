@@ -1,4 +1,4 @@
-package org.fptn.vpn.ui.settings
+package com.foxnet.app.ui.settings
 
 import android.annotation.SuppressLint
 import android.content.Intent
@@ -46,18 +46,18 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleEventObserver
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.elvishew.xlog.XLog
-import org.fptn.vpn.R
-import org.fptn.vpn.enums.AppLogLevel
-import org.fptn.vpn.ui.common.BottomNavBar
-import org.fptn.vpn.ui.common.HtmlLinkText
-import org.fptn.vpn.ui.common.LegacySpinner
-import org.fptn.vpn.ui.common.ShareDialog
-import org.fptn.vpn.ui.common.legacyDrawableBackground
-import org.fptn.vpn.ui.theme.Gray
-import org.fptn.vpn.ui.theme.White
-import org.fptn.vpn.utils.PermissionsUtils
-import org.fptn.vpn.utils.SharedPrefUtils
-import org.fptn.vpn.utils.XLogInitializer
+import com.foxnet.app.R
+import com.foxnet.app.enums.AppLogLevel
+import com.foxnet.app.ui.common.BottomNavBar
+import com.foxnet.app.ui.common.HtmlLinkText
+import com.foxnet.app.ui.common.LegacySpinner
+import com.foxnet.app.ui.common.ShareDialog
+import com.foxnet.app.ui.common.legacyDrawableBackground
+import com.foxnet.app.ui.theme.Gray
+import com.foxnet.app.ui.theme.White
+import com.foxnet.app.utils.PermissionsUtils
+import com.foxnet.app.utils.SharedPrefUtils
+import com.foxnet.app.utils.XLogInitializer
 
 private const val TAG = "SettingsScreen"
 

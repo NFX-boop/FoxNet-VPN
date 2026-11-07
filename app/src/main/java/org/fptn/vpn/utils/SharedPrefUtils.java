@@ -18,20 +18,20 @@
  * Website: https://fptn.org
  */
 
-package org.fptn.vpn.utils;
+package com.foxnet.app.utils;
 
 import android.content.Context;
 import android.content.SharedPreferences;
 
 import com.elvishew.xlog.XLog;
 
-import org.fptn.vpn.R;
-import org.fptn.vpn.Constants;
-import org.fptn.vpn.enums.AppLogLevel;
-import org.fptn.vpn.enums.BypassCensorshipMethod;
-import org.fptn.vpn.enums.ConnectionStrategy;
-import org.fptn.vpn.enums.PerAppVpnMode;
-import org.fptn.vpn.enums.SniSpoofingMode;
+import com.foxnet.app.R;
+import com.foxnet.app.Constants;
+import com.foxnet.app.enums.AppLogLevel;
+import com.foxnet.app.enums.BypassCensorshipMethod;
+import com.foxnet.app.enums.ConnectionStrategy;
+import com.foxnet.app.enums.PerAppVpnMode;
+import com.foxnet.app.enums.SniSpoofingMode;
 
 import java.util.Collections;
 import java.util.Objects;
