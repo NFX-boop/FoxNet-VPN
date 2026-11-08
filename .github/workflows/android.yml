@@ -9,7 +9,7 @@ on:
 
 jobs:
   build_android:
-    runs-on: ubuntu22.04_x64
+    runs-on: ubuntu-latest
     environment: RELEASE_ENVIRONMENT
     steps:
     - name: Checkout code
