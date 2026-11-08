@@ -262,9 +262,23 @@ tasks.register("conanInstall") {
                     "-s", "arch=$arch",
                     "--build", "missing",
                     "-c", "tools.cmake.cmake_layout:build_folder_vars=['settings.arch']",
-                ).directory(conanBuildDir).inheritIO().start()
+                )
+                    .directory(conanBuildDir)
+                    .redirectErrorStream(true)
+                    .start()
+
+                val output = process.inputStream.bufferedReader().use { it.readText() }
                 val exitCode = process.waitFor()
-                if (exitCode != 0) throw GradleException("conan install failed [buildType=$buildType, arch=$arch]")
+
+                if (output.isNotBlank()) {
+                    logger.lifecycle(output)
+                }
+
+                if (exitCode != 0) {
+                    throw GradleException(
+                        "conan install failed [buildType=$buildType, arch=$arch, exitCode=$exitCode]\n$output"
+                    )
+                }
             }
         }
     }
