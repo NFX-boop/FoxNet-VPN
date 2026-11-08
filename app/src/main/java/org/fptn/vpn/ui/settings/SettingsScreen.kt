@@ -85,7 +85,6 @@ fun SettingsScreen(
     var showShareDialog by remember { mutableStateOf(false) }
     var showLogoutConfirm by remember { mutableStateOf(false) }
     var showClearLogsConfirm by remember { mutableStateOf(false) }
-    var sponsorsExpanded by remember { mutableStateOf(false) }
     var showBatteryOptimizationDialog by remember { mutableStateOf(false) }
     var showBackgroundDataDialog by remember { mutableStateOf(false) }
 
@@ -192,7 +191,7 @@ fun SettingsScreen(
             SettingsCard {
                 Row(verticalAlignment = Alignment.CenterVertically) {
                     Image(
-                        painter = painterResource(R.drawable.user_permissions_24),
+                        painter = painterResource(R.drawable.foxnet_icon_mono),
                         contentDescription = null,
                         modifier = Modifier.size(16.dp),
                     )
@@ -267,35 +266,6 @@ fun SettingsScreen(
                 description = stringResource(R.string.backups_info),
                 onClick = onNavigateBackup,
             )
-
-            SettingsCard {
-                Row(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .clickable { sponsorsExpanded = !sponsorsExpanded },
-                    verticalAlignment = Alignment.CenterVertically,
-                ) {
-                    Image(
-                        painter = painterResource(R.drawable.ic_sponsors_update_24),
-                        contentDescription = null,
-                        modifier = Modifier.size(32.dp),
-                    )
-                    Text(
-                        text = stringResource(R.string.sponsors_text) + if (sponsorsExpanded) "  ▲" else "  ▼",
-                        color = White,
-                        modifier = Modifier.padding(start = 12.dp),
-                    )
-                }
-                if (sponsorsExpanded) {
-                    HtmlLinkText(
-                        html = stringResource(R.string.sponsors_usernames),
-                        color = White,
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .padding(start = 16.dp, top = 4.dp),
-                    )
-                }
-            }
 
             SettingsNavRow(
                 icon = R.drawable.ic_baseline_logout_24,

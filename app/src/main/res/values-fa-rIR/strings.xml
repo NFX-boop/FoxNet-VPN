@@ -14,7 +14,6 @@
 
     <string name="menu_home">صفحه اصلی</string>
     <string name="menu_settings">تنظیمات</string>
-    <string name="menu_share">اشتراک‌گذاری</string>
 
     <string name="your_servers">سرورهای VPN شما</string>
 
@@ -29,10 +28,6 @@
         <br/><br/>
         یک توکن جدید از <a href="https://t.me/fptn_bot">@fptn_bot</a> با دستور <b><font color="#03DAC5">/token</font></b> دریافت کنید.
         ]]>
-    </string>
-    <string name="share_title">اشتراک‌گذاری از طریق</string>
-    <string name="share_message">FPTN یک VPN غیرانتفاعی است؛ پروژه‌ای داوطلبانه برای دور زدن سانسور.
-https://play.google.com/store/apps/details?id=org.fptn.vpn
     </string>
     <string name="info_message_html">
         <![CDATA[
@@ -133,7 +128,6 @@ https://play.google.com/store/apps/details?id=org.fptn.vpn
     <string name="download_upload_traffic_pattern">دریافت: %s ارسال: %s</string>
     <string name="refresh_token">به‌روزرسانی توکن...</string>
     <string name="close_button_text">بستن</string>
-    <string name="share_via_message">اشتراک‌گذاری از طریق پیام</string>
 
     <string name="sni_text_description">Server Name Indication (SNI) — آدرس وب‌سایتی است که هنگام اتصال به سرور VPN اعلام می‌شود. یک وب‌سایت محبوب که در کشور شما بدون VPN در دسترس است وارد کنید.</string>
     <string name="your_current_sni">SNI فعلی:</string>
@@ -166,7 +160,6 @@ https://play.google.com/store/apps/details?id=org.fptn.vpn
 
 
 
-    <string name="sponsors_text">با تشکر از حامیان ما ❤️</string>
     <string name="experimental_features_label">تنظیمات اضافی</string>
     <string name="experimental_features_info">تنظیم دقیق رفتار اتصال با تنظیمات اضافی.</string>
     <string name="reconnect_on_change">اتصال مجدد در صورت تغییر:</string>
@@ -330,7 +323,7 @@ https://play.google.com/store/apps/details?id=org.fptn.vpn
     <string name="open_vpn_settings">باز کردن تنظیمات VPN</string>
 
     <string name="backups_title">پشتیبان‌گیری از تنظیمات</string>
-    <string name="backups_info">ذخیره تمام تنظیمات FPTN در فایل و بازیابی آن‌ها از فایل پشتیبان</string>
+    <string name="backups_info">ذخیره تمام تنظیمات FoxNet VPN در فایل و بازیابی آن‌ها از فایل پشتیبان</string>
     <string name="backup_save_title">ذخیره تنظیمات</string>
     <string name="backup_save_description">خروجی گرفتن از تمام تنظیمات (روش‌های دور زدن، SNI، تونل‌سازی، VPN برنامه‌ها، تنظیمات اضافی) در یک فایل JSON. می‌توانید آن را در دستگاه ذخیره یا به اشتراک بگذارید.</string>
     <string name="backup_save_button">ذخیره</string>
@@ -349,5 +342,4 @@ https://play.google.com/store/apps/details?id=org.fptn.vpn
     <string name="connection_strategy_rolling">تونل چرخشی</string>
     <string name="connection_strategy_dual">تونل چرخشی دوگانه</string>
     <string name="connection_strategy_triple">تونل چرخشی سه‌گانه</string>
-    <string name="settings_per_app_russian_notice"><![CDATA[به منظور امنیت و کارکرد پایدار سرویس، برنامه‌های جاسوس شناخته‌شده همیشه خارج از VPN کار می‌کنند و نمی‌توانند به تونل بازگردانده شوند. فهرست کامل <a href="https://github.com/fptn-project/FptnClient-Android/blob/develop/app/src/main/res/values/always_excluded_apps.xml">برنامه‌های حذف‌شده</a> و <a href="https://github.com/fptn-project/FptnClient-Android/blob/develop/app/src/main/res/values/split_tunnel_domains.xml">دامنه‌های آن‌ها</a> در GitHub در دسترس است.]]></string>
 </resources>

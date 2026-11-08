@@ -54,7 +54,6 @@ import com.elvishew.xlog.XLog
 import com.foxnet.app.R
 import com.foxnet.app.enums.PerAppVpnMode
 import com.foxnet.app.ui.common.BottomNavBar
-import com.foxnet.app.ui.common.HtmlLinkText
 import com.foxnet.app.ui.common.LinkifiedText
 import com.foxnet.app.ui.common.MultilineTextInputDialog
 import com.foxnet.app.ui.common.ShareDialog
@@ -143,14 +142,6 @@ fun PerAppVpnModeScreen(
                 fontSize = 16.sp,
                 fontWeight = FontWeight.Bold,
                 modifier = Modifier.padding(horizontal = 20.dp, vertical = 10.dp),
-            )
-            HtmlLinkText(
-                html = stringResource(R.string.settings_per_app_russian_notice),
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(horizontal = 20.dp, vertical = 12.dp),
-                color = Gray,
-                fontSize = 12.sp,
             )
 
             // Split tunneling card

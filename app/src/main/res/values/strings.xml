@@ -29,7 +29,7 @@
         <br/>
         The token works like a password: once updated, it will no longer be valid on any devices where it was previously used.
         <br/><br/>
-        Get a new token from <a href="https://t.me/fptn_bot">@fptn_bot</a> with the <b><font color="#4FC87A">/token</font></b> command.
+        Get a new token from the FoxNet VPN administrator.
         ]]>
     </string>
 
@@ -185,81 +185,6 @@
     <string name="background_data_request_dialog_title">Background data transfer</string>
     <string name="background_data_request_dialog_text">For a stable connection, please grant permission to disable data transfer restrictions in background for this app</string>
     <string name="permission_warning_text">Allow all permissions for stable connection on Settings screen</string>
-
-
-
-    <string name="sponsors_text">Thanks to our sponsors ❤️</string>
-
-
-    <string name="sponsors_usernames" translatable="false">
-         <![CDATA[
-        •&nbsp;&nbsp;Brebor<br/>
-        •&nbsp;&nbsp;Secret_Agent_001<br/>
-        •&nbsp;&nbsp;miklefox<br/>
-        •&nbsp;&nbsp;usrbb<br/>
-        •&nbsp;&nbsp;ragdollmaster<br/>
-        •&nbsp;&nbsp;slimefrozik<br/>
-        •&nbsp;&nbsp;HooLigaN<br/>
-        •&nbsp;&nbsp;Dima<br/>
-        •&nbsp;&nbsp;Kori<br/>
-        •&nbsp;&nbsp;DrowASD<br/>
-        •&nbsp;&nbsp;GΣG 5952<br/>
-        •&nbsp;&nbsp;NikVas<br/>
-        •&nbsp;&nbsp;Сергей<br/>
-        •&nbsp;&nbsp;Frizgy<br/>
-        •&nbsp;&nbsp;Tired Smi1e<br/>
-        •&nbsp;&nbsp;Teya Aster<br/>
-        •&nbsp;&nbsp;loftynite<br/>
-        •&nbsp;&nbsp;vlz78<br/>
-        •&nbsp;&nbsp;Erranted<br/>
-        •&nbsp;&nbsp;Kotishqua<br/>
-        •&nbsp;&nbsp;Neiros<br/>
-        •&nbsp;&nbsp;Кабан из AYAYANII<br/>
-        •&nbsp;&nbsp;Stasyan<br/>
-        •&nbsp;&nbsp;Daptepik<br/>
-        •&nbsp;&nbsp;Cu6ic<br/>
-        •&nbsp;&nbsp;FC<br/>
-        •&nbsp;&nbsp;Temikin<br/>
-        •&nbsp;&nbsp;Azeasy<br/>
-        •&nbsp;&nbsp;NekoDark<br/>
-        •&nbsp;&nbsp;Alin Zoberg<br/>
-        •&nbsp;&nbsp;zsergey<br/>
-        •&nbsp;&nbsp;OlegPaRe<br/>
-        •&nbsp;&nbsp;Norelax<br/>
-        •&nbsp;&nbsp;Alligator<br/>
-        •&nbsp;&nbsp;vblll<br/>
-        •&nbsp;&nbsp;Ayuemin<br/>
-        •&nbsp;&nbsp;Semchuk<br/>
-        •&nbsp;&nbsp;Barzas153<br/>
-        •&nbsp;&nbsp;machinefactor<br/>
-        •&nbsp;&nbsp;mahovmm<br/>
-        •&nbsp;&nbsp;KOTleta<br/>
-        •&nbsp;&nbsp;Arelost<br/>
-        •&nbsp;&nbsp;Хмурый<br/>
-        •&nbsp;&nbsp;弐式炎雷<br/>
-        •&nbsp;&nbsp;☸️Bhagos☸️<br/>
-        •&nbsp;&nbsp;Pavel<br/>
-        •&nbsp;&nbsp;zoomzoom<br/>
-        •&nbsp;&nbsp;Kovalskij<br/>
-        •&nbsp;&nbsp;Yumarictx<br/>
-        •&nbsp;&nbsp;ББ<br/>
-        •&nbsp;&nbsp;huko<br/>
-        •&nbsp;&nbsp;@UNBREAKABLE189<br/>
-        •&nbsp;&nbsp;TheChosenOne<br/>
-        •&nbsp;&nbsp;Noragami9779<br/>
-        •&nbsp;&nbsp;NightFox<br/>
-        •&nbsp;&nbsp;puffffik<br/>
-        •&nbsp;&nbsp;draserg1<br/>
-        •&nbsp;&nbsp;Artem Kushner<br/>
-        •&nbsp;&nbsp;AgNeSYUT<br/>
-        •&nbsp;&nbsp;Blink<br/>
-        •&nbsp;&nbsp;charlie b.<br/>
-        •&nbsp;&nbsp;alex_pol<br/>
-        •&nbsp;&nbsp;Vox<br/>
-        •&nbsp;&nbsp;Rucozhop4ik<br/>
-        •&nbsp;&nbsp;Nigmast<br/>
-        ]]>
-    </string>
     <string name="experimental_features_label">Additional settings</string>
     <string name="experimental_features_info">Fine-tune connection behavior with additional settings.</string>
     <string name="reconnect_on_change">Reconnect on changing:</string>
@@ -361,8 +286,6 @@
 
     <string name="sni_reality_radio_button_label_additional_info">Requires a real existing domain (otherwise errors may occur)</string>
     <string name="connecting_auto">Selecting the best server...</string>
-
-    <string name="settings_per_app_russian_notice"><![CDATA[For security and stable service operation, known spy apps always bypass the VPN and cannot be returned to the tunnel. The full list of <a href="https://github.com/fptn-project/FptnClient-Android/blob/develop/app/src/main/res/values/always_excluded_apps.xml">excluded apps</a> and <a href="https://github.com/fptn-project/FptnClient-Android/blob/develop/app/src/main/res/values/split_tunnel_domains.xml">their domains</a> is available on GitHub.]]></string>
     <string name="per_app_vpn_mode_title">Per-app VPN mode</string>
     <string name="per_app_vpn_mode_info">Here you can configure per-app VPN mode: enable vpn for apps (default) or allow/disallow VPN for specific apps.</string>
     <string name="per_app_vpn_settings_title">Tunneling settings</string>
