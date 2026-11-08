@@ -1,6 +1,9 @@
-import java.io.FileInputStream
 import java.io.InputStream
+import java.net.HttpURLConnection
 import java.net.URL
+import java.io.IOException
+import java.nio.file.Files
+import java.nio.file.StandardCopyOption
 import java.util.Properties
 import java.util.zip.GZIPOutputStream
 import kotlin.concurrent.thread
@@ -30,30 +33,64 @@ if (isGmsBuild) {
 
 val keystorePropertiesFile: File = rootProject.file("keystore.properties")
 
+// GitHub Actions signing credentials. Blank environment variables are treated as missing.
+val ciKeyAlias = System.getenv("KEY_ALIAS")?.takeIf { it.isNotBlank() }
+val ciKeyPassword = System.getenv("KEY_PASSWORD")?.takeIf { it.isNotBlank() }
+val ciStorePassword = System.getenv("STORE_PASSWORD")?.takeIf { it.isNotBlank() }
+val ciKeystorePath = System.getenv("KEYSTORE_PATH")?.takeIf { it.isNotBlank() }
+val ciKeystoreFile = ciKeystorePath?.let { project.file(it) }
+
+val hasCiSigning = ciKeyAlias != null &&
+    ciKeyPassword != null &&
+    ciStorePassword != null &&
+    ciKeystoreFile?.isFile == true
+
+// Local signing credentials from the root-level keystore.properties file.
+val localKeystoreProperties = Properties().apply {
+    if (keystorePropertiesFile.isFile) {
+        keystorePropertiesFile.inputStream().use { load(it) }
+    }
+}
+
+val localKeyAlias = localKeystoreProperties.getProperty("keyAlias")?.takeIf { it.isNotBlank() }
+val localKeyPassword = localKeystoreProperties.getProperty("keyPassword")?.takeIf { it.isNotBlank() }
+val localStorePassword = localKeystoreProperties.getProperty("storePassword")?.takeIf { it.isNotBlank() }
+val localKeystorePath = localKeystoreProperties.getProperty("storeFile")?.takeIf { it.isNotBlank() }
+val localKeystoreFile = localKeystorePath?.let { project.file(it) }
+
+val hasLocalSigning = localKeyAlias != null &&
+    localKeyPassword != null &&
+    localStorePassword != null &&
+    localKeystoreFile?.isFile == true
+
+val hasReleaseSigning = hasCiSigning || hasLocalSigning
+
 android {
     namespace = "com.foxnet.app"
     compileSdk = rootProject.extra.get("compileSdkVersion") as Int
     ndkVersion = "28.1.13356709"
-    var isCI = System.getenv("KEY_ALIAS") != null
+
     signingConfigs {
         create("release") {
-            if (isCI) {
-                keyAlias = System.getenv("KEY_ALIAS") ?: ""
-                keyPassword = System.getenv("KEY_PASSWORD") ?: ""
-                storeFile = file(System.getenv("KEYSTORE_PATH") ?: "android-keystore.jks")
-                storePassword = System.getenv("STORE_PASSWORD") ?: ""
-            } else {
-                if (keystorePropertiesFile.exists()) {
-                    val keystoreProperties = Properties()
-                    keystoreProperties.load(FileInputStream(keystorePropertiesFile))
-                    keyAlias = keystoreProperties["keyAlias"] as String
-                    keyPassword = keystoreProperties["keyPassword"] as String
-                    storeFile = file(keystoreProperties["storeFile"]!!)
-                    storePassword = keystoreProperties["storePassword"] as String
-                } else {
+            when {
+                hasCiSigning -> {
+                    keyAlias = ciKeyAlias!!
+                    keyPassword = ciKeyPassword!!
+                    storeFile = ciKeystoreFile!!
+                    storePassword = ciStorePassword!!
+                }
+
+                hasLocalSigning -> {
+                    keyAlias = localKeyAlias!!
+                    keyPassword = localKeyPassword!!
+                    storeFile = localKeystoreFile!!
+                    storePassword = localStorePassword!!
+                }
+
+                else -> {
                     println(
-                        "Warning: keystore.properties file not found. " +
-                            "Release signing configuration will not be applied.",
+                        "Warning: Release keystore is not configured or unavailable. " +
+                            "The Release APK will be built without release signing.",
                     )
                 }
             }
@@ -94,7 +131,7 @@ android {
             isMinifyEnabled = false
             isShrinkResources = false
             isDebuggable = false
-            if (isCI || keystorePropertiesFile.exists()) {
+            if (hasReleaseSigning) {
                 signingConfig = signingConfigs.getByName("release")
             }
             proguardFiles(
@@ -238,7 +275,7 @@ tasks.register("downloadBlocklist") {
 
     val outputFile = file("src/main/res/raw/blocklist.gz")
     outputs.file(outputFile)
-    // Re-download only if the cached file is older than 7 days
+    // Re-download only if the cached file is older than 7 days.
     outputs.upToDateWhen {
         val maxAgeMs = 7L * 24 * 60 * 60 * 1000
         outputFile.exists() && (System.currentTimeMillis() - outputFile.lastModified()) < maxAgeMs
@@ -247,45 +284,87 @@ tasks.register("downloadBlocklist") {
     doLast {
         outputFile.parentFile.mkdirs()
         val sources = listOf(
-            // Disabled: hagezi ultimate adds ~257k domains on top! It causes memory issues
+            // Disabled: hagezi ultimate adds ~257k domains on top! It causes memory issues.
             // "https://raw.githubusercontent.com/hagezi/dns-blocklists/main/wildcard/ultimate-onlydomains.txt",
-            "https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts"
+            "https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts",
         )
-        val maxAttempts = 10
-        val retryDelayMs = 5_000L
+        val maxAttempts = 3
+        val retryDelayMs = 2_000L
+        val connectTimeoutMs = 10_000
+        val readTimeoutMs = 30_000
 
         val contents = sources.map { src ->
             var content: String? = null
+
             for (attempt in 1..maxAttempts) {
                 println("[blocklist] downloading $src (attempt $attempt/$maxAttempts)")
+
                 try {
-                    content = URL(src).readText()
+                    val connection = URL(src).openConnection() as HttpURLConnection
+                    try {
+                        connection.connectTimeout = connectTimeoutMs
+                        connection.readTimeout = readTimeoutMs
+                        connection.instanceFollowRedirects = true
+                        connection.requestMethod = "GET"
+
+                        val statusCode = connection.responseCode
+                        if (statusCode !in 200..299) {
+                            throw IOException("HTTP $statusCode")
+                        }
+
+                        content = connection.inputStream.bufferedReader().use { it.readText() }
+                    } finally {
+                        connection.disconnect()
+                    }
+
                     break
                 } catch (e: Exception) {
                     println("[blocklist] attempt $attempt failed: ${e.message}")
-                    if (attempt != maxAttempts) Thread.sleep(retryDelayMs)
+                    if (attempt != maxAttempts) {
+                        Thread.sleep(retryDelayMs)
+                    }
                 }
             }
-            content ?: throw GradleException("[blocklist] failed $src after $maxAttempts attempts")
+
+            content ?: throw GradleException(
+                "[blocklist] failed to download $src after $maxAttempts attempts",
+            )
         }
 
         val tmpFile = File(outputFile.path + ".tmp")
-        GZIPOutputStream(tmpFile.outputStream()).bufferedWriter().use { writer ->
-            for (content in contents) {
-                writer.write(content)
-                if (!content.endsWith("\n")) writer.newLine()
+        try {
+            GZIPOutputStream(tmpFile.outputStream()).bufferedWriter().use { writer ->
+                for (content in contents) {
+                    writer.write(content)
+                    if (!content.endsWith("\n")) writer.newLine()
+                }
+            }
+
+            // Replace the previous file only after the new gzip file is fully written.
+            Files.move(
+                tmpFile.toPath(),
+                outputFile.toPath(),
+                StandardCopyOption.REPLACE_EXISTING,
+            )
+        } finally {
+            if (tmpFile.exists()) {
+                tmpFile.delete()
             }
         }
-        tmpFile.renameTo(outputFile)
+
         println("[blocklist] Saved to ${outputFile.path} (${outputFile.length() / 1024} KB)")
     }
 }
 
 tasks.named("preBuild") { dependsOn("conanInstall", "downloadBlocklist") }
-afterEvaluate {
-    tasks.matching { t ->
-        t.name.endsWith("Resources") || t.name.endsWith("SourceSetPaths") || t.name.endsWith("NavigationResources")
-    }.configureEach {
+
+// Configure matching tasks lazily, including tasks registered later by Android Gradle Plugin.
+tasks.configureEach {
+    if (
+        name.endsWith("Resources") ||
+        name.endsWith("SourceSetPaths") ||
+        name.endsWith("NavigationResources")
+    ) {
         dependsOn("downloadBlocklist")
     }
 }
