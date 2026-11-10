@@ -236,7 +236,7 @@ fun BypassMethodsScreen(
             horizontalAlignment = Alignment.CenterHorizontally,
         ) {
             Image(
-                painter = painterResource(R.drawable.ic_logo_24),
+                painter = painterResource(R.drawable.ic_app_24),
                 contentDescription = null,
                 modifier = Modifier
                     .padding(top = 30.dp)
@@ -252,7 +252,7 @@ fun BypassMethodsScreen(
 
             // Connection strategy card
             BypassCard {
-                CardHeader(stringResource(R.string.connection_strategy_title))
+                CardHeader(stringResource(R.string.connection_strategy_title), R.drawable.ic_share_2_24)
                 LegacySpinner(
                     items = ConnectionStrategy.entries,
                     selected = connectionStrategy,
@@ -268,7 +268,7 @@ fun BypassMethodsScreen(
 
             // Bypass method card
             BypassCard {
-                CardHeader(stringResource(R.string.bypass_methods_title))
+                CardHeader(stringResource(R.string.bypass_methods_title), R.drawable.ic_server_24)
                 Column(
                     modifier = Modifier
                         .fillMaxWidth()
@@ -316,7 +316,7 @@ fun BypassMethodsScreen(
                         verticalAlignment = Alignment.CenterVertically,
                     ) {
                         Image(
-                            painter = painterResource(R.drawable.ic_baseline_your_servers_24),
+                            painter = painterResource(R.drawable.ic_edit_3_24),
                             contentDescription = null,
                             modifier = Modifier
                                 .padding(horizontal = 12.dp)
@@ -356,7 +356,7 @@ fun BypassMethodsScreen(
                         verticalAlignment = Alignment.CenterVertically,
                     ) {
                         Image(
-                            painter = painterResource(R.drawable.ic_sql_server_24),
+                            painter = painterResource(R.drawable.ic_search_24),
                             contentDescription = null,
                             modifier = Modifier
                                 .padding(end = 8.dp)
@@ -525,10 +525,10 @@ private fun BypassCard(modifier: Modifier = Modifier, content: @Composable () ->
 }
 
 @Composable
-private fun CardHeader(title: String) {
+private fun CardHeader(title: String, icon: Int) {
     Row(verticalAlignment = Alignment.CenterVertically) {
         Image(
-            painter = painterResource(R.drawable.ic_logo_24),
+            painter = painterResource(icon),
             contentDescription = null,
             modifier = Modifier
                 .padding(start = 4.dp, end = 12.dp)

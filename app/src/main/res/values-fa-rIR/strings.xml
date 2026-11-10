@@ -14,6 +14,7 @@
 
     <string name="menu_home">صفحه اصلی</string>
     <string name="menu_settings">تنظیمات</string>
+    <string name="menu_info">اطلاعات</string>
 
     <string name="your_servers">سرورهای VPN شما</string>
 
@@ -342,4 +343,12 @@
     <string name="connection_strategy_rolling">تونل چرخشی</string>
     <string name="connection_strategy_dual">تونل چرخشی دوگانه</string>
     <string name="connection_strategy_triple">تونل چرخشی سه‌گانه</string>
+    <string name="foxnet_info_subtitle">نسخه غیررسمی کلاینت FPTN با رابط کاربری بازطراحی‌شده.</string>
+    <string name="foxnet_info_developer_label">توسعه‌دهنده نسخه تغییر یافته:</string>
+    <string name="foxnet_info_developer_github"><![CDATA[<a href="https://github.com/NFX-boop/FoxNet-VPN"><b>FoxNetVPN</b></a>]]></string>
+    <string name="foxnet_info_telegram"><![CDATA[<a href="https://t.me/FoxNetVPN">t.me/FoxNetVPN</a>]]></string>
+    <string name="foxnet_info_original_label">پروژه اصلی:</string>
+    <string name="foxnet_info_original_source"><![CDATA[کد منبع: <a href="https://github.com/fptn-project/FptnClient-Android"><b>FPTN Project</b></a>]]></string>
+    <string name="foxnet_info_license">⚖️ مجوز: GNU GPL v3.0</string>
+    <string name="sni_checker_notification_group_name">بررسی SNI</string>
 </resources>

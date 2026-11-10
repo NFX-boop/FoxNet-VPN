@@ -109,7 +109,7 @@ fun BackupSettingsScreen(
                 .padding(bottom = 8.dp),
         ) {
             Image(
-                painter = painterResource(R.drawable.ic_logo_24),
+                painter = painterResource(R.drawable.ic_save_24),
                 contentDescription = null,
                 modifier = Modifier
                     .align(Alignment.CenterHorizontally)

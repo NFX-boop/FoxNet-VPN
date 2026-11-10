@@ -82,7 +82,7 @@ fun TrafficCard(
                 Image(
                     painter = painterResource(R.drawable.upload),
                     contentDescription = null,
-                    colorFilter = ColorFilter.tint(Color(0xFF7E97B8)),
+                    colorFilter = ColorFilter.tint(Color(0xFF38BDF8)),
                     modifier = Modifier
                         .size(dimensionResource(R.dimen.traffic_icon_size))
                         .padding(start = 8.dp),

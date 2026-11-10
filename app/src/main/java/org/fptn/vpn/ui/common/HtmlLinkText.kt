@@ -47,6 +47,8 @@ fun HtmlLinkText(
         update = { textView ->
             textView.text = Html.fromHtml(html, Html.FROM_HTML_MODE_LEGACY)
             if (color != Color.Unspecified) textView.setTextColor(color.toArgb())
+            // FoxNet palette: links are always the link blue (#38BDF8), regardless of text color.
+            textView.setLinkTextColor(Color(0xFF38BDF8).toArgb())
             if (fontSize != TextUnit.Unspecified) textView.textSize = fontSize.value
             textView.setTypeface(textView.typeface, if (bold) Typeface.BOLD else Typeface.NORMAL)
             textView.setPadding(paddingLeft, paddingTop, paddingRight, paddingBottom)

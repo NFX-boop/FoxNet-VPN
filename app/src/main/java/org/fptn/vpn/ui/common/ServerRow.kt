@@ -40,7 +40,7 @@ fun ServerRow(server: ServerEntity, modifier: Modifier = Modifier) {
             if (server.IsAuto()) {
                 Box(modifier = Modifier.size(width = 40.dp, height = 62.dp), contentAlignment = Alignment.Center) {
                     Image(
-                        painter = painterResource(R.drawable.ic_logo),
+                        painter = painterResource(R.drawable.ic_globe_2_24),
                         contentDescription = null,
                         colorFilter = ColorFilter.tint(White),
                         modifier = Modifier.size(40.dp),

@@ -53,24 +53,24 @@ public class TrafficSpeedChart extends View {
         paddingPx = TypedValue.applyDimension(
                 TypedValue.COMPLEX_UNIT_DIP, 6, context.getResources().getDisplayMetrics());
 
-        // FoxNet palette: download = muted soft green, upload = muted slate blue.
+        // FoxNet palette: download = cyan accent, upload = link blue.
         // Only paint colors were changed here; sampling and drawing logic is untouched.
-        downloadLinePaint.setColor(0xFF4FC87A);
+        downloadLinePaint.setColor(0xFF31F4EC);
         downloadLinePaint.setStyle(Paint.Style.STROKE);
         downloadLinePaint.setStrokeWidth(2f);
         downloadLinePaint.setStrokeCap(Paint.Cap.ROUND);
         downloadLinePaint.setStrokeJoin(Paint.Join.ROUND);
 
-        downloadFillPaint.setColor(0x334FC87A);
+        downloadFillPaint.setColor(0x3331F4EC);
         downloadFillPaint.setStyle(Paint.Style.FILL);
 
-        uploadLinePaint.setColor(0xFF7E97B8);
+        uploadLinePaint.setColor(0xFF38BDF8);
         uploadLinePaint.setStyle(Paint.Style.STROKE);
         uploadLinePaint.setStrokeWidth(2f);
         uploadLinePaint.setStrokeCap(Paint.Cap.ROUND);
         uploadLinePaint.setStrokeJoin(Paint.Join.ROUND);
 
-        uploadFillPaint.setColor(0x337E97B8);
+        uploadFillPaint.setColor(0x3338BDF8);
         uploadFillPaint.setStyle(Paint.Style.FILL);
 
         gridPaint.setColor(0x1AFFFFFF);

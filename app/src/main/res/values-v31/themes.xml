@@ -3,12 +3,12 @@
   Android 12+ (API 31) system splash screen: the OS shows the FoxNet logo on the
   app's charcoal background before the first frame is composed. On older APIs these
   attributes are ignored and the window shows `android:windowBackground` from
-  values/themes.xml (application_background — the same #0B0D16).
+  values/themes.xml (application_background — the same #0C1523).
 -->
 <resources>
     <style name="Base.Theme.FptnClient" parent="@style/Theme.AppCompat.NoActionBar">
-        <item name="android:windowSplashScreenBackground">#0B0D16</item>
+        <item name="android:windowSplashScreenBackground">#0C1523</item>
         <item name="android:windowSplashScreenAnimatedIcon">@drawable/foxnet_logo_icon</item>
-        <item name="android:windowSplashScreenIconBackgroundColor">#0B0D16</item>
+        <item name="android:windowSplashScreenIconBackgroundColor">#0C1523</item>
     </style>
 </resources>

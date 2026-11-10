@@ -153,7 +153,7 @@ fun ExperimentalSettingsScreen(
         try {
             val componentName = ComponentName(context, FptnTileService::class.java)
             val label = context.getString(R.string.app_name)
-            val icon = Icon.createWithResource(context, R.drawable.ic_logo)
+            val icon = Icon.createWithResource(context, R.drawable.foxnet_icon_mono)
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
                 statusBarManager.requestAddTileService(
                     componentName,
@@ -209,7 +209,7 @@ fun ExperimentalSettingsScreen(
             horizontalAlignment = Alignment.CenterHorizontally,
         ) {
             Image(
-                painter = painterResource(R.drawable.ic_logo_24),
+                painter = painterResource(R.drawable.ic_settings_2_24),
                 contentDescription = null,
                 modifier = Modifier
                     .padding(top = 30.dp)

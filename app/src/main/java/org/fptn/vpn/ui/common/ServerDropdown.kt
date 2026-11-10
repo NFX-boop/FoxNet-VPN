@@ -68,7 +68,7 @@ fun ServerDropdown(
                 .width(with(density) { anchorWidthPx.toDp() })
                 .heightIn(max = 220.dp),
             shape = RoundedCornerShape(20.dp),
-            containerColor = Color(0xFF151B28),
+            containerColor = Color(0xFF242C39),
         ) {
             servers.forEach { server ->
                 DropdownMenuItem(

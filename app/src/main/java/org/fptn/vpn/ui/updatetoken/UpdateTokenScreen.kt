@@ -143,7 +143,7 @@ fun UpdateTokenScreen(
             verticalArrangement = Arrangement.Center,
         ) {
             Image(
-                painter = painterResource(R.drawable.icon_settings_circle_100),
+                painter = painterResource(R.drawable.ic_refresh_cw_24),
                 contentDescription = null,
                 modifier = Modifier
                     .padding(top = 30.dp)

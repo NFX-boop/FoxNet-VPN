@@ -155,43 +155,33 @@ fun SettingsScreen(
             }
 
             SettingsNavRow(
-                icon = R.drawable.ic_baseline_update_24,
+                icon = R.drawable.ic_refresh_cw_24,
                 title = stringResource(R.string.update_token_button),
                 onClick = onNavigateUpdateToken,
-            ) {
-                HtmlLinkText(
-                    html = stringResource(R.string.settings_token_info_html),
-                    color = Gray,
-                    fontSize = 12.sp,
-                    modifier = Modifier.fillMaxWidth(),
-                )
-            }
+            )
 
             SettingsNavRow(
-                icon = R.drawable.ic_logo_24,
+                icon = R.drawable.ic_app_24,
                 title = stringResource(R.string.bypass_methods_title),
-                description = stringResource(R.string.bypass_methods_info),
                 onClick = onNavigateBypassMethods,
             )
 
             SettingsNavRow(
-                icon = R.drawable.ic_per_app_vpn_mode,
+                icon = R.drawable.ic_split_tunneling_24,
                 title = stringResource(R.string.per_app_vpn_settings_title),
-                description = stringResource(R.string.per_app_vpn_mode_info),
                 onClick = onNavigatePerAppVpnMode,
             )
 
             SettingsNavRow(
-                icon = R.drawable.ic_experimental_features_24,
+                icon = R.drawable.ic_settings_2_24,
                 title = stringResource(R.string.experimental_features_label),
-                description = stringResource(R.string.experimental_features_info),
                 onClick = onNavigateExperimentalSettings,
             )
 
             SettingsCard {
                 Row(verticalAlignment = Alignment.CenterVertically) {
                     Image(
-                        painter = painterResource(R.drawable.foxnet_icon_mono),
+                        painter = painterResource(R.drawable.ic_smartphone_24),
                         contentDescription = null,
                         modifier = Modifier.size(16.dp),
                     )
@@ -203,13 +193,11 @@ fun SettingsScreen(
                 }
                 Column(modifier = Modifier.padding(start = 14.dp, top = 6.dp, bottom = 4.dp)) {
                     PermissionRow(
-                        icon = R.drawable.eco_battery_24,
                         label = stringResource(R.string.battery_optimization_request_dialog_title),
                         granted = batteryOptimizationGranted,
                         onRequest = { showBatteryOptimizationDialog = true },
                     )
                     PermissionRow(
-                        icon = R.drawable.cloud_back_up_24,
                         label = stringResource(R.string.background_data_request_dialog_title),
                         granted = backgroundDataGranted,
                         onRequest = { showBackgroundDataDialog = true },
@@ -218,9 +206,8 @@ fun SettingsScreen(
             }
 
             SettingsNavRow(
-                icon = R.drawable.ic_logo_24,
+                icon = R.drawable.ic_bug_24,
                 title = stringResource(R.string.logs),
-                description = stringResource(R.string.view_and_copy_application_logs),
                 onClick = onNavigateLogs,
             ) {
                 Column(modifier = Modifier.fillMaxWidth()) {
@@ -261,14 +248,13 @@ fun SettingsScreen(
             }
 
             SettingsNavRow(
-                icon = R.drawable.cloud_back_up_24,
+                icon = R.drawable.ic_save_24,
                 title = stringResource(R.string.backups_title),
-                description = stringResource(R.string.backups_info),
                 onClick = onNavigateBackup,
             )
 
             SettingsNavRow(
-                icon = R.drawable.ic_baseline_logout_24,
+                icon = R.drawable.ic_close_24,
                 title = stringResource(R.string.logout_button),
                 onClick = { showLogoutConfirm = true },
             )
@@ -397,7 +383,6 @@ private fun SettingsCard(content: @Composable () -> Unit) {
 private fun SettingsNavRow(
     icon: Int,
     title: String,
-    description: String? = null,
     onClick: () -> Unit,
     content: @Composable (() -> Unit)? = null,
 ) {
@@ -433,14 +418,6 @@ private fun SettingsNavRow(
                 modifier = Modifier.size(16.dp),
             )
         }
-        if (description != null) {
-            Text(
-                text = description,
-                color = Gray,
-                fontSize = 12.sp,
-                modifier = Modifier.padding(start = 12.dp, end = 12.dp, bottom = 12.dp),
-            )
-        }
         content?.let {
             Box(modifier = Modifier.padding(start = 12.dp, end = 12.dp, bottom = 12.dp)) {
                 it()
@@ -450,18 +427,13 @@ private fun SettingsNavRow(
 }
 
 @Composable
-private fun PermissionRow(icon: Int, label: String, granted: Boolean, onRequest: () -> Unit) {
+private fun PermissionRow(label: String, granted: Boolean, onRequest: () -> Unit) {
     Row(
         modifier = Modifier
             .fillMaxWidth()
             .padding(vertical = 2.dp),
         verticalAlignment = Alignment.CenterVertically,
     ) {
-        Image(
-            painter = painterResource(icon),
-            contentDescription = null,
-            modifier = Modifier.size(28.dp),
-        )
         Text(
             text = label,
             color = White,

@@ -98,7 +98,7 @@ fun <T> LegacySpinner(
                 .width(with(density) { anchorWidthPx.toDp() })
                 .heightIn(max = DROPDOWN_ITEM_HEIGHT * maxVisibleItems + DROPDOWN_VERTICAL_PADDING),
             shape = RoundedCornerShape(20.dp),
-            containerColor = Color(0xFF151B28),
+            containerColor = Color(0xFF242C39),
         ) {
             items.forEach { item ->
                 DropdownMenuItem(

@@ -128,7 +128,7 @@ fun LogsScreen(
             .windowInsetsPadding(WindowInsets.safeDrawing.only(WindowInsetsSides.Top + WindowInsetsSides.Horizontal)),
     ) {
         Image(
-            painter = painterResource(R.drawable.ic_logo_24),
+            painter = painterResource(R.drawable.ic_bug_24),
             contentDescription = null,
             modifier = Modifier
                 .align(Alignment.CenterHorizontally)
@@ -173,7 +173,7 @@ fun LogsScreen(
                                 .weight(1f)
                                 .fillMaxWidth()
                                 .padding(horizontal = 16.dp, vertical = 8.dp)
-                                .background(Color(0xFF1A1A1A)),
+                                .background(Color(0xFF0C1523)),
                         ) {
                             LazyColumn(state = listState) {
                                 if (state.hasMoreBefore) {

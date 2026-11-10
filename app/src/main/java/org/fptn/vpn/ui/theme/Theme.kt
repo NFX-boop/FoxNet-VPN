@@ -23,7 +23,7 @@ private val LightColorScheme = lightColorScheme(
 /**
  * App-wide Material 3 theme for the Compose UI.
  *
- * The FoxNet design is a deep charcoal background with a muted soft-green accent,
+ * The FoxNet design is a deep night background (#0C1523) with a cyan accent (#31F4EC),
  * so the dark scheme is the default.
  */
 @Composable
