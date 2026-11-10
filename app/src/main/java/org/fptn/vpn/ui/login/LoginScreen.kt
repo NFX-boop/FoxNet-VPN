@@ -9,8 +9,8 @@ import androidx.compose.foundation.interaction.collectIsFocusedAsState
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.heightIn
@@ -47,13 +47,11 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import com.elvishew.xlog.XLog
 import kotlinx.coroutines.launch
 import com.foxnet.app.R
-import com.foxnet.app.ui.common.HtmlLinkText
 import com.foxnet.app.ui.common.LegacyPillButton
 import com.foxnet.app.ui.common.legacyDrawableBackground
 import com.foxnet.app.ui.theme.Black
 import com.foxnet.app.ui.theme.Hint
 import com.foxnet.app.ui.theme.Primary
-import com.foxnet.app.ui.theme.White
 import com.foxnet.app.ui.theme.Yellow
 import com.foxnet.app.utils.ResourcesUtils.getStringResourceByName
 import com.foxnet.app.exception.ErrorCode
@@ -125,26 +123,19 @@ fun LoginScreen(
         verticalArrangement = Arrangement.Center,
     ) {
         Image(
-            painter = painterResource(R.drawable.icon_account_circle_100),
+            painter = painterResource(R.drawable.foxnet_logo_info),
             contentDescription = null,
-            modifier = Modifier.size(160.dp),
-        )
-
-        HtmlLinkText(
-            html = stringResource(R.string.telegram_bot_html),
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(top = 32.dp),
-            color = White,
-            fontSize = 16.sp,
-            padding = PaddingValues(8.dp),
+                .padding(top = 24.dp)
+                .aspectRatio(6f),
         )
 
         Box(
             modifier = Modifier
                 .fillMaxWidth()
                 .heightIn(min = 48.dp, max = 140.dp)
-                .padding(top = 16.dp)
+                .padding(top = 32.dp)
                 .legacyDrawableBackground(R.drawable.round_back_white10_20),
         ) {
             BasicTextField(

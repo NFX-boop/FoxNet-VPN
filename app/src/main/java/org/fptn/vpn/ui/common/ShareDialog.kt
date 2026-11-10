@@ -46,18 +46,11 @@ fun ShareDialog(onDismiss: () -> Unit) {
                         .padding(horizontal = 12.dp)
                         .aspectRatio(6f),
                 )
-                Spacer(modifier = Modifier.height(12.dp))
-                Text(
-                    text = stringResource(R.string.foxnet_info_title),
-                    color = White,
-                    fontSize = 18.sp,
-                    fontWeight = FontWeight.Bold,
-                )
+                Spacer(modifier = Modifier.height(16.dp))
                 Text(
                     text = stringResource(R.string.foxnet_info_subtitle),
                     color = White,
                     fontSize = 13.sp,
-                    modifier = Modifier.padding(top = 6.dp),
                 )
                 InfoLinkBlock(
                     label = stringResource(R.string.foxnet_info_developer_label),
@@ -89,9 +82,8 @@ fun ShareDialog(onDismiss: () -> Unit) {
 @Composable
 private fun InfoLinkBlock(label: String, githubHtml: String, telegramHtml: String?) {
     Column(
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(top = 12.dp),
+        horizontalAlignment = Alignment.CenterHorizontally,
+        modifier = Modifier.padding(top = 12.dp),
     ) {
         Text(
             text = label,
@@ -100,7 +92,7 @@ private fun InfoLinkBlock(label: String, githubHtml: String, telegramHtml: Strin
             fontWeight = FontWeight.Bold,
         )
         Row(
-            modifier = Modifier.padding(top = 4.dp, start = 2.dp),
+            modifier = Modifier.padding(top = 4.dp),
             verticalAlignment = Alignment.CenterVertically,
         ) {
             Image(
@@ -116,7 +108,7 @@ private fun InfoLinkBlock(label: String, githubHtml: String, telegramHtml: Strin
         }
         if (telegramHtml != null) {
             Row(
-                modifier = Modifier.padding(top = 4.dp, start = 2.dp),
+                modifier = Modifier.padding(top = 4.dp),
                 verticalAlignment = Alignment.CenterVertically,
             ) {
                 Image(

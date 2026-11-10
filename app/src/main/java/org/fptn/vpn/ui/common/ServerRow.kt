@@ -38,18 +38,20 @@ fun ServerRow(server: ServerEntity, modifier: Modifier = Modifier) {
     ) {
         Row(verticalAlignment = Alignment.CenterVertically) {
             if (server.IsAuto()) {
-                Box(modifier = Modifier.size(width = 40.dp, height = 62.dp), contentAlignment = Alignment.Center) {
+                // Same icon box (32x38dp) and text size as the regular rows — the original
+                // FPTN row item used the same layout for Auto and for real servers.
+                Box(modifier = Modifier.size(width = 32.dp, height = 38.dp), contentAlignment = Alignment.Center) {
                     Image(
                         painter = painterResource(R.drawable.ic_globe_2_24),
                         contentDescription = null,
                         colorFilter = ColorFilter.tint(White),
-                        modifier = Modifier.size(40.dp),
+                        modifier = Modifier.size(32.dp),
                     )
                 }
                 Text(
                     text = server.name,
                     color = White,
-                    fontSize = 22.sp,
+                    fontSize = 16.sp,
                     maxLines = 1,
                     overflow = TextOverflow.Ellipsis,
                     modifier = Modifier

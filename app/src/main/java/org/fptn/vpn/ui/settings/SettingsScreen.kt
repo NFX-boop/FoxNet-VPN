@@ -13,6 +13,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.WindowInsetsSides
+import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.only
@@ -49,7 +50,6 @@ import com.elvishew.xlog.XLog
 import com.foxnet.app.R
 import com.foxnet.app.enums.AppLogLevel
 import com.foxnet.app.ui.common.BottomNavBar
-import com.foxnet.app.ui.common.HtmlLinkText
 import com.foxnet.app.ui.common.LegacySpinner
 import com.foxnet.app.ui.common.ShareDialog
 import com.foxnet.app.ui.common.legacyDrawableBackground
@@ -133,26 +133,19 @@ fun SettingsScreen(
             horizontalAlignment = Alignment.CenterHorizontally,
         ) {
             Image(
-                painter = painterResource(R.drawable.icon_settings_circle_100),
+                painter = painterResource(R.drawable.foxnet_logo_info),
                 contentDescription = null,
                 modifier = Modifier
                     .padding(top = 30.dp)
-                    .size(80.dp),
+                    .padding(horizontal = 48.dp)
+                    .fillMaxWidth()
+                    .aspectRatio(6f),
             )
             Text(
                 text = appVersion,
                 color = White,
                 modifier = Modifier.padding(top = 10.dp),
             )
-
-            SettingsCard {
-                HtmlLinkText(
-                    html = stringResource(R.string.info_message_html),
-                    color = White,
-                    bold = true,
-                    modifier = Modifier.fillMaxWidth(),
-                )
-            }
 
             SettingsNavRow(
                 icon = R.drawable.ic_refresh_cw_24,
@@ -167,7 +160,7 @@ fun SettingsScreen(
             )
 
             SettingsNavRow(
-                icon = R.drawable.ic_split_tunneling_24,
+                icon = R.drawable.ic_per_app_vpn_mode,
                 title = stringResource(R.string.per_app_vpn_settings_title),
                 onClick = onNavigatePerAppVpnMode,
             )
@@ -183,7 +176,7 @@ fun SettingsScreen(
                     Image(
                         painter = painterResource(R.drawable.ic_smartphone_24),
                         contentDescription = null,
-                        modifier = Modifier.size(16.dp),
+                        modifier = Modifier.size(32.dp),
                     )
                     Text(
                         text = stringResource(R.string.required_permissions),

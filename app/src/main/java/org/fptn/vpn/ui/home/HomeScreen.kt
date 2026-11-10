@@ -55,6 +55,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.layout.onSizeChanged
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.LocalContext
@@ -94,9 +95,12 @@ private const val TOKEN_MAX_AGE_MS = 14L * 24 * 60 * 60 * 1000
 private const val TOKEN_STALE_AGE_MS = 3L * 24 * 60 * 60 * 1000
 private const val CONNECT_FAILURES_BEFORE_HELP = 2
 
-// Matches home_layout.xml's `app:layout_constraintVertical_bias="0.38"` on the connect button,
-// which is constant — it does not vary by screen height.
-private const val CONNECT_BUTTON_VERTICAL_BIAS = 0.38f
+// The original FPTN `adjustButtonVerticalBias()` adapts the button's vertical bias to the SCREEN
+// height in dp (not the available height): <600dp -> 0.10, 600-699dp -> 0.15, >=700dp -> 0.25.
+// The thresholds are reproduced below from the legacy HomeActivity source.
+private const val CONNECT_BUTTON_VERTICAL_BIAS_SHORT = 0.10f
+private const val CONNECT_BUTTON_VERTICAL_BIAS_MEDIUM = 0.15f
+private const val CONNECT_BUTTON_VERTICAL_BIAS_TALL = 0.25f
 
 // In landscape the available height is much smaller, so the same bias would leave no room for
 // the status text / server dropdown / traffic card below the button — pin the button near the
@@ -107,7 +111,8 @@ private const val CONNECT_BUTTON_VERTICAL_BIAS_LANDSCAPE = 0f
  * Compose port of the legacy `HomeActivity` / `home_layout.xml`. Reuses [HomeActivityViewModel]
  * unchanged. The connect button's vertical position (originally a ConstraintLayout bias against
  * the parent, independent of its siblings) is reproduced with a top spacer sized via
- * [CONNECT_BUTTON_VERTICAL_BIAS] against the actually measured available height, rather than
+ * [CONNECT_BUTTON_VERTICAL_BIAS_SHORT]/[CONNECT_BUTTON_VERTICAL_BIAS_MEDIUM]/
+ * [CONNECT_BUTTON_VERTICAL_BIAS_TALL] against the actually measured available height, rather than
  * pulled in via `constraintlayout-compose`, matching how every other ported screen in this app
  * favors plain Compose layout primitives over new layout dependencies. Because the timer block
  * above the button is always composed (see below), its measured height is subtracted from the
@@ -225,10 +230,11 @@ fun HomeScreen(
                 onNavigateBypassMethods()
                 return
             }
-            if (needsBackgroundSetup) {
-                connectAfterBackgroundSetup = true
-                visitedPin = false
-                showBackgroundSetupDialog = true
+            if (!notificationsGranted) {
+                // Original FPTN behavior: a toast + the system notification settings instead of
+                // an in-app dialog window (the dialog's scrim was the "gray layer" on connect).
+                Toast.makeText(context, R.string.notifications_request_title, Toast.LENGTH_SHORT).show()
+                openNotificationSettings(context)
                 return
             }
             proceedToVpnConnect()
@@ -454,9 +460,16 @@ fun HomeScreen(
                 val availableHeight = maxHeight
                 val buttonSize = dimensionResource(R.dimen.toggle_button_size)
                 val density = LocalDensity.current
-                val isLandscape = LocalConfiguration.current.orientation == Configuration.ORIENTATION_LANDSCAPE
-                val verticalBias =
-                    if (isLandscape) CONNECT_BUTTON_VERTICAL_BIAS_LANDSCAPE else CONNECT_BUTTON_VERTICAL_BIAS
+                val configuration = LocalConfiguration.current
+                val isLandscape = configuration.orientation == Configuration.ORIENTATION_LANDSCAPE
+                // Original FPTN adjustButtonVerticalBias(): based on the screen height in dp.
+                val verticalBias = if (isLandscape) {
+                    CONNECT_BUTTON_VERTICAL_BIAS_LANDSCAPE
+                } else when {
+                    configuration.screenHeightDp < 600 -> CONNECT_BUTTON_VERTICAL_BIAS_SHORT
+                    configuration.screenHeightDp < 700 -> CONNECT_BUTTON_VERTICAL_BIAS_MEDIUM
+                    else -> CONNECT_BUTTON_VERTICAL_BIAS_TALL
+                }
                 // Always composed (never conditionally removed) so it reserves the same layout
                 // space whether shown or not — otherwise the button below would jump down by the
                 // timer's height the moment it appears on connect. The legacy ConstraintLayout
@@ -490,6 +503,7 @@ fun HomeScreen(
                     Image(
                         painter = painterResource(if (activeState) R.drawable.toggle_button_on else R.drawable.toggle_button_off),
                         contentDescription = null,
+                        contentScale = ContentScale.Fit,
                         modifier = Modifier
                             .size(buttonSize)
                             .clickable(

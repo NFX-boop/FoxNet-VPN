@@ -130,7 +130,7 @@ fun PerAppVpnModeScreen(
             horizontalAlignment = Alignment.CenterHorizontally,
         ) {
             Image(
-                painter = painterResource(R.drawable.ic_split_tunneling_24),
+                painter = painterResource(R.drawable.ic_per_app_vpn_mode),
                 contentDescription = null,
                 modifier = Modifier
                     .padding(top = 30.dp)
@@ -181,7 +181,7 @@ fun PerAppVpnModeScreen(
             SettingsCard {
                 Row(verticalAlignment = Alignment.CenterVertically) {
                     Image(
-                        painter = painterResource(R.drawable.ic_split_tunneling_24),
+                        painter = painterResource(R.drawable.ic_per_app_vpn_mode),
                         contentDescription = null,
                         modifier = Modifier
                             .padding(start = 4.dp, end = 12.dp)

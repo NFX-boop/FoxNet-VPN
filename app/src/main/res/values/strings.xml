@@ -33,25 +33,14 @@
         ]]>
     </string>
 
-    <string name="info_message_html">
-        <![CDATA[
-        FoxNet VPN is an unofficial modification of the FPTN client with a redesigned interface.
-        <br/>
-        <br/>
-        Based on <a href="https://github.com/fptn-project/FptnClient-Android">FPTN</a> (GPL-3.0).
-        <br/>
-        Source code: <a href="https://github.com/NXF-boop/FoxNet-VPN">github.com/NXF-boop/FoxNet-VPN</a>
-        ]]>
-    </string>
 
-    <string name="foxnet_info_title" translatable="false">FoxNet VPN</string>
-    <string name="foxnet_info_subtitle">An unofficial modification of the FPTN client with a redesigned interface.</string>
+        <string name="foxnet_info_subtitle">An unofficial modification of the FPTN client with a redesigned interface.</string>
     <string name="foxnet_info_developer_label">Modification developer:</string>
     <string name="foxnet_info_developer_github"><![CDATA[<a href="https://github.com/NFX-boop/FoxNet-VPN"><b>FoxNetVPN</b></a>]]></string>
     <string name="foxnet_info_telegram"><![CDATA[<a href="https://t.me/FoxNetVPN">t.me/FoxNetVPN</a>]]></string>
     <string name="foxnet_info_original_label">Original project:</string>
     <string name="foxnet_info_original_source"><![CDATA[Source code: <a href="https://github.com/fptn-project/FptnClient-Android"><b>FPTN Project</b></a>]]></string>
-    <string name="foxnet_info_license">⚖️ License: GNU GPL v3.0</string>
+    <string name="foxnet_info_license">License: GNU GPL v3.0</string>
 
     <string name="connecting">FoxNet VPN is connecting...</string>
     <string name="connected">FoxNet VPN is connected</string>
@@ -66,6 +55,7 @@
     <string name="running">FoxNet VPN is running</string>
     <string name="reconnection">FoxNet VPN is reconnecting...</string>
 
+    <string name="notifications_request_title">Please enable notifications.</string>
     <string name="vpn_permission_warning">For running FoxNet VPN you need permissions!</string>
 
     <string name="cannot_connect_sni_check_active">Cannot connect: SNI search is in progress</string>
@@ -82,11 +72,6 @@
 
     <string name="server_label">Server:</string>
 
-    <string name="telegram_bot_html">
-        <![CDATA[
-        Use the Telegram-bot <a href="https://t.me/fptn_bot">@fptn_bot</a> to get a token
-        ]]>
-    </string>
 
     <string name="notification_channel_name">When connected</string>
     <string name="notification_group_name">Main</string>

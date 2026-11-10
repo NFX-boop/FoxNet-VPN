@@ -30,20 +30,6 @@
         یک توکن جدید از <a href="https://t.me/fptn_bot">@fptn_bot</a> با دستور <b><font color="#03DAC5">/token</font></b> دریافت کنید.
         ]]>
     </string>
-    <string name="info_message_html">
-        <![CDATA[
-        FPTN یک فناوری VPN است که کاملاً از صفر توسعه داده شده و شامل پروتکل اختصاصی، سرور و کلاینت‌های چندسکویی می‌شود. این یک پروژه غیرانتفاعی با متن‌باز است که توسط داوطلبان توسعه داده می‌شود و برای دور زدن سانسور طراحی شده است.
-        <br/>
-        <br/>
-        وب‌سایت ما: =<a href="https://storage.googleapis.com/fptn.org/index.html"></a>
-        <br/>
-        گروه ما در تلگرام <a href="https://t.me/fptn_project">@fptn_project</a>
-        <br/>
-        اپلیکیشن در <a href="https://play.google.com/store/apps/details?id=org.fptn.vpn">Google Play Market</a>
-        <br/>
-        می‌توانید از ما حمایت کنید در <a href="https://boosty.to/fptn/donate">Boosty</a>
-        ]]>
-    </string>
     <string name="vpn_permission_warning">برای عملکرد FPTN، دسترسی‌های لازم مورد نیاز است!</string>
 
     <string name="cannot_connect_sni_check_active">اتصال ممکن نیست: جستجوی SNI در حال انجام است</string>
@@ -72,11 +58,6 @@
 
     <string name="server_label">سرور:</string>
 
-    <string name="telegram_bot_html">
-        <![CDATA[
-        برای دریافت توکن از ربات تلگرام <a href="https://t.me/fptn_bot">@fptn_bot</a> استفاده کنید
-        ]]>
-    </string>
 
     <string name="notification_channel_name">در حالت اتصال</string>
     <string name="notification_group_name">اصلی</string>
