@@ -1,5 +1,7 @@
 import os
+import shutil
 import subprocess
+import tempfile
 from pathlib import Path
 
 from conan import ConanFile
@@ -21,7 +23,79 @@ class FptnLib(ConanFile):
     }
 
     def requirements(self):
-        self._register_local_recipe("fptn", "fptn", "0.0.0")
+        self._export_fptn_recipe()
+        self.requires("fptn/0.0.0@local/local")
+
+    def _export_fptn_recipe(self):
+        # The fptn recipe does not list its `.clang-tidy` in `exports_sources`, so a
+        # cache build runs clang-tidy (enabled by its CMakeLists whenever a
+        # clang-tidy >= 20 binary is found) without a config and fails every file
+        # with "no checks enabled". Export the pinned submodule through a staging
+        # copy whose recipe adds `.clang-tidy` to `exports_sources`; Conan itself
+        # then ships the config via export_source -> source. The submodule and the
+        # conan cache are never modified directly.
+        script_dir = os.path.dirname(os.path.abspath(__file__))
+        submodule_dir = os.path.join(script_dir, "libs", "fptn")
+        if not os.path.isdir(submodule_dir):
+            raise RuntimeError(
+                f"FPTN submodule not found at {submodule_dir}. "
+                "Initialize it with: git submodule update --init --recursive"
+            )
+
+        clang_tidy_config = os.path.join(submodule_dir, ".clang-tidy")
+        if not os.path.isfile(clang_tidy_config):
+            raise RuntimeError(
+                f"FPTN clang-tidy config not found at {clang_tidy_config}. "
+                "The pinned FPTN revision must ship a .clang-tidy file."
+            )
+
+        self.output.info(f"Exporting fptn recipe from a staging copy of {submodule_dir}")
+        staging_dir = tempfile.mkdtemp(prefix="fptn-recipe-")
+        try:
+            shutil.copytree(
+                submodule_dir,
+                staging_dir,
+                dirs_exist_ok=True,
+                ignore=shutil.ignore_patterns(".git"),
+            )
+            self._add_clang_tidy_to_exports_sources(staging_dir)
+            subprocess.run(
+                [
+                    "conan",
+                    "export",
+                    staging_dir,
+                    "--name=fptn",
+                    "--version=0.0.0",
+                    "--user=local",
+                    "--channel=local",
+                ],
+                check=True,
+                cwd=script_dir,
+            )
+        finally:
+            shutil.rmtree(staging_dir, ignore_errors=True)
+
+    def _add_clang_tidy_to_exports_sources(self, recipe_dir):
+        conanfile_path = os.path.join(recipe_dir, "conanfile.py")
+        with open(conanfile_path, encoding="utf-8") as recipe_file:
+            content = recipe_file.read()
+        exports_sources_marker = "    exports_sources = (\n"
+        marker_index = content.find(exports_sources_marker)
+        if marker_index == -1:
+            raise RuntimeError(f"Unexpected fptn conanfile.py format: {conanfile_path}")
+        block_end_index = content.find("\n    )", marker_index)
+        if block_end_index == -1:
+            raise RuntimeError(f"Unexpected fptn conanfile.py format: {conanfile_path}")
+        exports_sources_block = content[marker_index:block_end_index]
+        if '".clang-tidy"' not in exports_sources_block:
+            patched_block = exports_sources_block.replace(
+                exports_sources_marker,
+                exports_sources_marker + '        ".clang-tidy",\n',
+                1,
+            )
+            content = content.replace(exports_sources_block, patched_block, 1)
+            with open(conanfile_path, "w", encoding="utf-8") as recipe_file:
+                recipe_file.write(content)
 
     def build_requirements(self):
         self.test_requires("gtest/1.17.0")
@@ -48,26 +122,3 @@ class FptnLib(ConanFile):
 
     def config_options(self):
         pass
-
-    def _register_local_recipe(self, recipe, name, version, override=False, force=False):
-        script_dir = os.path.dirname(os.path.abspath(__file__))
-        recipe_rel_path = os.path.join(script_dir, "libs", "fptn")
-
-        if os.path.exists(recipe_rel_path):
-            self.output.info(f"Exporting local recipe: {recipe_rel_path}")
-            subprocess.run(
-                [
-                    "conan",
-                    "export",
-                    recipe_rel_path,
-                    f"--name={name}",
-                    f"--version={version}",
-                    "--user=local",
-                    "--channel=local",
-                ],
-                check=True,
-                cwd=script_dir,
-            )
-            self.requires(f"{name}/{version}@local/local", override=override, force=force)
-        else:
-            self.output.warning(f"Recipe path not found: {recipe_rel_path}")
