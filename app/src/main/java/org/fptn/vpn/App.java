@@ -24,6 +24,7 @@ import android.app.Activity;
 import android.app.Application;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
+import android.content.res.Configuration;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -34,6 +35,7 @@ import com.foxnet.app.utils.XLogInitializer;
 import com.elvishew.xlog.XLog;
 
 public class App extends Application {
+    private static final String DIAG_TAG = "FoxNetDiag";
     @Override
     public void onCreate() {
         super.onCreate();
@@ -47,20 +49,34 @@ public class App extends Application {
         registerActivityLifecycleCallbacks(new ActivityLifecycleCallbacks() {
             @Override
             public void onActivityCreated(@NonNull Activity activity, @Nullable Bundle savedInstanceState) {
+                XLog.i(DIAG_TAG + " ACTIVITY_CREATED class=" + activity.getClass().getName()
+                        + " taskId=" + activity.getTaskId()
+                        + " requestedOrientation=" + activity.getRequestedOrientation()
+                        + " configOrientation=" + activity.getResources().getConfiguration().orientation);
                 applyOrientation(activity);
             }
 
             // Re-apply on resume so a settings change takes effect on already-created
             // screens (onActivityCreated fires only once, at creation).
             @Override public void onActivityResumed(@NonNull Activity activity) {
+                XLog.i(DIAG_TAG + " ACTIVITY_RESUMED class=" + activity.getClass().getName()
+                        + " taskId=" + activity.getTaskId()
+                        + " requestedOrientation=" + activity.getRequestedOrientation()
+                        + " configOrientation=" + activity.getResources().getConfiguration().orientation);
                 applyOrientation(activity);
             }
 
             @Override public void onActivityStarted(@NonNull Activity activity) {}
-            @Override public void onActivityPaused(@NonNull Activity activity) {}
-            @Override public void onActivityStopped(@NonNull Activity activity) {}
+            @Override public void onActivityPaused(@NonNull Activity activity) {
+                XLog.i(DIAG_TAG + " ACTIVITY_PAUSED class=" + activity.getClass().getName());
+            }
+            @Override public void onActivityStopped(@NonNull Activity activity) {
+                XLog.i(DIAG_TAG + " ACTIVITY_STOPPED class=" + activity.getClass().getName());
+            }
             @Override public void onActivitySaveInstanceState(@NonNull Activity activity, @NonNull Bundle outState) {}
-            @Override public void onActivityDestroyed(@NonNull Activity activity) {}
+            @Override public void onActivityDestroyed(@NonNull Activity activity) {
+                XLog.i(DIAG_TAG + " ACTIVITY_DESTROYED class=" + activity.getClass().getName());
+            }
         });
     }
 
@@ -68,6 +84,8 @@ public class App extends Application {
         final int orientation = SharedPrefUtils.getAllowLandscape(activity)
                 ? ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED
                 : ActivityInfo.SCREEN_ORIENTATION_PORTRAIT;
+        XLog.i(DIAG_TAG + " APPLY_ORIENTATION class=" + activity.getClass().getName()
+                + " current=" + activity.getRequestedOrientation() + " target=" + orientation);
         try {
             activity.setRequestedOrientation(orientation);
         } catch (IllegalStateException ignored) {
