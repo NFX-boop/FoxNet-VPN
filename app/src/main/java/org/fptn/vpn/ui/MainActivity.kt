@@ -3,6 +3,7 @@ package com.foxnet.app.ui
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.navigation.NavHostController
@@ -27,10 +28,13 @@ import com.foxnet.app.ui.theme.FptnTheme
  */
 class MainActivity : ComponentActivity() {
 
+    private val diagTag = "FoxNetDiag"
+
     private lateinit var navController: NavHostController
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        Log.i(diagTag, "MAIN_ON_CREATE savedState=" + (savedInstanceState != null))
         val startRoute = intent.getStringExtra(EXTRA_ROUTE) ?: AppRoute.SPLASH
         setContent {
             navController = rememberNavController()
@@ -45,6 +49,7 @@ class MainActivity : ComponentActivity() {
 
     override fun onNewIntent(intent: Intent) {
         super.onNewIntent(intent)
+        Log.i(diagTag, "MAIN_ON_NEW_INTENT")
         setIntent(intent)
         // This activity's `singleTop` launch mode delivers an intentForRoute Intent here
         // (instead of a fresh onCreate) whenever it's already on top, e.g. the app is already
@@ -54,6 +59,11 @@ class MainActivity : ComponentActivity() {
         navController.navigate(route) {
             launchSingleTop = true
         }
+    }
+
+    override fun onDestroy() {
+        Log.i(diagTag, "MAIN_ON_DESTROY changingConfigurations=$isChangingConfigurations")
+        super.onDestroy()
     }
 
     companion object {
