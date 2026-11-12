@@ -15,6 +15,7 @@ import android.os.Build
 import android.os.IBinder
 import android.provider.Settings
 import android.widget.Toast
+import android.util.Log
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.Image
@@ -95,6 +96,7 @@ import androidx.core.net.toUri
 private const val TOKEN_MAX_AGE_MS = 14L * 24 * 60 * 60 * 1000
 private const val TOKEN_STALE_AGE_MS = 3L * 24 * 60 * 60 * 1000
 private const val CONNECT_FAILURES_BEFORE_HELP = 2
+private const val FOXNET_DIAG_TAG = "FoxNetDiag"
 
 // The original FPTN `adjustButtonVerticalBias()` adapts the button's vertical bias to the SCREEN
 // height in dp (not the available height): <600dp -> 0.10, 600-699dp -> 0.15, >=700dp -> 0.25.
@@ -182,6 +184,7 @@ fun HomeScreen(
     val vpnPermissionLauncher = rememberLauncherForActivityResult(
         ActivityResultContracts.StartActivityForResult(),
     ) { result ->
+        Log.i(FOXNET_DIAG_TAG, "VPN_PERMISSION_RESULT resultCode=${result.resultCode}")
         if (result.resultCode == Activity.RESULT_OK) {
             FptnService.startToConnect(context, selectedServer)
         } else {
@@ -203,6 +206,7 @@ fun HomeScreen(
 
     fun connectVpn() {
         val intent = VpnService.prepare(context)
+        Log.i(FOXNET_DIAG_TAG, "VPN_PREPARE returnedIntent=${intent != null} package=${context.packageName}")
         if (intent != null) {
             vpnPermissionLauncher.launch(intent)
         } else {
@@ -225,6 +229,7 @@ fun HomeScreen(
     }
 
     fun onToggleConnectClick() {
+        Log.i(FOXNET_DIAG_TAG, "CONNECT_BUTTON_TAP state=$connectionState")
         if (connectionState == ConnectionState.DISCONNECTED) {
             if (SniCheckerService.getStaticState() == SniCheckerServiceState.ACTIVE) {
                 Toast.makeText(context, R.string.cannot_connect_sni_check_active, Toast.LENGTH_SHORT).show()
