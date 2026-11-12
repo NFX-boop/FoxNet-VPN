@@ -231,11 +231,10 @@ fun HomeScreen(
                 onNavigateBypassMethods()
                 return
             }
-            if (!notificationsGranted) {
-                // Original FPTN behavior: a toast + the system notification settings instead of
-                // an in-app dialog window (the dialog's scrim was the "gray layer" on connect).
-                Toast.makeText(context, R.string.notifications_request_title, Toast.LENGTH_SHORT).show()
-                openNotificationSettings(context)
+            if (needsBackgroundSetup) {
+                connectAfterBackgroundSetup = true
+                visitedPin = false
+                showBackgroundSetupDialog = true
                 return
             }
             proceedToVpnConnect()
