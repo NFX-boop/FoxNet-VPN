@@ -34,6 +34,7 @@ import android.net.Network;
 import android.net.NetworkCapabilities;
 import android.net.Uri;
 import android.os.Build;
+import android.os.Process;
 import android.os.PowerManager;
 import android.provider.Settings;
 
@@ -52,69 +53,95 @@ public class PermissionsUtils {
     private static final String TAG = PermissionsUtils.class.getSimpleName();
 
     public static boolean isAlwaysOnVpnEnabledByAnotherApp(Context context) {
-        // Primary: Settings.Secure key (stock Android)
+        // The secure setting identifies the package selected for Always-on VPN. Ignore stale
+        // package names left behind after uninstalling a previous client version.
         try {
             String alwaysOnVpnApp = Settings.Secure.getString(
                     context.getContentResolver(), "always_on_vpn_app");
             if (alwaysOnVpnApp != null
                     && !alwaysOnVpnApp.isEmpty()
                     && !alwaysOnVpnApp.equals(context.getPackageName())) {
-                XLog.tag(TAG).w("Always-on VPN detected via Settings.Secure [app=%s]", alwaysOnVpnApp);
-                return true;
+                if (isPackageInstalled(context, alwaysOnVpnApp)) {
+                    XLog.tag(TAG).w("Always-on VPN detected via Settings.Secure [app=%s]", alwaysOnVpnApp);
+                    return true;
+                }
+                XLog.tag(TAG).i("Ignoring stale Always-on VPN package setting [app=%s]", alwaysOnVpnApp);
             }
         } catch (Exception e) {
             XLog.tag(TAG).w("Settings.Secure always_on_vpn_app check failed: %s", e.getMessage());
         }
 
-        // Fallback 1: check for an active VPN network owned by another app via ConnectivityManager
+        // getOwnerUid() is available from Android 11 (API 30). INVALID_UID means the owner
+        // is hidden or unknown; it must not be interpreted as proof of a foreign VPN.
+        boolean ownVpnNetworkFound = false;
         try {
             ConnectivityManager cm = (ConnectivityManager) context.getSystemService(CONNECTIVITY_SERVICE);
             if (cm != null) {
                 int myUid = context.getApplicationInfo().uid;
                 for (Network network : cm.getAllNetworks()) {
                     NetworkCapabilities caps = cm.getNetworkCapabilities(network);
-                    if (caps != null && caps.hasTransport(NetworkCapabilities.TRANSPORT_VPN)) {
-                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
-                            if (caps.getOwnerUid() != myUid) {
-                                XLog.tag(TAG).w("Active VPN from another app detected [ownerUid=%d, myUid=%d]",
-                                        caps.getOwnerUid(), myUid);
-                                return true;
-                            }
+                    if (caps != null && caps.hasTransport(NetworkCapabilities.TRANSPORT_VPN)
+                            && Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+                        int ownerUid = caps.getOwnerUid();
+                        if (ownerUid == Process.INVALID_UID) {
+                            XLog.tag(TAG).d("VPN owner UID is hidden or unknown; not classifying it as another app");
+                        } else if (ownerUid == myUid) {
+                            ownVpnNetworkFound = true;
+                            XLog.tag(TAG).d("Active VPN network belongs to this app [uid=%d]", myUid);
                         } else {
-                            XLog.tag(TAG).w("Active VPN detected (API<29, owner unknown)");
+                            XLog.tag(TAG).w("Active VPN from another app detected [ownerUid=%d, myUid=%d]",
+                                    ownerUid, myUid);
                             return true;
                         }
                     }
                 }
             }
         } catch (NoSuchMethodError e) {
-            // Samsung Android 10 ships without NetworkCapabilities.getOwnerUid() despite API level 29
+            // Defensive fallback for OEM builds that omit NetworkCapabilities.getOwnerUid().
             XLog.tag(TAG).w("VPN owner check not supported on this device: %s", e.getMessage());
         } catch (Exception e) {
             XLog.tag(TAG).w("VPN network fallback check failed: %s", e.getMessage());
         }
 
-        // Fallback 2: check for active tun/ppp tunnel network interface at OS level
-        try {
-            Enumeration<NetworkInterface> interfaces = NetworkInterface.getNetworkInterfaces();
-            if (interfaces != null) {
-                while (interfaces.hasMoreElements()) {
-                    NetworkInterface iface = interfaces.nextElement();
-                    String name = iface.getName().toLowerCase(Locale.ROOT);
-                    if (iface.isUp() && !iface.isLoopback()
-                            && (name.startsWith("tun") || name.startsWith("ppp") || name.startsWith("vpn"))) {
-                        XLog.tag(TAG).w("Active tunnel interface detected [name=%s]", iface.getName());
-                        return true;
+        // If Android identified our own VPN network, do not mistake its TUN interface for a
+        // second VPN client.
+        if (ownVpnNetworkFound) {
+            return false;
+        }
+
+        // On Android 11+, an interface name cannot establish ownership and may describe this
+        // app's own or a stale tunnel. Only use this heuristic on older versions, where the
+        // public API does not expose the VPN owner UID.
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.R) {
+            try {
+                Enumeration<NetworkInterface> interfaces = NetworkInterface.getNetworkInterfaces();
+                if (interfaces != null) {
+                    while (interfaces.hasMoreElements()) {
+                        NetworkInterface iface = interfaces.nextElement();
+                        String name = iface.getName().toLowerCase(Locale.ROOT);
+                        if (iface.isUp() && !iface.isLoopback()
+                                && (name.startsWith("tun") || name.startsWith("ppp") || name.startsWith("vpn"))) {
+                            XLog.tag(TAG).w("Active tunnel interface detected [name=%s]", iface.getName());
+                            return true;
+                        }
                     }
                 }
+            } catch (Exception e) {
+                XLog.tag(TAG).w("NetworkInterface tunnel check failed: %s", e.getMessage());
             }
-        } catch (Exception e) {
-            XLog.tag(TAG).w("NetworkInterface tunnel check failed: %s", e.getMessage());
         }
 
         return false;
     }
 
+    private static boolean isPackageInstalled(Context context, String packageName) {
+        try {
+            context.getPackageManager().getApplicationInfo(packageName, 0);
+            return true;
+        } catch (PackageManager.NameNotFoundException e) {
+            return false;
+        }
+    }
     public static boolean checkNotificationEnabled(Context context) {
         NotificationManager notificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
         if (!notificationManager.areNotificationsEnabled()) {

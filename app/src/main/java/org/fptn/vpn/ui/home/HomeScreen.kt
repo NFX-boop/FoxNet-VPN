@@ -85,6 +85,7 @@ import com.foxnet.app.ui.common.ServerDropdown
 import com.foxnet.app.ui.common.ShareDialog
 import com.foxnet.app.ui.common.findActivity
 import com.foxnet.app.ui.common.legacyDrawableBackground
+import com.foxnet.app.ui.theme.Secondary
 import com.foxnet.app.ui.theme.White
 import com.foxnet.app.utils.PermissionsUtils
 import com.foxnet.app.utils.SharedPrefUtils
@@ -501,7 +502,7 @@ fun HomeScreen(
                     }
 
                     Image(
-                        painter = painterResource(if (activeState) R.drawable.toggle_button_on else R.drawable.toggle_button_off),
+                        painter = painterResource(if (connectionState == ConnectionState.CONNECTED) R.drawable.toggle_button_on else R.drawable.toggle_button_off),
                         contentDescription = null,
                         contentScale = ContentScale.Fit,
                         modifier = Modifier
@@ -514,7 +515,7 @@ fun HomeScreen(
 
                     Text(
                         text = statusText,
-                        color = White,
+                        color = if (connectionState == ConnectionState.CONNECTED) Secondary else White,
                         modifier = Modifier.padding(top = 4.dp, bottom = 4.dp),
                     )
 
