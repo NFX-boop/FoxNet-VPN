@@ -69,7 +69,9 @@ public class App extends Application {
                 ? ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED
                 : ActivityInfo.SCREEN_ORIENTATION_PORTRAIT;
         try {
-            activity.setRequestedOrientation(orientation);
+            if (activity.getRequestedOrientation() != orientation) {
+                activity.setRequestedOrientation(orientation);
+            }
         } catch (IllegalStateException ignored) {
             // API 26 forbids setRequestedOrientation on translucent activities.
         }
