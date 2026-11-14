@@ -62,7 +62,9 @@ fun AppNavHost(
     val sniState by SniCheckerService.getStaticServiceStateLiveData().observeAsState(SniCheckerServiceState.INACTIVE)
 
     LaunchedEffect(vpnState.isActiveState) {
-        if (vpnState.isActiveState) {
+        if (vpnState.isActiveState &&
+            navController.currentDestination?.route != AppRoute.HOME
+        ) {
             navController.navigate(AppRoute.HOME) { launchSingleTop = true }
         }
     }
@@ -82,6 +84,7 @@ fun AppNavHost(
         exitTransition = { ExitTransition.None },
         popEnterTransition = { EnterTransition.None },
         popExitTransition = { ExitTransition.None },
+        sizeTransform = { null },
     ) {
         composable(AppRoute.SPLASH) {
             SplashScreen(
