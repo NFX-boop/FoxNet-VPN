@@ -27,3 +27,7 @@ auth/
 local.properties
 keystore.properties
 /.kotlin/
+# Android release signing keys
+*.jks
+*.p12
+*.keystore
