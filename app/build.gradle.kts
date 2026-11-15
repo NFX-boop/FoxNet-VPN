@@ -116,13 +116,12 @@ android {
 
         externalNativeBuild {
             cmake {
+                // Limit native compilation to supported ABIs. The ABI splits below
+                // control APK packaging; ndk.abiFilters must not be set alongside splits.
+                abiFilters += listOf("arm64-v8a", "armeabi-v7a")
                 cppFlags("-v")
                 arguments("-DCMAKE_TOOLCHAIN_FILE=conan_android_toolchain.cmake")
             }
-        }
-
-        ndk {
-            abiFilters += listOf("arm64-v8a", "armeabi-v7a")
         }
     }
 
