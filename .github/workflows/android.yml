@@ -47,15 +47,16 @@ jobs:
         run: |
           TAG_VERSION="${GITHUB_REF_NAME#v}"
           if [[ ! "$TAG_VERSION" =~ ^([0-9]+\.[0-9]+\.[0-9]+)$ ]]; then
-            echo "Error: Release tag must use vMAJOR.MINOR.PATCH or vMAJOR.MINOR.PATCH.BUILD"
+            echo "Error: Release tag must use vMAJOR.MINOR.PATCH"
             exit 1
           fi
+          BASE_VERSION="${BASH_REMATCH[1]}"
           BUILD_NUMBER="$GITHUB_RUN_NUMBER"
           if (( BUILD_NUMBER > 999 )); then
             echo "Error: GitHub Actions build number $BUILD_NUMBER exceeds the supported version component range (0-999)"
             exit 1
           fi
-          RELEASE_VERSION="${BASH_REMATCH[1]}.$BUILD_NUMBER"
+          RELEASE_VERSION="$BASE_VERSION.$BUILD_NUMBER"
           echo "RELEASE_VERSION=$RELEASE_VERSION" >> $GITHUB_ENV
           echo "RELEASE_VERSION_NAME=$RELEASE_VERSION" >> $GITHUB_ENV
 
