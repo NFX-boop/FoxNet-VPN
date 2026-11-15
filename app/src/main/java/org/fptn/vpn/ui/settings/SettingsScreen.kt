@@ -25,6 +25,7 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Switch
+import androidx.compose.material3.SwitchDefaults
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
@@ -437,6 +438,10 @@ private fun PermissionRow(label: String, granted: Boolean, onRequest: () -> Unit
         Switch(
             checked = granted,
             onCheckedChange = { if (!granted) onRequest() },
+            colors = SwitchDefaults.colors(
+                checkedThumbColor = White,
+                uncheckedThumbColor = White,
+            ),
         )
     }
 }

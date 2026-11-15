@@ -17,6 +17,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.onGloballyPositioned
+import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.unit.dp
 import com.foxnet.app.R
@@ -66,7 +67,7 @@ fun ServerDropdown(
             onDismissRequest = { expanded = false },
             modifier = Modifier
                 .width(with(density) { anchorWidthPx.toDp() })
-                .heightIn(max = 220.dp),
+                .heightIn(max = (LocalConfiguration.current.screenHeightDp * 0.65f).dp),
             shape = RoundedCornerShape(20.dp),
             containerColor = Color(0xFF242C39),
         ) {

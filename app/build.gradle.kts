@@ -122,7 +122,7 @@ android {
         }
 
         ndk {
-            abiFilters += listOf("arm64-v8a", "armeabi-v7a", "x86_64")
+            abiFilters += listOf("arm64-v8a", "armeabi-v7a")
         }
     }
 
@@ -176,8 +176,8 @@ android {
         abi {
             isEnable = true
             reset()
-            include("arm64-v8a", "armeabi-v7a", "x86_64")
-            isUniversalApk = true
+            include("arm64-v8a", "armeabi-v7a")
+            isUniversalApk = false
         }
     }
 
@@ -254,7 +254,7 @@ tasks.register("conanInstall") {
     doLast {
         val conanBuildDir = layout.buildDirectory.dir("conan").get().asFile.apply { mkdirs() }
         listOf("Debug", "Release", "RelWithDebInfo").forEach { buildType ->
-            listOf("armv8", "armv7", "x86_64").forEach { arch ->
+            listOf("armv8", "armv7").forEach { arch ->
                 val process = ProcessBuilder(
                     "conan", "install", "$projectDir/src/main/cpp",
                     "--profile", "$rootDir/conan/profiles/android-studio",
