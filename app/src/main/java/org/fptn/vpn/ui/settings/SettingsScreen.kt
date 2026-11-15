@@ -55,6 +55,7 @@ import com.foxnet.app.ui.common.LegacySpinner
 import com.foxnet.app.ui.common.ShareDialog
 import com.foxnet.app.ui.common.legacyDrawableBackground
 import com.foxnet.app.ui.theme.Gray
+import com.foxnet.app.ui.theme.Primary
 import com.foxnet.app.ui.theme.White
 import com.foxnet.app.utils.PermissionsUtils
 import com.foxnet.app.utils.SharedPrefUtils
@@ -439,8 +440,8 @@ private fun PermissionRow(label: String, granted: Boolean, onRequest: () -> Unit
             checked = granted,
             onCheckedChange = { if (!granted) onRequest() },
             colors = SwitchDefaults.colors(
-                checkedThumbColor = White,
-                uncheckedThumbColor = White,
+                checkedThumbColor = Primary,
+                uncheckedThumbColor = Primary,
             ),
         )
     }

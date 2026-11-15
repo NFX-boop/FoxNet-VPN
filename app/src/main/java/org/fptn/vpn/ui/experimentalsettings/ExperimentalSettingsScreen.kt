@@ -26,6 +26,7 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Switch
+import androidx.compose.material3.SwitchDefaults
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
@@ -57,6 +58,7 @@ import com.foxnet.app.ui.common.MultilineTextInputDialog
 import com.foxnet.app.ui.common.ShareDialog
 import com.foxnet.app.ui.common.findActivity
 import com.foxnet.app.ui.common.legacyDrawableBackground
+import com.foxnet.app.ui.theme.Primary
 import com.foxnet.app.ui.theme.White
 import com.foxnet.app.utils.SharedPrefUtils
 
@@ -276,6 +278,10 @@ fun ExperimentalSettingsScreen(
                             domainBlacklistEnabled = it
                             SharedPrefUtils.saveDomainBlacklistEnabled(context, it)
                         },
+                        colors = SwitchDefaults.colors(
+                            checkedThumbColor = Primary,
+                            uncheckedThumbColor = Primary,
+                        ),
                     )
                 }
             }
@@ -580,7 +586,14 @@ private fun SwitchRow(text: String, checked: Boolean, onCheckedChange: (Boolean)
         verticalAlignment = Alignment.CenterVertically,
     ) {
         Text(text = text, color = White, fontSize = 14.sp, modifier = Modifier.weight(1f))
-        Switch(checked = checked, onCheckedChange = onCheckedChange)
+        Switch(
+            checked = checked,
+            onCheckedChange = onCheckedChange,
+            colors = SwitchDefaults.colors(
+                checkedThumbColor = Primary,
+                uncheckedThumbColor = Primary,
+            ),
+        )
     }
 }
 

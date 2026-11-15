@@ -30,6 +30,7 @@ import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Icon
 import androidx.compose.material3.RadioButton
 import androidx.compose.material3.Switch
+import androidx.compose.material3.SwitchDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -59,6 +60,7 @@ import com.foxnet.app.ui.common.MultilineTextInputDialog
 import com.foxnet.app.ui.common.ShareDialog
 import com.foxnet.app.ui.common.legacyDrawableBackground
 import com.foxnet.app.ui.theme.Gray
+import com.foxnet.app.ui.theme.Primary
 import com.foxnet.app.ui.theme.TealAccent
 import com.foxnet.app.ui.theme.White
 import com.foxnet.app.utils.SharedPrefUtils
@@ -173,6 +175,10 @@ fun PerAppVpnModeScreen(
                             splitTunnelEnabled = it
                             SharedPrefUtils.saveSplitTunnelDomainsEnabled(context, it)
                         },
+                        colors = SwitchDefaults.colors(
+                            checkedThumbColor = Primary,
+                            uncheckedThumbColor = Primary,
+                        ),
                     )
                 }
             }
@@ -263,6 +269,10 @@ fun PerAppVpnModeScreen(
                             showSystemApps = it
                             viewModel.setShowSystemApps(it)
                         },
+                        colors = SwitchDefaults.colors(
+                            checkedThumbColor = Primary,
+                            uncheckedThumbColor = Primary,
+                        ),
                     )
                 }
 
@@ -382,6 +392,10 @@ private fun AppRow(app: AppInfo, mode: PerAppVpnMode, onToggle: () -> Unit) {
             checked = checked,
             onCheckedChange = { onToggle() },
             enabled = !forcedExcluded,
+            colors = SwitchDefaults.colors(
+                checkedThumbColor = Primary,
+                uncheckedThumbColor = Primary,
+            ),
         )
     }
 }
