@@ -40,5 +40,6 @@ public class SniEntity {
     @NonNull
     private String sni;
 
+    @Builder.Default
     private boolean checked = false;
 }
