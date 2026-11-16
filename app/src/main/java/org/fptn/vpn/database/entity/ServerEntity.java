@@ -32,9 +32,7 @@ import java.util.Objects;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
-import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 @Data
 @Entity(tableName = "server_table")
@@ -55,8 +53,7 @@ public class ServerEntity {
     private boolean censured;
 
     @Ignore // not save in DB (Room ORM annotation)
-    @Getter
-    @Setter
+    @Builder.Default
     private long pingMs = -1;
 
     // Written out explicitly alongside the Lombok @Getter/@Setter above: Kotlin's Java-interop
