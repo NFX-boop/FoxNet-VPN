@@ -57,34 +57,22 @@ import java.util.concurrent.Executors;
 
 import kotlin.Pair;
 import kotlin.Triple;
-import lombok.Getter;
 
 public class HomeActivityViewModel extends AndroidViewModel {
     private static final String TAG = HomeActivityViewModel.class.getSimpleName();
 
-    @Getter
     private final MutableLiveData<FptnServiceState> serviceStateMutableLiveData = new MutableLiveData<>(FptnServiceState.INITIAL);
 
     /* Only for show on views */
-    @Getter
     private final MutableLiveData<String> timerTextLiveData = new MutableLiveData<>(getApplication().getString(R.string.zero_time));
-    @Getter
     private final MutableLiveData<String> downloadSpeedAsStringLiveData = new MutableLiveData<>(getApplication().getString(R.string.zero_speed));
-    @Getter
     private final MutableLiveData<String> uploadSpeedAsStringLiveData = new MutableLiveData<>(getApplication().getString(R.string.zero_speed));
-    @Getter
     private final MutableLiveData<String> errorTextLiveData = new MutableLiveData<>("");
-    @Getter
     private final MutableLiveData<String> statusTextLiveData = new MutableLiveData<>(getApplication().getString(R.string.disconnected));
-    @Getter
     private final MutableLiveData<List<ServerEntity>> serverDtoListLiveData = new MutableLiveData<>(List.of());
-    @Getter
     private final MutableLiveData<String> connectedServerInfoLiveData = new MutableLiveData<>();
-    @Getter
     private final MutableLiveData<String> downloadTrafficLiveData = new MutableLiveData<>("0 B");
-    @Getter
     private final MutableLiveData<String> uploadTrafficLiveData = new MutableLiveData<>("0 B");
-    @Getter
     private final MutableLiveData<long[]> speedSampleLiveData = new MutableLiveData<>();
 
     // Written out explicitly (instead of relying on Lombok's @Getter) for the LiveData fields
