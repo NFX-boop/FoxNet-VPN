@@ -39,12 +39,10 @@ import com.foxnet.app.enums.ConnectionState;
 import com.foxnet.app.services.vpn.FptnService;
 import com.foxnet.app.utils.PermissionsUtils;
 
-import lombok.Getter;
 
 public class FptnTileService extends TileService {
     private static final String TAG = FptnTileService.class.getSimpleName();
 
-    @Getter
     private static final MutableLiveData<ConnectionState> serviceStateMutableLiveData = new MutableLiveData<>(ConnectionState.DISCONNECTED);
 
     // Written out explicitly (instead of relying on Lombok's @Getter) because Kotlin's
