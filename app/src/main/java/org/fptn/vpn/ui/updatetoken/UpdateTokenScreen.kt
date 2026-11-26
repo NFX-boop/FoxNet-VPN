@@ -51,6 +51,12 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import com.elvishew.xlog.XLog
 import kotlinx.coroutines.launch
 import com.foxnet.app.R
+import com.foxnet.app.ui.qrscanner.QrScannerScreen
+import com.foxnet.app.ui.qrscanner.QrTokenValidator
+import com.foxnet.app.ui.qrscanner.ScanQrButton
+import kotlinx.coroutines.CancellationException
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 import com.foxnet.app.ui.common.BottomNavBar
 import com.foxnet.app.ui.common.HtmlLinkText
 import com.foxnet.app.ui.common.LegacyPillButton
@@ -85,6 +91,9 @@ fun UpdateTokenScreen(
         mutableStateOf(TextFieldValue(""))
     }
     var showShareDialog by remember { mutableStateOf(false) }
+    var showQrScanner by remember { mutableStateOf(false) }
+    var qrImported by rememberSaveable { mutableStateOf(false) }
+    var submitting by remember { mutableStateOf(false) }
     val interactionSource = remember { MutableInteractionSource() }
     val isFocused by interactionSource.collectIsFocusedAsState()
     val keyboardController = LocalSoftwareKeyboardController.current
@@ -98,27 +107,45 @@ fun UpdateTokenScreen(
         val text = clipboard?.primaryClip?.takeIf { it.itemCount > 0 }
             ?.getItemAt(0)?.text?.toString()?.trim()
         if (text != null && TOKEN_CLIPBOARD_PREFIXES.any { text.startsWith(it) }) {
+            qrImported = false
             tokenText = TextFieldValue(text, selection = TextRange(text.length))
         }
     }
 
     fun onCancel() = onDoneNavigateSettings()
 
-    fun onSave() {
+    fun onSave(token: String = tokenText.text, fromQr: Boolean = qrImported) {
+        if (submitting) return
+        submitting = true
         coroutineScope.launch {
             try {
-                viewModel.parseAndSaveToken(tokenText.text)
+                if (fromQr) {
+                    val status = withContext(Dispatchers.Default) { QrTokenValidator.validate(token) }
+                    if (status != QrTokenValidator.Status.VALID) {
+                        val message = context.getString(if (status == QrTokenValidator.Status.EMPTY_SERVERS) R.string.qr_empty else R.string.qr_damaged)
+                        viewModel.errorTextLiveData.postValue(message)
+                        Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
+                        return@launch
+                    }
+                }
+                viewModel.parseAndSaveToken(if (fromQr) QrTokenValidator.normalize(token) else token)
                 Toast.makeText(context, R.string.token_was_updated, Toast.LENGTH_SHORT).show()
                 onDoneNavigateSettings()
+            } catch (e: CancellationException) {
+                throw e
             } catch (e: Exception) {
-                XLog.tag(TAG).e("Token update failed: %s", e.message)
-                val localizedMessage = if (e is PVNClientException && e.errorCode != ErrorCode.UNKNOWN_ERROR) {
+                if (!fromQr) XLog.tag(TAG).e("Token update failed: %s", e.message)
+                val localizedMessage = if (fromQr) {
+                    context.getString(R.string.qr_import_failed)
+                } else if (e is PVNClientException && e.errorCode != ErrorCode.UNKNOWN_ERROR) {
                     getStringResourceByName(context, e.errorCode.value) ?: e.message.orEmpty()
                 } else {
                     e.message.orEmpty()
                 }
                 Toast.makeText(context, localizedMessage, Toast.LENGTH_SHORT).show()
                 viewModel.errorTextLiveData.postValue(localizedMessage)
+            } finally {
+                submitting = false
             }
         }
     }
@@ -213,10 +240,16 @@ fun UpdateTokenScreen(
                         modifier = Modifier
                             .padding(start = 12.dp)
                             .size(24.dp)
-                            .clickable { tokenText = TextFieldValue("") },
+                            .clickable { qrImported = false; tokenText = TextFieldValue("") },
                     )
                 }
             }
+
+            ScanQrButton(
+                onClick = { keyboardController?.hide(); showQrScanner = true },
+                enabled = !submitting,
+                modifier = Modifier.padding(top = 16.dp),
+            )
 
             Row(
                 modifier = Modifier
@@ -237,7 +270,8 @@ fun UpdateTokenScreen(
                     text = stringResource(R.string.save_button),
                     backgroundDrawable = R.drawable.round_back_secondary_100,
                     textColor = Primary,
-                    onClick = ::onSave,
+                    onClick = { onSave() },
+                    enabled = !submitting,
                     modifier = Modifier
                         .weight(1f)
                         .padding(start = 8.dp),
@@ -262,5 +296,17 @@ fun UpdateTokenScreen(
 
     if (showShareDialog) {
         ShareDialog(onDismiss = { showShareDialog = false })
+    }
+
+    if (showQrScanner) {
+        QrScannerScreen(
+            onDismiss = { showQrScanner = false },
+            onToken = { token ->
+                showQrScanner = false
+                qrImported = true
+                tokenText = TextFieldValue(token, selection = TextRange(token.length))
+                viewModel.errorTextLiveData.postValue("")
+            },
+        )
     }
 }

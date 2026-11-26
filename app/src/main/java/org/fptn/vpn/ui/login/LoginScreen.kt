@@ -47,6 +47,12 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import com.elvishew.xlog.XLog
 import kotlinx.coroutines.launch
 import com.foxnet.app.R
+import com.foxnet.app.ui.qrscanner.QrScannerScreen
+import com.foxnet.app.ui.qrscanner.QrTokenValidator
+import com.foxnet.app.ui.qrscanner.ScanQrButton
+import kotlinx.coroutines.CancellationException
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 import com.foxnet.app.ui.common.LegacyPillButton
 import com.foxnet.app.ui.common.legacyDrawableBackground
 import com.foxnet.app.ui.theme.Black
@@ -75,6 +81,9 @@ fun LoginScreen(
     var tokenText by rememberSaveable(stateSaver = TextFieldValue.Saver) {
         mutableStateOf(TextFieldValue(""))
     }
+    var showQrScanner by remember { mutableStateOf(false) }
+    var qrImported by rememberSaveable { mutableStateOf(false) }
+    var submitting by remember { mutableStateOf(false) }
     val interactionSource = remember { MutableInteractionSource() }
     val isFocused by interactionSource.collectIsFocusedAsState()
     val keyboardController = LocalSoftwareKeyboardController.current
@@ -90,24 +99,42 @@ fun LoginScreen(
         val text = clipboard?.primaryClip?.takeIf { it.itemCount > 0 }
             ?.getItemAt(0)?.text?.toString()?.trim()
         if (text != null && TOKEN_CLIPBOARD_PREFIXES.any { text.startsWith(it) }) {
+            qrImported = false
             tokenText = TextFieldValue(text, selection = TextRange(text.length))
         }
     }
 
-    fun onLogin() {
+    fun onLogin(token: String = tokenText.text, fromQr: Boolean = qrImported) {
+        if (submitting) return
+        submitting = true
         coroutineScope.launch {
             try {
-                viewModel.parseAndSaveToken(tokenText.text)
+                if (fromQr) {
+                    val status = withContext(Dispatchers.Default) { QrTokenValidator.validate(token) }
+                    if (status != QrTokenValidator.Status.VALID) {
+                        val message = context.getString(if (status == QrTokenValidator.Status.EMPTY_SERVERS) R.string.qr_empty else R.string.qr_damaged)
+                        viewModel.errorTextLiveData.postValue(message)
+                        Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
+                        return@launch
+                    }
+                }
+                viewModel.parseAndSaveToken(if (fromQr) QrTokenValidator.normalize(token) else token)
                 onLoginSuccess()
+            } catch (e: CancellationException) {
+                throw e
             } catch (e: Exception) {
-                XLog.tag(TAG).e("Login failed: %s", e.message)
-                val localizedMessage = if (e is PVNClientException && e.errorCode != ErrorCode.UNKNOWN_ERROR) {
+                if (!fromQr) XLog.tag(TAG).e("Login failed: %s", e.message)
+                val localizedMessage = if (fromQr) {
+                    context.getString(R.string.qr_import_failed)
+                } else if (e is PVNClientException && e.errorCode != ErrorCode.UNKNOWN_ERROR) {
                     getStringResourceByName(context, e.errorCode.value) ?: e.message.orEmpty()
                 } else {
                     e.message.orEmpty()
                 }
                 Toast.makeText(context, localizedMessage, Toast.LENGTH_SHORT).show()
                 viewModel.errorTextLiveData.postValue(localizedMessage)
+            } finally {
+                submitting = false
             }
         }
     }
@@ -184,16 +211,23 @@ fun LoginScreen(
                     modifier = Modifier
                         .padding(start = 12.dp)
                         .size(24.dp)
-                        .clickable { tokenText = TextFieldValue("") },
+                        .clickable { qrImported = false; tokenText = TextFieldValue("") },
                 )
             }
         }
+
+        ScanQrButton(
+            onClick = { keyboardController?.hide(); showQrScanner = true },
+            enabled = !submitting,
+            modifier = Modifier.padding(top = 16.dp),
+        )
 
         LegacyPillButton(
             text = stringResource(R.string.login_button),
             backgroundDrawable = R.drawable.round_back_secondary_100,
             textColor = Primary,
-            onClick = ::onLogin,
+            onClick = { onLogin() },
+            enabled = !submitting,
             modifier = Modifier.padding(top = 32.dp),
         )
 
@@ -201,6 +235,19 @@ fun LoginScreen(
             text = errorText,
             color = Yellow,
             modifier = Modifier.padding(start = 5.dp, top = 20.dp, end = 20.dp, bottom = 20.dp),
+        )
+    }
+
+    if (showQrScanner) {
+        QrScannerScreen(
+            onDismiss = { showQrScanner = false },
+            onToken = { token ->
+                showQrScanner = false
+                qrImported = true
+                tokenText = TextFieldValue(token, selection = TextRange(token.length))
+                viewModel.errorTextLiveData.postValue("")
+                onLogin(token, fromQr = true)
+            },
         )
     }
 }

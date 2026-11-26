@@ -328,4 +328,23 @@
     <string name="connection_strategy_rolling">Скользящий туннель</string>
     <string name="connection_strategy_dual">Двойной скользящий туннель</string>
     <string name="connection_strategy_triple">Тройной скользящий туннель</string>
+    <string name="qr_scan">Сканировать</string>
+    <string name="qr_title">Сканирование QR-кода</string>
+    <string name="qr_hint">Наведите камеру на QR-код с токеном VPN.</string>
+    <string name="qr_gallery">Выбрать изображение</string>
+    <string name="qr_flash_on">Включить фонарик</string>
+    <string name="qr_flash_off">Выключить фонарик</string>
+    <string name="qr_close">Закрыть сканер</string>
+    <string name="qr_invalid_title">Неверный QR-код</string>
+    <string name="qr_invalid_message">В этом QR-коде нет токена FoxNet VPN.</string>
+    <string name="qr_damaged">Токен не удалось прочитать. Запросите новый токен.</string>
+    <string name="qr_empty">Токен не содержит серверов.</string>
+    <string name="qr_no_code">Не удалось распознать QR-код на изображении. Выберите более чёткое изображение.</string>
+    <string name="qr_permission">Разрешите доступ к камере для сканирования или выберите изображение.</string>
+    <string name="qr_allow_camera">Разрешить доступ к камере</string>
+    <string name="qr_camera_settings">Настройки приложения</string>
+    <string name="qr_camera_error">Камера недоступна. Вы можете выбрать изображение или вставить токен вручную.</string>
+    <string name="qr_retry">Повторить</string>
+    <string name="qr_processing">Чтение QR-кода…</string>
+    <string name="qr_import_failed">Не удалось применить токен. Повторите попытку или введите его вручную.</string>
 </resources>

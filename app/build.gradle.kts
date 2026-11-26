@@ -215,6 +215,7 @@ dependencies {
     implementation(libs.jackson.databind)
     implementation(libs.material)
     implementation(libs.zxing)
+    implementation(libs.journeyapps)
     implementation(libs.gson)
     implementation(libs.xlog)
 

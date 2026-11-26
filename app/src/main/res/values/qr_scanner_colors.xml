@@ -1,0 +1,6 @@
+<resources>
+    <color name="zxing_viewfinder_laser">#31F4EC</color>
+    <color name="zxing_viewfinder_mask">#990C1523</color>
+    <color name="zxing_result_view">#990C1523</color>
+    <color name="zxing_possible_result_points">#31F4EC</color>
+</resources>

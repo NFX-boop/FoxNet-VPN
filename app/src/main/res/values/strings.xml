@@ -345,4 +345,23 @@
     <string name="connection_strategy_rolling">Rolling tunnel</string>
     <string name="connection_strategy_dual">Dual rolling tunnel</string>
     <string name="connection_strategy_triple">Triple rolling tunnel</string>
+    <string name="qr_scan">Scan</string>
+    <string name="qr_title">Scan QR code</string>
+    <string name="qr_hint">Point the camera at a QR code containing a VPN token.</string>
+    <string name="qr_gallery">Choose image</string>
+    <string name="qr_flash_on">Turn torch on</string>
+    <string name="qr_flash_off">Turn torch off</string>
+    <string name="qr_close">Close scanner</string>
+    <string name="qr_invalid_title">Invalid QR code</string>
+    <string name="qr_invalid_message">This QR code does not contain a FoxNet VPN token.</string>
+    <string name="qr_damaged">The token could not be read. Request a new token.</string>
+    <string name="qr_empty">The token does not contain any servers.</string>
+    <string name="qr_no_code">No QR code could be read from the image. Choose a clearer image.</string>
+    <string name="qr_permission">Allow camera access to scan QR codes, or choose an image.</string>
+    <string name="qr_allow_camera">Allow camera access</string>
+    <string name="qr_camera_settings">App settings</string>
+    <string name="qr_camera_error">The camera is unavailable. You can choose an image or paste the token manually.</string>
+    <string name="qr_retry">Try again</string>
+    <string name="qr_processing">Reading QR code…</string>
+    <string name="qr_import_failed">Could not apply the token. Try again or enter it manually.</string>
 </resources>

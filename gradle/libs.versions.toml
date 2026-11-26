@@ -30,6 +30,7 @@ navigationCompose = "2.9.5"
 roomRuntime = "2.8.4"
 runner = "1.7.0"
 zxing = "3.5.4"
+zxingEmbedded = "4.3.0"
 
 [libraries]
 android-gradle-plugin = { group = "com.android.tools.build", name = "gradle", version.ref = "androidGradlePlugin" }
@@ -73,6 +74,7 @@ ksp-gradle-plugin = { group = "com.google.devtools.ksp", name = "com.google.devt
 material = { group = "com.google.android.material", name = "material", version.ref = "material" }
 xlog = { module = "com.elvishew:xlog", version = "1.11.1" }
 zxing = { module = "com.google.zxing:core", version.ref = "zxing" }
+journeyapps = { module = "com.journeyapps:zxing-android-embedded", version.ref = "zxingEmbedded" }
 
 [plugins]
 crashlytics = { id = "com.google.firebase.crashlytics", version.ref = "crashlytics" }
